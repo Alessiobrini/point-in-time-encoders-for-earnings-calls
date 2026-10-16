@@ -81,15 +81,15 @@ def panel_b() -> list[str]:
 
 def render() -> str:
     lines = [r"\begin{table*}[t]", r"\centering", r"\footnotesize", r"\setlength{\tabcolsep}{4pt}",
-             r"\caption{Call text in forecasts of returns and earnings surprises, with every vector from the vintage available at the time. Panel A: quarterly rank information coefficient (IC) of "
+             r"\caption{Call text in forecasts of returns and earnings surprises, with every vector from the vintage available at the time. \textbf{Panel A}: quarterly rank information coefficient (IC) of "
              r"a ridge forecast refit each January on the price baselines and one text source, with "
              r"the $t$ statistic over quarters in parentheses. Test years are 2013 to 2025, 52 quarters, or 51 for the next-quarter return and the earnings surprise. The first row is the price baselines alone, and "
              r"each other row is the increment in IC when that text source is added to them. Entry is the first close at least an hour after the call starts. Horizons are the "
-             r"next-day and 5-day returns after entry and the next-quarter return, from the 2nd to the 61st "
-             r"trading day after the call, each minus the market's. Session after is the raw open-to-close return of the first session after the call, for calls held "
-             r"before 08:30 or from 16:00 New York time. Sharpe ratios are levels, of the baselines alone in the first row and of baselines and text in the others, "
-             r"for an equal-weighted decile long-short of the calls entering each day, held one day and formed on "
-             r"days with at least 20 such calls. They are annualized over every trading day of the test span, and a day without a position counts as zero return. The last column is the next-day IC of the text alone. Panel B: IC of the "
+             r"next-day and 5-day returns after entry and the next-quarter return, over trading days $+2$ to $+61$, "
+             r"each minus the market's. Session after is the raw open-to-close return of the first session after the call, for calls held "
+             r"before 08:30 or from 16:00 New York time. Sharpe ratios are levels, for the baselines alone in the first row and with text in the others, "
+             r"for an equal-weighted decile long-short of the calls entering each day, at the close or, for the session after, at the open, held one day and formed on "
+             r"days with at least 20 such calls. They are annualized over every trading day of the test span, and a day without a position counts as zero return. The last column is the next-day IC of the text alone. \textbf{Panel B}: IC of the "
              r"mean outcome of the 50 most similar earlier calls of other firms, "
              r"for the next-day return on every call in the universe and for the next "
              r"standardized earnings surprise on the S\&P 500 calls. The largest value in each column is in bold, "

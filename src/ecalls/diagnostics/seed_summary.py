@@ -555,9 +555,12 @@ def staleness_summary(n_boot: int = 2000) -> dict:
                 raise ValueError(f"{fam} {y}: answered different questions from the 2024 vintage")
             draws = call_bootstrap([(h[0], h[1] - latest[1])], n_boot)
             rows[str(y)] = {"recall_at_1": float(h[1].mean()), "minus_2024": float((h[1] - latest[1]).mean()),
-                            "ci95": interval(draws), "staleness": 2024 - y}
+                            "ci95": interval(draws), "staleness": 2024 - y,
+                            # the level itself, for Fig. 3b, with calls resampled as for the difference
+                            "level_ci95": interval(call_bootstrap([(h[0], h[1])], n_boot))}
         entry = {"per_vintage": rows, "missing": missing,
-                 "latest_recall_at_1": float(latest[1].mean()) if latest is not None else None}
+                 "latest_recall_at_1": float(latest[1].mean()) if latest is not None else None,
+                 "latest_level_ci95": interval(call_bootstrap([latest], n_boot)) if latest is not None else None}
         if len(rows) >= 2:
             x = np.array([v["staleness"] for v in rows.values()], dtype=float)
             d = np.array([v["minus_2024"] for v in rows.values()])
