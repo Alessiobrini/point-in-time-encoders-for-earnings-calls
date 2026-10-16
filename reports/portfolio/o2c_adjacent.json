@@ -1,0 +1,2964 @@
+{
+  "design": "D27 amendment 2026-10-08, adjacent vintage",
+  "target": "o2c",
+  "years": [
+    {
+      "year": 2013,
+      "n_train": 6689,
+      "n_test": 3511,
+      "train_mean": 0.0006217668965742108,
+      "n_dropped_missing_feature": 0,
+      "specs": {
+        "ecalls-ret": {
+          "alpha": 1000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20121231"
+          ],
+          "long_cutoff": 0.008093919605016708,
+          "short_cutoff": -0.006752958986908197
+        },
+        "ecalls-ret+baselines": {
+          "alpha": 1000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20121231"
+          ],
+          "long_cutoff": 0.008746846274771538,
+          "short_cutoff": -0.007329319719356328
+        },
+        "ecalls-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20121231"
+          ],
+          "long_cutoff": 0.005086027863961623,
+          "short_cutoff": -0.003801617746134251
+        },
+        "ecalls-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20131231"
+          ],
+          "long_cutoff": 0.003892412642017007,
+          "short_cutoff": -0.002655979711562395
+        },
+        "ecalls-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20131231"
+          ],
+          "long_cutoff": 0.004228662459909768,
+          "short_cutoff": -0.0029275980365762477
+        },
+        "ecalls-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20131231"
+          ],
+          "long_cutoff": 0.004924009899378959,
+          "short_cutoff": -0.003782642535847526
+        },
+        "ecalls-abl": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20121231"
+          ],
+          "long_cutoff": 0.0037704850547015667,
+          "short_cutoff": -0.0024766954593360424
+        },
+        "ecalls-abl+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20121231"
+          ],
+          "long_cutoff": 0.0041060042176124375,
+          "short_cutoff": -0.002763453445316814
+        },
+        "ecalls-abl+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20121231"
+          ],
+          "long_cutoff": 0.0048470185723040425,
+          "short_cutoff": -0.0036981035449375
+        },
+        "ecalls-abl-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20131231"
+          ],
+          "long_cutoff": 0.003710374003276229,
+          "short_cutoff": -0.002505300799384713
+        },
+        "ecalls-abl-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20131231"
+          ],
+          "long_cutoff": 0.004118598312645777,
+          "short_cutoff": -0.0027613968544050746
+        },
+        "ecalls-abl-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20131231"
+          ],
+          "long_cutoff": 0.004854132903272933,
+          "short_cutoff": -0.0037776850184628695
+        },
+        "chrono-bert-v1": {
+          "alpha": 1000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20121231"
+          ],
+          "long_cutoff": 0.008092557080090046,
+          "short_cutoff": -0.0068894498981535435
+        },
+        "chrono-bert-v1+baselines": {
+          "alpha": 1000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20121231"
+          ],
+          "long_cutoff": 0.008547782537152094,
+          "short_cutoff": -0.007614793842667428
+        },
+        "chrono-bert-v1+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20121231"
+          ],
+          "long_cutoff": 0.0051383145323999155,
+          "short_cutoff": -0.004087534790921885
+        },
+        "chrono-bert-v1-adjacent": {
+          "alpha": 1000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20131231"
+          ],
+          "long_cutoff": 0.008128810673952103,
+          "short_cutoff": -0.007101943716406822
+        },
+        "chrono-bert-v1-adjacent+baselines": {
+          "alpha": 1000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20131231"
+          ],
+          "long_cutoff": 0.008482361234522255,
+          "short_cutoff": -0.00765825168508471
+        },
+        "chrono-bert-v1-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20131231"
+          ],
+          "long_cutoff": 0.0051019830022836655,
+          "short_cutoff": -0.004044792712445583
+        },
+        "ecalls-chain-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20121231"
+          ],
+          "long_cutoff": 0.00394092034548521,
+          "short_cutoff": -0.002696952084079385
+        },
+        "ecalls-chain-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20121231"
+          ],
+          "long_cutoff": 0.004278238931000477,
+          "short_cutoff": -0.0029989113447620036
+        },
+        "ecalls-chain-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20121231"
+          ],
+          "long_cutoff": 0.005034336633508066,
+          "short_cutoff": -0.0038311011718469242
+        },
+        "ecalls-chain-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20131231"
+          ],
+          "long_cutoff": 0.003976732026785612,
+          "short_cutoff": -0.0027382296975702047
+        },
+        "ecalls-chain-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20131231"
+          ],
+          "long_cutoff": 0.004301995388658594,
+          "short_cutoff": -0.0030184348160256134
+        },
+        "ecalls-chain-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20131231"
+          ],
+          "long_cutoff": 0.005045929811981759,
+          "short_cutoff": -0.0037791322462523242
+        }
+      }
+    },
+    {
+      "year": 2014,
+      "n_train": 10200,
+      "n_test": 3769,
+      "train_mean": 0.0016240170903344944,
+      "n_dropped_missing_feature": 0,
+      "specs": {
+        "ecalls-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20131231"
+          ],
+          "long_cutoff": 0.004999632015824318,
+          "short_cutoff": -0.001855420763604343
+        },
+        "ecalls-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20131231"
+          ],
+          "long_cutoff": 0.00544369479680771,
+          "short_cutoff": -0.002301203190287748
+        },
+        "ecalls-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20131231"
+          ],
+          "long_cutoff": 0.00596010996633167,
+          "short_cutoff": -0.0029697421929641378
+        },
+        "ecalls-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20141231"
+          ],
+          "long_cutoff": 0.0051744310185313225,
+          "short_cutoff": -0.0021073613315820694
+        },
+        "ecalls-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20141231"
+          ],
+          "long_cutoff": 0.005611367286476272,
+          "short_cutoff": -0.0024686048022531056
+        },
+        "ecalls-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20141231"
+          ],
+          "long_cutoff": 0.00612839569543115,
+          "short_cutoff": -0.003195524180801694
+        },
+        "ecalls-abl": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20131231"
+          ],
+          "long_cutoff": 0.005032393615692854,
+          "short_cutoff": -0.0019442380871623755
+        },
+        "ecalls-abl+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20131231"
+          ],
+          "long_cutoff": 0.005410944278734912,
+          "short_cutoff": -0.00233354537945912
+        },
+        "ecalls-abl+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20131231"
+          ],
+          "long_cutoff": 0.006071703196052892,
+          "short_cutoff": -0.0030698767272257137
+        },
+        "ecalls-abl-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20141231"
+          ],
+          "long_cutoff": 0.004924790468066931,
+          "short_cutoff": -0.0018961717141792178
+        },
+        "ecalls-abl-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20141231"
+          ],
+          "long_cutoff": 0.0053233039301469436,
+          "short_cutoff": -0.002281534858398833
+        },
+        "ecalls-abl-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20141231"
+          ],
+          "long_cutoff": 0.00597866182792732,
+          "short_cutoff": -0.0030121197422706
+        },
+        "chrono-bert-v1": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20131231"
+          ],
+          "long_cutoff": 0.005051629152148962,
+          "short_cutoff": -0.0019447602098807693
+        },
+        "chrono-bert-v1+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20131231"
+          ],
+          "long_cutoff": 0.0054338037790986815,
+          "short_cutoff": -0.0022831651128341524
+        },
+        "chrono-bert-v1+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20131231"
+          ],
+          "long_cutoff": 0.006035351409369925,
+          "short_cutoff": -0.003147472562834791
+        },
+        "chrono-bert-v1-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20141231"
+          ],
+          "long_cutoff": 0.004945726599544287,
+          "short_cutoff": -0.001828586682677269
+        },
+        "chrono-bert-v1-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20141231"
+          ],
+          "long_cutoff": 0.0053424037998675575,
+          "short_cutoff": -0.0022486603979349636
+        },
+        "chrono-bert-v1-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20141231"
+          ],
+          "long_cutoff": 0.0059307595450498445,
+          "short_cutoff": -0.0030718615369852076
+        },
+        "ecalls-chain-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20131231"
+          ],
+          "long_cutoff": 0.005122364033013582,
+          "short_cutoff": -0.0020008536521345377
+        },
+        "ecalls-chain-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20131231"
+          ],
+          "long_cutoff": 0.005507227798303534,
+          "short_cutoff": -0.002376291094841896
+        },
+        "ecalls-chain-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20131231"
+          ],
+          "long_cutoff": 0.006088796279433171,
+          "short_cutoff": -0.003130368570454039
+        },
+        "ecalls-chain-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20141231"
+          ],
+          "long_cutoff": 0.005123311188071966,
+          "short_cutoff": -0.0020065915305167437
+        },
+        "ecalls-chain-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20141231"
+          ],
+          "long_cutoff": 0.00551619986703163,
+          "short_cutoff": -0.002403702817528381
+        },
+        "ecalls-chain-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20141231"
+          ],
+          "long_cutoff": 0.006108876745039844,
+          "short_cutoff": -0.003072872372809703
+        }
+      }
+    },
+    {
+      "year": 2015,
+      "n_train": 13969,
+      "n_test": 3755,
+      "train_mean": 0.0009551925261863281,
+      "n_dropped_missing_feature": 0,
+      "specs": {
+        "ecalls-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20141231"
+          ],
+          "long_cutoff": 0.0045082662254571915,
+          "short_cutoff": -0.002680803881958127
+        },
+        "ecalls-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20141231"
+          ],
+          "long_cutoff": 0.004809721224891272,
+          "short_cutoff": -0.0030326377441141574
+        },
+        "ecalls-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20141231"
+          ],
+          "long_cutoff": 0.005414919675307532,
+          "short_cutoff": -0.003556084021258847
+        },
+        "ecalls-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20151231"
+          ],
+          "long_cutoff": 0.004539140500128269,
+          "short_cutoff": -0.0026330393739044666
+        },
+        "ecalls-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20151231"
+          ],
+          "long_cutoff": 0.0048457680355502245,
+          "short_cutoff": -0.0030105939029493947
+        },
+        "ecalls-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20151231"
+          ],
+          "long_cutoff": 0.005326464038437532,
+          "short_cutoff": -0.0034852386068466626
+        },
+        "ecalls-abl": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20141231"
+          ],
+          "long_cutoff": 0.0042167906649410725,
+          "short_cutoff": -0.002432639244943857
+        },
+        "ecalls-abl+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20141231"
+          ],
+          "long_cutoff": 0.004619161449883725,
+          "short_cutoff": -0.002799269391524109
+        },
+        "ecalls-abl+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20141231"
+          ],
+          "long_cutoff": 0.005169729781260123,
+          "short_cutoff": -0.003317294887919942
+        },
+        "ecalls-abl-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20151231"
+          ],
+          "long_cutoff": 0.004554098937660456,
+          "short_cutoff": -0.0026970633771270514
+        },
+        "ecalls-abl-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20151231"
+          ],
+          "long_cutoff": 0.0049319472782423214,
+          "short_cutoff": -0.003072310557187504
+        },
+        "ecalls-abl-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20151231"
+          ],
+          "long_cutoff": 0.005461209917858703,
+          "short_cutoff": -0.003558875526347731
+        },
+        "chrono-bert-v1": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20141231"
+          ],
+          "long_cutoff": 0.004127406049519777,
+          "short_cutoff": -0.0022873093839734793
+        },
+        "chrono-bert-v1+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20141231"
+          ],
+          "long_cutoff": 0.00446277559687691,
+          "short_cutoff": -0.0026321316899236705
+        },
+        "chrono-bert-v1+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20141231"
+          ],
+          "long_cutoff": 0.005066490025463599,
+          "short_cutoff": -0.003244332396498784
+        },
+        "chrono-bert-v1-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20151231"
+          ],
+          "long_cutoff": 0.004081089515239,
+          "short_cutoff": -0.0022776848636567593
+        },
+        "chrono-bert-v1-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20151231"
+          ],
+          "long_cutoff": 0.004441517361329639,
+          "short_cutoff": -0.002627655052701353
+        },
+        "chrono-bert-v1-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20151231"
+          ],
+          "long_cutoff": 0.005052460892784291,
+          "short_cutoff": -0.0032352882095515434
+        },
+        "ecalls-chain-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20141231"
+          ],
+          "long_cutoff": 0.0043935626745224,
+          "short_cutoff": -0.0025496387388557196
+        },
+        "ecalls-chain-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20141231"
+          ],
+          "long_cutoff": 0.004751835655979881,
+          "short_cutoff": -0.002966626288626389
+        },
+        "ecalls-chain-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20141231"
+          ],
+          "long_cutoff": 0.0053168926223034945,
+          "short_cutoff": -0.0034072931963155147
+        },
+        "ecalls-chain-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20151231"
+          ],
+          "long_cutoff": 0.004429888911545277,
+          "short_cutoff": -0.0025623023975640535
+        },
+        "ecalls-chain-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20151231"
+          ],
+          "long_cutoff": 0.004774614010974693,
+          "short_cutoff": -0.0029780580162140405
+        },
+        "ecalls-chain-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20151231"
+          ],
+          "long_cutoff": 0.0053120954538654,
+          "short_cutoff": -0.0034383650263113607
+        }
+      }
+    },
+    {
+      "year": 2016,
+      "n_train": 17724,
+      "n_test": 3647,
+      "train_mean": 0.0011359118311130326,
+      "n_dropped_missing_feature": 0,
+      "specs": {
+        "ecalls-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20151231"
+          ],
+          "long_cutoff": 0.00463822903111577,
+          "short_cutoff": -0.0024294760078191757
+        },
+        "ecalls-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20151231"
+          ],
+          "long_cutoff": 0.005274968702186251,
+          "short_cutoff": -0.003049904544337276
+        },
+        "ecalls-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20151231"
+          ],
+          "long_cutoff": 0.005693754372608415,
+          "short_cutoff": -0.0034894935554192065
+        },
+        "ecalls-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20161231"
+          ],
+          "long_cutoff": 0.004697923082858324,
+          "short_cutoff": -0.0025080761406570673
+        },
+        "ecalls-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20161231"
+          ],
+          "long_cutoff": 0.005346050742069743,
+          "short_cutoff": -0.0031918064990337797
+        },
+        "ecalls-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20161231"
+          ],
+          "long_cutoff": 0.005762671373412089,
+          "short_cutoff": -0.003591874983856777
+        },
+        "ecalls-abl": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20151231"
+          ],
+          "long_cutoff": 0.00488711753860116,
+          "short_cutoff": -0.002503632102161646
+        },
+        "ecalls-abl+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20151231"
+          ],
+          "long_cutoff": 0.0054785463536177114,
+          "short_cutoff": -0.0031421454140365375
+        },
+        "ecalls-abl+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20151231"
+          ],
+          "long_cutoff": 0.005917412688219112,
+          "short_cutoff": -0.0035373670726862806
+        },
+        "ecalls-abl-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20161231"
+          ],
+          "long_cutoff": 0.004883229732513428,
+          "short_cutoff": -0.0025892811827361584
+        },
+        "ecalls-abl-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20161231"
+          ],
+          "long_cutoff": 0.005455409702359721,
+          "short_cutoff": -0.0031455971078633805
+        },
+        "ecalls-abl-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20161231"
+          ],
+          "long_cutoff": 0.005903076087571766,
+          "short_cutoff": -0.0035754007332855276
+        },
+        "chrono-bert-v1": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20151231"
+          ],
+          "long_cutoff": 0.004348973277956247,
+          "short_cutoff": -0.0021129006054252386
+        },
+        "chrono-bert-v1+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20151231"
+          ],
+          "long_cutoff": 0.004922980211574139,
+          "short_cutoff": -0.0027428131903503455
+        },
+        "chrono-bert-v1+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20151231"
+          ],
+          "long_cutoff": 0.0054712169316891894,
+          "short_cutoff": -0.0032864252299823335
+        },
+        "chrono-bert-v1-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20161231"
+          ],
+          "long_cutoff": 0.004329960327595472,
+          "short_cutoff": -0.002137663308531046
+        },
+        "chrono-bert-v1-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20161231"
+          ],
+          "long_cutoff": 0.004954032675575493,
+          "short_cutoff": -0.0027289744789167967
+        },
+        "chrono-bert-v1-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20161231"
+          ],
+          "long_cutoff": 0.005462134851416748,
+          "short_cutoff": -0.003221012612304241
+        },
+        "ecalls-chain-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20151231"
+          ],
+          "long_cutoff": 0.004598489496856928,
+          "short_cutoff": -0.0023801408242434263
+        },
+        "ecalls-chain-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20151231"
+          ],
+          "long_cutoff": 0.005207893548455436,
+          "short_cutoff": -0.003013432052568148
+        },
+        "ecalls-chain-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20151231"
+          ],
+          "long_cutoff": 0.005651678891128768,
+          "short_cutoff": -0.0034673250836491413
+        },
+        "ecalls-chain-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20161231"
+          ],
+          "long_cutoff": 0.0045808712020516396,
+          "short_cutoff": -0.002422429621219635
+        },
+        "ecalls-chain-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20161231"
+          ],
+          "long_cutoff": 0.005197489301898457,
+          "short_cutoff": -0.003070333159386593
+        },
+        "ecalls-chain-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20161231"
+          ],
+          "long_cutoff": 0.005652413498259149,
+          "short_cutoff": -0.003452902110132525
+        }
+      }
+    },
+    {
+      "year": 2017,
+      "n_train": 21371,
+      "n_test": 3971,
+      "train_mean": 0.0013393950922231032,
+      "n_dropped_missing_feature": 0,
+      "specs": {
+        "ecalls-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20161231"
+          ],
+          "long_cutoff": 0.004829960409551859,
+          "short_cutoff": -0.0022437134757637978
+        },
+        "ecalls-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20161231"
+          ],
+          "long_cutoff": 0.005406757212659807,
+          "short_cutoff": -0.0028727918761147376
+        },
+        "ecalls-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20161231"
+          ],
+          "long_cutoff": 0.0059066119463912145,
+          "short_cutoff": -0.0032802978131124478
+        },
+        "ecalls-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20171231"
+          ],
+          "long_cutoff": 0.0048598130233585835,
+          "short_cutoff": -0.0022907406091690063
+        },
+        "ecalls-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20171231"
+          ],
+          "long_cutoff": 0.005415781075128977,
+          "short_cutoff": -0.0028247297006215102
+        },
+        "ecalls-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20171231"
+          ],
+          "long_cutoff": 0.005882196305946951,
+          "short_cutoff": -0.003349205368453591
+        },
+        "ecalls-abl": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20161231"
+          ],
+          "long_cutoff": 0.005035600159317255,
+          "short_cutoff": -0.0023177610710263252
+        },
+        "ecalls-abl+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20161231"
+          ],
+          "long_cutoff": 0.005485660574321322,
+          "short_cutoff": -0.002860715569610179
+        },
+        "ecalls-abl+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20161231"
+          ],
+          "long_cutoff": 0.006025049735619578,
+          "short_cutoff": -0.0033442958590296085
+        },
+        "ecalls-abl-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20171231"
+          ],
+          "long_cutoff": 0.004642259795218706,
+          "short_cutoff": -0.001973105361685157
+        },
+        "ecalls-abl-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20171231"
+          ],
+          "long_cutoff": 0.005174971077320358,
+          "short_cutoff": -0.002507533592159783
+        },
+        "ecalls-abl-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20171231"
+          ],
+          "long_cutoff": 0.005766771039843721,
+          "short_cutoff": -0.003076865574878956
+        },
+        "chrono-bert-v1": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20161231"
+          ],
+          "long_cutoff": 0.004595096223056316,
+          "short_cutoff": -0.0019397406140342355
+        },
+        "chrono-bert-v1+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20161231"
+          ],
+          "long_cutoff": 0.0050800936448998635,
+          "short_cutoff": -0.002496098370288076
+        },
+        "chrono-bert-v1+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20161231"
+          ],
+          "long_cutoff": 0.005636561119200042,
+          "short_cutoff": -0.0030310818197677386
+        },
+        "chrono-bert-v1-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20171231"
+          ],
+          "long_cutoff": 0.00438079796731472,
+          "short_cutoff": -0.0017908960580825806
+        },
+        "chrono-bert-v1-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20171231"
+          ],
+          "long_cutoff": 0.004940930799321694,
+          "short_cutoff": -0.002358975410291228
+        },
+        "chrono-bert-v1-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20171231"
+          ],
+          "long_cutoff": 0.005579067530516832,
+          "short_cutoff": -0.002930042988165138
+        },
+        "ecalls-chain-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20161231"
+          ],
+          "long_cutoff": 0.004735489841550589,
+          "short_cutoff": -0.002188403159379959
+        },
+        "ecalls-chain-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20161231"
+          ],
+          "long_cutoff": 0.005298742780141614,
+          "short_cutoff": -0.0027387483720962827
+        },
+        "ecalls-chain-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20161231"
+          ],
+          "long_cutoff": 0.005842210853128248,
+          "short_cutoff": -0.003207919354943081
+        },
+        "ecalls-chain-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20171231"
+          ],
+          "long_cutoff": 0.004687785170972347,
+          "short_cutoff": -0.0020735980942845345
+        },
+        "ecalls-chain-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20171231"
+          ],
+          "long_cutoff": 0.005227157082183295,
+          "short_cutoff": -0.0026501748500437263
+        },
+        "ecalls-chain-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20171231"
+          ],
+          "long_cutoff": 0.005777830358925758,
+          "short_cutoff": -0.003162711236267102
+        }
+      }
+    },
+    {
+      "year": 2018,
+      "n_train": 25342,
+      "n_test": 4139,
+      "train_mean": 0.0011774320913696575,
+      "n_dropped_missing_feature": 0,
+      "specs": {
+        "ecalls-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20171231"
+          ],
+          "long_cutoff": 0.004850401077419519,
+          "short_cutoff": -0.002595130354166031
+        },
+        "ecalls-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20171231"
+          ],
+          "long_cutoff": 0.005391053072467166,
+          "short_cutoff": -0.003090050222418333
+        },
+        "ecalls-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20171231"
+          ],
+          "long_cutoff": 0.005905667418979802,
+          "short_cutoff": -0.0035990793555277516
+        },
+        "ecalls-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20181231"
+          ],
+          "long_cutoff": 0.0045814234763383865,
+          "short_cutoff": -0.002337493933737278
+        },
+        "ecalls-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20181231"
+          ],
+          "long_cutoff": 0.005158492920041577,
+          "short_cutoff": -0.002931321808629121
+        },
+        "ecalls-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20181231"
+          ],
+          "long_cutoff": 0.0056625618296469666,
+          "short_cutoff": -0.0034078123764512145
+        },
+        "ecalls-abl": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20171231"
+          ],
+          "long_cutoff": 0.004756206646561623,
+          "short_cutoff": -0.002452795160934329
+        },
+        "ecalls-abl+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20171231"
+          ],
+          "long_cutoff": 0.005262572327897962,
+          "short_cutoff": -0.0029565751729982224
+        },
+        "ecalls-abl+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20171231"
+          ],
+          "long_cutoff": 0.0058783805241076695,
+          "short_cutoff": -0.003483511162724732
+        },
+        "ecalls-abl-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20181231"
+          ],
+          "long_cutoff": 0.004846375435590744,
+          "short_cutoff": -0.0025216604117304087
+        },
+        "ecalls-abl-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20181231"
+          ],
+          "long_cutoff": 0.005290694298542564,
+          "short_cutoff": -0.0029990019267670453
+        },
+        "ecalls-abl-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20181231"
+          ],
+          "long_cutoff": 0.005910617236772222,
+          "short_cutoff": -0.00353633823432995
+        },
+        "chrono-bert-v1": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20171231"
+          ],
+          "long_cutoff": 0.004282884765416384,
+          "short_cutoff": -0.001961407018825412
+        },
+        "chrono-bert-v1+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20171231"
+          ],
+          "long_cutoff": 0.004823832963899061,
+          "short_cutoff": -0.002544532685976523
+        },
+        "chrono-bert-v1+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20171231"
+          ],
+          "long_cutoff": 0.005475218148820006,
+          "short_cutoff": -0.003077871693307756
+        },
+        "chrono-bert-v1-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20181231"
+          ],
+          "long_cutoff": 0.004364984575659037,
+          "short_cutoff": -0.0020747827365994453
+        },
+        "chrono-bert-v1-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20181231"
+          ],
+          "long_cutoff": 0.004931232029862296,
+          "short_cutoff": -0.002635028315511236
+        },
+        "chrono-bert-v1-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20181231"
+          ],
+          "long_cutoff": 0.005519274106117077,
+          "short_cutoff": -0.003172710586671461
+        },
+        "ecalls-chain-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20171231"
+          ],
+          "long_cutoff": 0.004605134017765522,
+          "short_cutoff": -0.002343275584280491
+        },
+        "ecalls-chain-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20171231"
+          ],
+          "long_cutoff": 0.005142787102437913,
+          "short_cutoff": -0.0028908750126309477
+        },
+        "ecalls-chain-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20171231"
+          ],
+          "long_cutoff": 0.005684553163127257,
+          "short_cutoff": -0.0034048758102927733
+        },
+        "ecalls-chain-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20181231"
+          ],
+          "long_cutoff": 0.004529761150479317,
+          "short_cutoff": -0.0022818492725491524
+        },
+        "ecalls-chain-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20181231"
+          ],
+          "long_cutoff": 0.005100149163756956,
+          "short_cutoff": -0.002808638155041311
+        },
+        "ecalls-chain-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20181231"
+          ],
+          "long_cutoff": 0.005660567065383795,
+          "short_cutoff": -0.003320334741344677
+        }
+      }
+    },
+    {
+      "year": 2019,
+      "n_train": 29481,
+      "n_test": 4216,
+      "train_mean": 0.001029553662570112,
+      "n_dropped_missing_feature": 0,
+      "specs": {
+        "ecalls-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20181231"
+          ],
+          "long_cutoff": 0.004588352981954813,
+          "short_cutoff": -0.002688622334972024
+        },
+        "ecalls-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20181231"
+          ],
+          "long_cutoff": 0.005189337303652187,
+          "short_cutoff": -0.003311503098242567
+        },
+        "ecalls-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20181231"
+          ],
+          "long_cutoff": 0.005677056484053412,
+          "short_cutoff": -0.003769182729501376
+        },
+        "ecalls-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20191231"
+          ],
+          "long_cutoff": 0.0046640485525131226,
+          "short_cutoff": -0.0027667833492159843
+        },
+        "ecalls-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20191231"
+          ],
+          "long_cutoff": 0.00524814937838323,
+          "short_cutoff": -0.0034168894565688663
+        },
+        "ecalls-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20191231"
+          ],
+          "long_cutoff": 0.005742034059097879,
+          "short_cutoff": -0.0038476819691716986
+        },
+        "ecalls-abl": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20181231"
+          ],
+          "long_cutoff": 0.00475092651322484,
+          "short_cutoff": -0.0027502072043716908
+        },
+        "ecalls-abl+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20181231"
+          ],
+          "long_cutoff": 0.0052900666697377405,
+          "short_cutoff": -0.00334917112478454
+        },
+        "ecalls-abl+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20181231"
+          ],
+          "long_cutoff": 0.005837244615469087,
+          "short_cutoff": -0.0038714438011248227
+        },
+        "ecalls-abl-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20191231"
+          ],
+          "long_cutoff": 0.004831532947719097,
+          "short_cutoff": -0.0027808165177702904
+        },
+        "ecalls-abl-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20191231"
+          ],
+          "long_cutoff": 0.0053705364049089965,
+          "short_cutoff": -0.0033286888055497335
+        },
+        "ecalls-abl-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20191231"
+          ],
+          "long_cutoff": 0.005860544940869041,
+          "short_cutoff": -0.0038401137254290866
+        },
+        "chrono-bert-v1": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20181231"
+          ],
+          "long_cutoff": 0.004343454260379076,
+          "short_cutoff": -0.0023553352802991867
+        },
+        "chrono-bert-v1+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20181231"
+          ],
+          "long_cutoff": 0.004938739591636859,
+          "short_cutoff": -0.0029760945562363585
+        },
+        "chrono-bert-v1+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20181231"
+          ],
+          "long_cutoff": 0.005568054656999076,
+          "short_cutoff": -0.00350099807512808
+        },
+        "chrono-bert-v1-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20191231"
+          ],
+          "long_cutoff": 0.004216291941702366,
+          "short_cutoff": -0.0022194627672433853
+        },
+        "chrono-bert-v1-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20191231"
+          ],
+          "long_cutoff": 0.004854481732878853,
+          "short_cutoff": -0.0028829006612525075
+        },
+        "chrono-bert-v1-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20191231"
+          ],
+          "long_cutoff": 0.005496166494398314,
+          "short_cutoff": -0.003432602827589087
+        },
+        "ecalls-chain-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20181231"
+          ],
+          "long_cutoff": 0.004455375485122204,
+          "short_cutoff": -0.0025316360406577587
+        },
+        "ecalls-chain-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20181231"
+          ],
+          "long_cutoff": 0.0051086646235710175,
+          "short_cutoff": -0.0031500141533610344
+        },
+        "ecalls-chain-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20181231"
+          ],
+          "long_cutoff": 0.005634040848953618,
+          "short_cutoff": -0.0036249034446291196
+        },
+        "ecalls-chain-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20191231"
+          ],
+          "long_cutoff": 0.004460105672478676,
+          "short_cutoff": -0.0025349468924105167
+        },
+        "ecalls-chain-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20191231"
+          ],
+          "long_cutoff": 0.00511063134541021,
+          "short_cutoff": -0.003166709999566946
+        },
+        "ecalls-chain-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20191231"
+          ],
+          "long_cutoff": 0.005635551206386404,
+          "short_cutoff": -0.003633064191378878
+        }
+      }
+    },
+    {
+      "year": 2020,
+      "n_train": 33697,
+      "n_test": 4383,
+      "train_mean": 0.0011133091892278485,
+      "n_dropped_missing_feature": 0,
+      "specs": {
+        "ecalls-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20191231"
+          ],
+          "long_cutoff": 0.004815488588064909,
+          "short_cutoff": -0.0026589795015752316
+        },
+        "ecalls-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20191231"
+          ],
+          "long_cutoff": 0.005410925375305813,
+          "short_cutoff": -0.0033463490148269107
+        },
+        "ecalls-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20191231"
+          ],
+          "long_cutoff": 0.005894821457947578,
+          "short_cutoff": -0.0037606933076222504
+        },
+        "ecalls-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20201231"
+          ],
+          "long_cutoff": 0.00474979542195797,
+          "short_cutoff": -0.0026221072766929865
+        },
+        "ecalls-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20201231"
+          ],
+          "long_cutoff": 0.005407273792320653,
+          "short_cutoff": -0.0033239722256207193
+        },
+        "ecalls-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20201231"
+          ],
+          "long_cutoff": 0.005839605772675815,
+          "short_cutoff": -0.00369616084569468
+        },
+        "ecalls-abl": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20191231"
+          ],
+          "long_cutoff": 0.005008792970329523,
+          "short_cutoff": -0.0027801250107586384
+        },
+        "ecalls-abl+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20191231"
+          ],
+          "long_cutoff": 0.005563412915916582,
+          "short_cutoff": -0.003374412240443516
+        },
+        "ecalls-abl+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20191231"
+          ],
+          "long_cutoff": 0.006018339821491697,
+          "short_cutoff": -0.003817351075919869
+        },
+        "ecalls-abl-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20201231"
+          ],
+          "long_cutoff": 0.0047611696645617485,
+          "short_cutoff": -0.0026336400769650936
+        },
+        "ecalls-abl-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20201231"
+          ],
+          "long_cutoff": 0.005413230729182047,
+          "short_cutoff": -0.003262880310996496
+        },
+        "ecalls-abl-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20201231"
+          ],
+          "long_cutoff": 0.005920705242945754,
+          "short_cutoff": -0.0037318189639358595
+        },
+        "chrono-bert-v1": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20191231"
+          ],
+          "long_cutoff": 0.004425060003995895,
+          "short_cutoff": -0.0022391965612769127
+        },
+        "chrono-bert-v1+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20191231"
+          ],
+          "long_cutoff": 0.005098116188229328,
+          "short_cutoff": -0.0028788523886981955
+        },
+        "chrono-bert-v1+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20191231"
+          ],
+          "long_cutoff": 0.005597257298324381,
+          "short_cutoff": -0.003385531393584308
+        },
+        "chrono-bert-v1-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20201231"
+          ],
+          "long_cutoff": 0.004510981030762196,
+          "short_cutoff": -0.0022736461833119392
+        },
+        "chrono-bert-v1-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20201231"
+          ],
+          "long_cutoff": 0.005122066468232531,
+          "short_cutoff": -0.0029113390452818622
+        },
+        "chrono-bert-v1-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20201231"
+          ],
+          "long_cutoff": 0.005651151749065802,
+          "short_cutoff": -0.0033874081291313555
+        },
+        "ecalls-chain-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20191231"
+          ],
+          "long_cutoff": 0.004715236369520426,
+          "short_cutoff": -0.0025024935603141785
+        },
+        "ecalls-chain-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20191231"
+          ],
+          "long_cutoff": 0.005342377857949728,
+          "short_cutoff": -0.0031695722678232383
+        },
+        "ecalls-chain-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20191231"
+          ],
+          "long_cutoff": 0.0057947371558893825,
+          "short_cutoff": -0.003564437777018175
+        },
+        "ecalls-chain-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20201231"
+          ],
+          "long_cutoff": 0.00459376210346818,
+          "short_cutoff": -0.0024008022155612707
+        },
+        "ecalls-chain-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20201231"
+          ],
+          "long_cutoff": 0.005227901726645202,
+          "short_cutoff": -0.0031140521679826117
+        },
+        "ecalls-chain-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20201231"
+          ],
+          "long_cutoff": 0.005709705839606406,
+          "short_cutoff": -0.0034758451905958655
+        }
+      }
+    },
+    {
+      "year": 2021,
+      "n_train": 38080,
+      "n_test": 5258,
+      "train_mean": 0.00042028396366400816,
+      "n_dropped_missing_feature": 0,
+      "specs": {
+        "ecalls-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20201231"
+          ],
+          "long_cutoff": 0.0042520430870354176,
+          "short_cutoff": -0.003762922016903758
+        },
+        "ecalls-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20201231"
+          ],
+          "long_cutoff": 0.004824325717117558,
+          "short_cutoff": -0.004269014018652048
+        },
+        "ecalls-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20201231"
+          ],
+          "long_cutoff": 0.005237493265127174,
+          "short_cutoff": -0.0046820827389514545
+        },
+        "ecalls-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20211231"
+          ],
+          "long_cutoff": 0.0042173778638243675,
+          "short_cutoff": -0.0036542927846312523
+        },
+        "ecalls-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20211231"
+          ],
+          "long_cutoff": 0.004778703458455993,
+          "short_cutoff": -0.004195292527601531
+        },
+        "ecalls-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20211231"
+          ],
+          "long_cutoff": 0.005252865277945833,
+          "short_cutoff": -0.004635885185219654
+        },
+        "ecalls-abl": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20201231"
+          ],
+          "long_cutoff": 0.004234139807522297,
+          "short_cutoff": -0.0036223188508301973
+        },
+        "ecalls-abl+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20201231"
+          ],
+          "long_cutoff": 0.004791622926569949,
+          "short_cutoff": -0.00415962794355625
+        },
+        "ecalls-abl+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20201231"
+          ],
+          "long_cutoff": 0.005276247905834418,
+          "short_cutoff": -0.004612607813327702
+        },
+        "ecalls-abl-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20211231"
+          ],
+          "long_cutoff": 0.004340105690062046,
+          "short_cutoff": -0.0037298507522791624
+        },
+        "ecalls-abl-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20211231"
+          ],
+          "long_cutoff": 0.0048624858613010285,
+          "short_cutoff": -0.004277045423028904
+        },
+        "ecalls-abl-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20211231"
+          ],
+          "long_cutoff": 0.0053642370018836235,
+          "short_cutoff": -0.004743126559650295
+        },
+        "chrono-bert-v1": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20201231"
+          ],
+          "long_cutoff": 0.003899431088939309,
+          "short_cutoff": -0.003323462326079607
+        },
+        "chrono-bert-v1+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20201231"
+          ],
+          "long_cutoff": 0.004421509662974198,
+          "short_cutoff": -0.0038218181918594106
+        },
+        "chrono-bert-v1+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20201231"
+          ],
+          "long_cutoff": 0.004927450148857376,
+          "short_cutoff": -0.004275444610781643
+        },
+        "chrono-bert-v1-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20211231"
+          ],
+          "long_cutoff": 0.0038933134637773037,
+          "short_cutoff": -0.0033270912244915962
+        },
+        "chrono-bert-v1-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20211231"
+          ],
+          "long_cutoff": 0.004433734916323231,
+          "short_cutoff": -0.0038978476363419412
+        },
+        "chrono-bert-v1-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20211231"
+          ],
+          "long_cutoff": 0.004979470313310879,
+          "short_cutoff": -0.004332430116047743
+        },
+        "ecalls-chain-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20201231"
+          ],
+          "long_cutoff": 0.003929198253899813,
+          "short_cutoff": -0.00331277959048748
+        },
+        "ecalls-chain-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20201231"
+          ],
+          "long_cutoff": 0.0045412418668094095,
+          "short_cutoff": -0.0038772582510073084
+        },
+        "ecalls-chain-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20201231"
+          ],
+          "long_cutoff": 0.005008514039392171,
+          "short_cutoff": -0.00428415215435069
+        },
+        "ecalls-chain-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20211231"
+          ],
+          "long_cutoff": 0.0039056555833667517,
+          "short_cutoff": -0.0033053308725357056
+        },
+        "ecalls-chain-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20211231"
+          ],
+          "long_cutoff": 0.004515679697762501,
+          "short_cutoff": -0.0038959198412276564
+        },
+        "ecalls-chain-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20211231"
+          ],
+          "long_cutoff": 0.004981821565112649,
+          "short_cutoff": -0.004277840712785672
+        }
+      }
+    },
+    {
+      "year": 2022,
+      "n_train": 43338,
+      "n_test": 4821,
+      "train_mean": -8.978746892687759e-05,
+      "n_dropped_missing_feature": 0,
+      "specs": {
+        "ecalls-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20211231"
+          ],
+          "long_cutoff": 0.003981726709753275,
+          "short_cutoff": -0.004399680532515049
+        },
+        "ecalls-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20211231"
+          ],
+          "long_cutoff": 0.004350770152219443,
+          "short_cutoff": -0.0047547518646856995
+        },
+        "ecalls-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20211231"
+          ],
+          "long_cutoff": 0.0047822398716899014,
+          "short_cutoff": -0.005155450604319749
+        },
+        "ecalls-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20221231"
+          ],
+          "long_cutoff": 0.004064934328198433,
+          "short_cutoff": -0.004575729835778475
+        },
+        "ecalls-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20221231"
+          ],
+          "long_cutoff": 0.004392262524405719,
+          "short_cutoff": -0.004898811407947275
+        },
+        "ecalls-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20221231"
+          ],
+          "long_cutoff": 0.004782232465797355,
+          "short_cutoff": -0.005186292795259984
+        },
+        "ecalls-abl": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20211231"
+          ],
+          "long_cutoff": 0.004002110101282597,
+          "short_cutoff": -0.004422453697770834
+        },
+        "ecalls-abl+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20211231"
+          ],
+          "long_cutoff": 0.0043287695567825425,
+          "short_cutoff": -0.004742794757204276
+        },
+        "ecalls-abl+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20211231"
+          ],
+          "long_cutoff": 0.004820211042249452,
+          "short_cutoff": -0.005211206612357044
+        },
+        "ecalls-abl-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20221231"
+          ],
+          "long_cutoff": 0.003935304470360279,
+          "short_cutoff": -0.004338836297392845
+        },
+        "ecalls-abl-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20221231"
+          ],
+          "long_cutoff": 0.004272398068697475,
+          "short_cutoff": -0.0046846508352145705
+        },
+        "ecalls-abl-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20221231"
+          ],
+          "long_cutoff": 0.004719581101392205,
+          "short_cutoff": -0.005150558054300145
+        },
+        "chrono-bert-v1": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20211231"
+          ],
+          "long_cutoff": 0.0035623470321297646,
+          "short_cutoff": -0.004056546837091446
+        },
+        "chrono-bert-v1+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20211231"
+          ],
+          "long_cutoff": 0.0038984782471981087,
+          "short_cutoff": -0.004409843305570666
+        },
+        "chrono-bert-v1+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20211231"
+          ],
+          "long_cutoff": 0.004464932399941573,
+          "short_cutoff": -0.004865498363969895
+        },
+        "chrono-bert-v1-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20221231"
+          ],
+          "long_cutoff": 0.0033549272920936346,
+          "short_cutoff": -0.003838839940726757
+        },
+        "chrono-bert-v1-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20221231"
+          ],
+          "long_cutoff": 0.0037113911073887065,
+          "short_cutoff": -0.004223015835824437
+        },
+        "chrono-bert-v1-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20221231"
+          ],
+          "long_cutoff": 0.004228997673226144,
+          "short_cutoff": -0.004688741996578594
+        },
+        "ecalls-chain-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20211231"
+          ],
+          "long_cutoff": 0.0034688429441303015,
+          "short_cutoff": -0.003885906655341387
+        },
+        "ecalls-chain-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20211231"
+          ],
+          "long_cutoff": 0.003889432480660349,
+          "short_cutoff": -0.00424290596466897
+        },
+        "ecalls-chain-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20211231"
+          ],
+          "long_cutoff": 0.0043297416433759235,
+          "short_cutoff": -0.004662924520554308
+        },
+        "ecalls-chain-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20221231"
+          ],
+          "long_cutoff": 0.003453253535553813,
+          "short_cutoff": -0.0038954459596425295
+        },
+        "ecalls-chain-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20221231"
+          ],
+          "long_cutoff": 0.003898912160138199,
+          "short_cutoff": -0.00428059472092486
+        },
+        "ecalls-chain-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20221231"
+          ],
+          "long_cutoff": 0.0043025842036746335,
+          "short_cutoff": -0.004687498444987653
+        }
+      }
+    },
+    {
+      "year": 2023,
+      "n_train": 48159,
+      "n_test": 4455,
+      "train_mean": 0.0001963824249453978,
+      "n_dropped_missing_feature": 0,
+      "specs": {
+        "ecalls-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20221231"
+          ],
+          "long_cutoff": 0.004055477678775787,
+          "short_cutoff": -0.0039351205341517925
+        },
+        "ecalls-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20221231"
+          ],
+          "long_cutoff": 0.004556328882724311,
+          "short_cutoff": -0.004416088073699839
+        },
+        "ecalls-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20221231"
+          ],
+          "long_cutoff": 0.004993100104258136,
+          "short_cutoff": -0.004825865395646368
+        },
+        "ecalls-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20231231"
+          ],
+          "long_cutoff": 0.004082417115569115,
+          "short_cutoff": -0.003950691781938076
+        },
+        "ecalls-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20231231"
+          ],
+          "long_cutoff": 0.004602155794331358,
+          "short_cutoff": -0.0044383020306001724
+        },
+        "ecalls-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20231231"
+          ],
+          "long_cutoff": 0.005032101172187,
+          "short_cutoff": -0.004876000545791078
+        },
+        "ecalls-abl": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20221231"
+          ],
+          "long_cutoff": 0.004038855899125338,
+          "short_cutoff": -0.003919390495866537
+        },
+        "ecalls-abl+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20221231"
+          ],
+          "long_cutoff": 0.004545375215261335,
+          "short_cutoff": -0.004418806195749983
+        },
+        "ecalls-abl+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20221231"
+          ],
+          "long_cutoff": 0.005074141466744832,
+          "short_cutoff": -0.00490701139255739
+        },
+        "ecalls-abl-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20231231"
+          ],
+          "long_cutoff": 0.004004092887043953,
+          "short_cutoff": -0.003918420523405075
+        },
+        "ecalls-abl-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20231231"
+          ],
+          "long_cutoff": 0.004590835832958669,
+          "short_cutoff": -0.004390843617749345
+        },
+        "ecalls-abl-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20231231"
+          ],
+          "long_cutoff": 0.00510463055209586,
+          "short_cutoff": -0.004910814154795133
+        },
+        "chrono-bert-v1": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20221231"
+          ],
+          "long_cutoff": 0.003399541601538658,
+          "short_cutoff": -0.003293299814686179
+        },
+        "chrono-bert-v1+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20221231"
+          ],
+          "long_cutoff": 0.003948636740542032,
+          "short_cutoff": -0.0038642038717052406
+        },
+        "chrono-bert-v1+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20221231"
+          ],
+          "long_cutoff": 0.004504742683119113,
+          "short_cutoff": -0.004369887924000078
+        },
+        "chrono-bert-v1-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20231231"
+          ],
+          "long_cutoff": 0.0034755715169012547,
+          "short_cutoff": -0.0033737339545041323
+        },
+        "chrono-bert-v1-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20231231"
+          ],
+          "long_cutoff": 0.003990613989849436,
+          "short_cutoff": -0.003937960488350826
+        },
+        "chrono-bert-v1-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20231231"
+          ],
+          "long_cutoff": 0.0045363571804563725,
+          "short_cutoff": -0.004411092328931745
+        },
+        "ecalls-chain-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20221231"
+          ],
+          "long_cutoff": 0.003579801879823208,
+          "short_cutoff": -0.0034412806853652
+        },
+        "ecalls-chain-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20221231"
+          ],
+          "long_cutoff": 0.0041784474713213535,
+          "short_cutoff": -0.004017723916889718
+        },
+        "ecalls-chain-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20221231"
+          ],
+          "long_cutoff": 0.004643539797377842,
+          "short_cutoff": -0.004451761098287396
+        },
+        "ecalls-chain-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20231231"
+          ],
+          "long_cutoff": 0.0034871469251811504,
+          "short_cutoff": -0.0033574961125850677
+        },
+        "ecalls-chain-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20231231"
+          ],
+          "long_cutoff": 0.00411654199943753,
+          "short_cutoff": -0.003933174067290294
+        },
+        "ecalls-chain-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20231231"
+          ],
+          "long_cutoff": 0.004608820996311923,
+          "short_cutoff": -0.004398460339150116
+        }
+      }
+    },
+    {
+      "year": 2024,
+      "n_train": 52614,
+      "n_test": 4389,
+      "train_mean": 4.5191822671259194e-05,
+      "n_dropped_missing_feature": 0,
+      "specs": {
+        "ecalls-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20231231"
+          ],
+          "long_cutoff": 0.004002520348876715,
+          "short_cutoff": -0.004170490428805351
+        },
+        "ecalls-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20231231"
+          ],
+          "long_cutoff": 0.004438903769183428,
+          "short_cutoff": -0.0045758787274931285
+        },
+        "ecalls-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-ret-20231231"
+          ],
+          "long_cutoff": 0.004839442777237105,
+          "short_cutoff": -0.005011285287934401
+        },
+        "ecalls-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20241231"
+          ],
+          "long_cutoff": 0.003898749826475978,
+          "short_cutoff": -0.00401382427662611
+        },
+        "ecalls-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20241231"
+          ],
+          "long_cutoff": 0.004340933988673882,
+          "short_cutoff": -0.004456237755982833
+        },
+        "ecalls-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-ret-20241231"
+          ],
+          "long_cutoff": 0.0047377613204309605,
+          "short_cutoff": -0.004868735434034483
+        },
+        "ecalls-abl": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20231231"
+          ],
+          "long_cutoff": 0.0039793942123651505,
+          "short_cutoff": -0.004154861904680729
+        },
+        "ecalls-abl+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20231231"
+          ],
+          "long_cutoff": 0.004416788436342256,
+          "short_cutoff": -0.0045508365808901805
+        },
+        "ecalls-abl+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-abl-20231231"
+          ],
+          "long_cutoff": 0.004923243893703108,
+          "short_cutoff": -0.005068243380861544
+        },
+        "ecalls-abl-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20241231"
+          ],
+          "long_cutoff": 0.0039691017009317875,
+          "short_cutoff": -0.004148541949689388
+        },
+        "ecalls-abl-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20241231"
+          ],
+          "long_cutoff": 0.004414809366365259,
+          "short_cutoff": -0.004556407957863299
+        },
+        "ecalls-abl-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-abl-20241231"
+          ],
+          "long_cutoff": 0.004885011099622713,
+          "short_cutoff": -0.0050138118159756
+        },
+        "chrono-bert-v1": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20231231"
+          ],
+          "long_cutoff": 0.0034490295220166445,
+          "short_cutoff": -0.00365150673314929
+        },
+        "chrono-bert-v1+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20231231"
+          ],
+          "long_cutoff": 0.0038632203828336234,
+          "short_cutoff": -0.004087566799094858
+        },
+        "chrono-bert-v1+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "chrono-bert-v1-20231231"
+          ],
+          "long_cutoff": 0.004373088109802334,
+          "short_cutoff": -0.004569713428319213
+        },
+        "chrono-bert-v1-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20241231"
+          ],
+          "long_cutoff": 0.0038875930476933718,
+          "short_cutoff": -0.004083225037902594
+        },
+        "chrono-bert-v1-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20241231"
+          ],
+          "long_cutoff": 0.004291833607217823,
+          "short_cutoff": -0.004489448952342098
+        },
+        "chrono-bert-v1-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "chrono-bert-v1-20241231"
+          ],
+          "long_cutoff": 0.004807113889676277,
+          "short_cutoff": -0.004988000275489759
+        },
+        "ecalls-chain-ret": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20231231"
+          ],
+          "long_cutoff": 0.003509952686727047,
+          "short_cutoff": -0.0037013175897300243
+        },
+        "ecalls-chain-ret+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20231231"
+          ],
+          "long_cutoff": 0.0040198849343727324,
+          "short_cutoff": -0.004197989341206609
+        },
+        "ecalls-chain-ret+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": false,
+          "vintages": [
+            "ecalls-chain-ret-20231231"
+          ],
+          "long_cutoff": 0.004478118828012649,
+          "short_cutoff": -0.004624739144335793
+        },
+        "ecalls-chain-ret-adjacent": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20241231"
+          ],
+          "long_cutoff": 0.003588689025491476,
+          "short_cutoff": -0.003830794245004654
+        },
+        "ecalls-chain-ret-adjacent+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20241231"
+          ],
+          "long_cutoff": 0.004096424286182816,
+          "short_cutoff": -0.004291505062808149
+        },
+        "ecalls-chain-ret-adjacent+identity+baselines": {
+          "alpha": 10000.0,
+          "lookahead": true,
+          "vintages": [
+            "ecalls-chain-ret-20241231"
+          ],
+          "long_cutoff": 0.004518567516203271,
+          "short_cutoff": -0.00469819419206828
+        }
+      }
+    }
+  ],
+  "specs": {
+    "ecalls-ret": {
+      "lookahead": false,
+      "ic_mean": 0.03798120658394745,
+      "ic_t": 7.308764546538403,
+      "n_quarters": 48
+    },
+    "ecalls-ret+baselines": {
+      "lookahead": false,
+      "ic_mean": 0.050013818261692405,
+      "ic_t": 10.391481064477738,
+      "n_quarters": 48
+    },
+    "ecalls-ret+identity+baselines": {
+      "lookahead": false,
+      "ic_mean": 0.04783138034469109,
+      "ic_t": 9.892150267816335,
+      "n_quarters": 48
+    },
+    "ecalls-ret-adjacent": {
+      "lookahead": true,
+      "ic_mean": 0.03621101161145765,
+      "ic_t": 6.120156493426418,
+      "n_quarters": 48
+    },
+    "ecalls-ret-adjacent+baselines": {
+      "lookahead": true,
+      "ic_mean": 0.04858807761301345,
+      "ic_t": 9.313041494781686,
+      "n_quarters": 48
+    },
+    "ecalls-ret-adjacent+identity+baselines": {
+      "lookahead": true,
+      "ic_mean": 0.04568648304241493,
+      "ic_t": 9.092425204089912,
+      "n_quarters": 48
+    },
+    "ecalls-abl": {
+      "lookahead": false,
+      "ic_mean": 0.044263926537363364,
+      "ic_t": 8.186412365067348,
+      "n_quarters": 48
+    },
+    "ecalls-abl+baselines": {
+      "lookahead": false,
+      "ic_mean": 0.05605664725404835,
+      "ic_t": 11.368297723868162,
+      "n_quarters": 48
+    },
+    "ecalls-abl+identity+baselines": {
+      "lookahead": false,
+      "ic_mean": 0.052943547195860946,
+      "ic_t": 11.185111077472662,
+      "n_quarters": 48
+    },
+    "ecalls-abl-adjacent": {
+      "lookahead": true,
+      "ic_mean": 0.04403679043634201,
+      "ic_t": 8.286790567953961,
+      "n_quarters": 48
+    },
+    "ecalls-abl-adjacent+baselines": {
+      "lookahead": true,
+      "ic_mean": 0.05549889761756618,
+      "ic_t": 11.711818516439125,
+      "n_quarters": 48
+    },
+    "ecalls-abl-adjacent+identity+baselines": {
+      "lookahead": true,
+      "ic_mean": 0.05279183495422112,
+      "ic_t": 11.57484602890116,
+      "n_quarters": 48
+    },
+    "chrono-bert-v1": {
+      "lookahead": false,
+      "ic_mean": 0.03580919846272307,
+      "ic_t": 6.628925480878431,
+      "n_quarters": 48
+    },
+    "chrono-bert-v1+baselines": {
+      "lookahead": false,
+      "ic_mean": 0.04687699576827268,
+      "ic_t": 8.970050867868155,
+      "n_quarters": 48
+    },
+    "chrono-bert-v1+identity+baselines": {
+      "lookahead": false,
+      "ic_mean": 0.04343593138763221,
+      "ic_t": 8.223246139897803,
+      "n_quarters": 48
+    },
+    "chrono-bert-v1-adjacent": {
+      "lookahead": true,
+      "ic_mean": 0.03516814295424532,
+      "ic_t": 6.324077336910872,
+      "n_quarters": 48
+    },
+    "chrono-bert-v1-adjacent+baselines": {
+      "lookahead": true,
+      "ic_mean": 0.047087854395604534,
+      "ic_t": 8.798476519497157,
+      "n_quarters": 48
+    },
+    "chrono-bert-v1-adjacent+identity+baselines": {
+      "lookahead": true,
+      "ic_mean": 0.043634326326328216,
+      "ic_t": 8.114705414474138,
+      "n_quarters": 48
+    },
+    "ecalls-chain-ret": {
+      "lookahead": false,
+      "ic_mean": 0.034810941819350856,
+      "ic_t": 5.696738779971126,
+      "n_quarters": 48
+    },
+    "ecalls-chain-ret+baselines": {
+      "lookahead": false,
+      "ic_mean": 0.048191513134069976,
+      "ic_t": 8.901425731961318,
+      "n_quarters": 48
+    },
+    "ecalls-chain-ret+identity+baselines": {
+      "lookahead": false,
+      "ic_mean": 0.04574279212971278,
+      "ic_t": 8.937317473413945,
+      "n_quarters": 48
+    },
+    "ecalls-chain-ret-adjacent": {
+      "lookahead": true,
+      "ic_mean": 0.03363043548704295,
+      "ic_t": 5.251922313092624,
+      "n_quarters": 48
+    },
+    "ecalls-chain-ret-adjacent+baselines": {
+      "lookahead": true,
+      "ic_mean": 0.04764374582489501,
+      "ic_t": 8.50609523298749,
+      "n_quarters": 48
+    },
+    "ecalls-chain-ret-adjacent+identity+baselines": {
+      "lookahead": true,
+      "ic_mean": 0.04483288214783535,
+      "ic_t": 8.48944518287775,
+      "n_quarters": 48
+    }
+  },
+  "premium": {
+    "ecalls-ret": {
+      "mean": -0.0017701949724898004,
+      "t": -0.7897968089542036,
+      "n": 48,
+      "ci95": [
+        -0.005341567814641713,
+        0.0022216753732583177
+      ]
+    },
+    "ecalls-ret+baselines": {
+      "mean": -0.0014257406486789393,
+      "t": -0.7277060827844102,
+      "n": 48,
+      "ci95": [
+        -0.004857215295951154,
+        0.002622889941004267
+      ]
+    },
+    "ecalls-ret+identity+baselines": {
+      "mean": -0.0021448973022761306,
+      "t": -1.1875914239991883,
+      "n": 48,
+      "ci95": [
+        -0.004934597944083942,
+        0.0012204066645801108
+      ]
+    },
+    "ecalls-abl": {
+      "mean": -0.00022713610102135826,
+      "t": -0.17112506955113457,
+      "n": 48,
+      "ci95": [
+        -0.003244239554759362,
+        0.002342516887351355
+      ]
+    },
+    "ecalls-abl+baselines": {
+      "mean": -0.0005577496364821596,
+      "t": -0.44195985170447427,
+      "n": 48,
+      "ci95": [
+        -0.0032186463427888866,
+        0.0021540814859654623
+      ]
+    },
+    "ecalls-abl+identity+baselines": {
+      "mean": -0.00015171224163984423,
+      "t": -0.14555396635609785,
+      "n": 48,
+      "ci95": [
+        -0.002293102010829746,
+        0.0020854949719675826
+      ]
+    },
+    "chrono-bert-v1": {
+      "mean": -0.0006410555084777449,
+      "t": -0.32754135161099485,
+      "n": 48,
+      "ci95": [
+        -0.00533233638144634,
+        0.0023544292330967592
+      ]
+    },
+    "chrono-bert-v1+baselines": {
+      "mean": 0.00021085862733186863,
+      "t": 0.12583563527860092,
+      "n": 48,
+      "ci95": [
+        -0.0034973168549407474,
+        0.0023861789230602277
+      ]
+    },
+    "chrono-bert-v1+identity+baselines": {
+      "mean": 0.00019839493869601332,
+      "t": 0.14037677577611704,
+      "n": 48,
+      "ci95": [
+        -0.0032287059865179937,
+        0.002087582275236102
+      ]
+    },
+    "ecalls-chain-ret": {
+      "mean": -0.001180506332307914,
+      "t": -0.9362297793137612,
+      "n": 48,
+      "ci95": [
+        -0.004134504613333008,
+        0.0019807258407661334
+      ]
+    },
+    "ecalls-chain-ret+baselines": {
+      "mean": -0.0005477673091749692,
+      "t": -0.501540686950933,
+      "n": 48,
+      "ci95": [
+        -0.0029327221317049157,
+        0.0019390204646971825
+      ]
+    },
+    "ecalls-chain-ret+identity+baselines": {
+      "mean": -0.0009099099818774253,
+      "t": -1.0117508844954448,
+      "n": 48,
+      "ci95": [
+        -0.002734005554644894,
+        0.0009416648174162605
+      ]
+    }
+  },
+  "git_sha": "271f8dd",
+  "ts": "2026-10-10T13:55:52.751052+00:00"
+}

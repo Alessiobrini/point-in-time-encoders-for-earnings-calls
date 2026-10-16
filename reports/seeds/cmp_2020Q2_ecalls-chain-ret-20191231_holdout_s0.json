@@ -1,0 +1,78 @@
+{
+  "shard": "2020Q2",
+  "n_calls_sampled": 400,
+  "model_id": "ecalls-chain-ret-20191231",
+  "seed": 0,
+  "holdout": true,
+  "n_queries": 3000,
+  "n_candidates": 7421,
+  "pool_median": 22.0,
+  "scorers": {
+    "tfidf": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.5026666666666667,
+        "recall_at_5": 0.8273333333333334,
+        "mrr": 0.6441826599208924,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.24333333333333335,
+        "recall_at_5": 0.44233333333333336,
+        "mrr": 0.33703206358811233,
+        "median_rank": 9.0
+      }
+    },
+    "bm25": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.484,
+        "recall_at_5": 0.8073333333333333,
+        "mrr": 0.6263986917597526,
+        "median_rank": 2.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.2673333333333333,
+        "recall_at_5": 0.413,
+        "mrr": 0.3376686715488125,
+        "median_rank": 15.5
+      }
+    },
+    "dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.7303333333333333,
+        "recall_at_5": 0.9506666666666667,
+        "mrr": 0.826063263049411,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.43666666666666665,
+        "recall_at_5": 0.6666666666666666,
+        "mrr": 0.5431513331049497,
+        "median_rank": 2.0
+      }
+    },
+    "hybrid_bm25_dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.6693333333333333,
+        "recall_at_5": 0.9233333333333333,
+        "mrr": 0.7806355545101721,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.441,
+        "recall_at_5": 0.658,
+        "mrr": 0.5402468525346193,
+        "median_rank": 2.0
+      }
+    }
+  },
+  "git_sha": "dcd44d1",
+  "ts": "2026-10-10T09:47:24.922572+00:00"
+}

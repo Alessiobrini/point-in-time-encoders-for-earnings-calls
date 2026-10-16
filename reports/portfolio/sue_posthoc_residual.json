@@ -1,0 +1,329 @@
+{
+  "label": "POST HOC, decided after the first D27 results",
+  "target": "sue",
+  "specs": {
+    "baselines": {
+      "ic_mean": 0.25383468264020564,
+      "ic_t": 17.422642113009715,
+      "n_quarters": 51
+    },
+    "sue_cur alone": {
+      "ic_mean": 0.261018191964166,
+      "ic_t": 18.04283119812096,
+      "n_quarters": 51
+    },
+    "baselines then ecalls-ret on residuals": {
+      "ic_mean": 0.25252981059342394,
+      "ic_t": 16.866543041941537,
+      "n_quarters": 51
+    },
+    "baselines then ecalls-abl on residuals": {
+      "ic_mean": 0.256337219128793,
+      "ic_t": 17.11770583534467,
+      "n_quarters": 51
+    },
+    "baselines then chrono-bert-v1 on residuals": {
+      "ic_mean": 0.2521954028475761,
+      "ic_t": 16.982770876480686,
+      "n_quarters": 51
+    },
+    "baselines then ecalls-ret-leaky on residuals": {
+      "ic_mean": 0.25527076179030733,
+      "ic_t": 17.14827081460908,
+      "n_quarters": 51
+    },
+    "baselines then ecalls-abl-leaky on residuals": {
+      "ic_mean": 0.2555829751116022,
+      "ic_t": 16.98670853807597,
+      "n_quarters": 51
+    },
+    "baselines then chrono-bert-v1-leaky on residuals": {
+      "ic_mean": 0.25452089136733613,
+      "ic_t": 17.268119419632505,
+      "n_quarters": 51
+    },
+    "baselines then tone on residuals": {
+      "ic_mean": 0.2567369389177702,
+      "ic_t": 17.621942288239048,
+      "n_quarters": 51
+    },
+    "baselines then tfidf on residuals": {
+      "ic_mean": 0.24557151358695972,
+      "ic_t": 16.62396575416549,
+      "n_quarters": 51
+    }
+  },
+  "increment_over_baselines": {
+    "baselines then ecalls-ret on residuals": {
+      "mean": -0.0013048720467816368,
+      "t": -0.42487680187287763,
+      "n": 51,
+      "ci95": [
+        -0.011861301674877561,
+        0.007856494845286515
+      ]
+    },
+    "baselines then ecalls-abl on residuals": {
+      "mean": 0.002502536488587412,
+      "t": 0.8784822901176179,
+      "n": 51,
+      "ci95": [
+        -0.007246688195485413,
+        0.01081710530632058
+      ]
+    },
+    "baselines then chrono-bert-v1 on residuals": {
+      "mean": -0.0016392797926296232,
+      "t": -0.630794567816346,
+      "n": 51,
+      "ci95": [
+        -0.010330788206003114,
+        0.0050197042354195205
+      ]
+    },
+    "baselines then ecalls-ret-leaky on residuals": {
+      "mean": 0.0014360791501017158,
+      "t": 0.4277423062461433,
+      "n": 51,
+      "ci95": [
+        -0.010205292359568718,
+        0.010708368000946447
+      ]
+    },
+    "baselines then ecalls-abl-leaky on residuals": {
+      "mean": 0.0017482924713966182,
+      "t": 0.595036122806311,
+      "n": 51,
+      "ci95": [
+        -0.008882063481131902,
+        0.010450791754651141
+      ]
+    },
+    "baselines then chrono-bert-v1-leaky on residuals": {
+      "mean": 0.0006862087271305658,
+      "t": 0.25716823490541535,
+      "n": 51,
+      "ci95": [
+        -0.008350133577537193,
+        0.007736886817821699
+      ]
+    },
+    "baselines then tone on residuals": {
+      "mean": 0.00290225627756461,
+      "t": 2.1604238350123395,
+      "n": 51,
+      "ci95": [
+        0.0008623760062350795,
+        0.005834932681277205
+      ]
+    },
+    "baselines then tfidf on residuals": {
+      "mean": -0.008263169053245985,
+      "t": -2.818290286673252,
+      "n": 51,
+      "ci95": [
+        -0.017826450132538155,
+        0.000407178567657236
+      ]
+    }
+  },
+  "years": [
+    {
+      "year": 2013,
+      "n_train": 3304,
+      "n_test": 1891,
+      "residual_alpha": {
+        "ecalls-ret": 1000.0,
+        "ecalls-abl": 10000.0,
+        "chrono-bert-v1": 10000.0,
+        "ecalls-ret-leaky": 1000.0,
+        "ecalls-abl-leaky": 10000.0,
+        "chrono-bert-v1-leaky": 10000.0,
+        "tone": 100.0,
+        "tfidf": 10000.0
+      }
+    },
+    {
+      "year": 2014,
+      "n_train": 5198,
+      "n_test": 1887,
+      "residual_alpha": {
+        "ecalls-ret": 10000.0,
+        "ecalls-abl": 10000.0,
+        "chrono-bert-v1": 10000.0,
+        "ecalls-ret-leaky": 10000.0,
+        "ecalls-abl-leaky": 10000.0,
+        "chrono-bert-v1-leaky": 10000.0,
+        "tone": 100.0,
+        "tfidf": 10000.0
+      }
+    },
+    {
+      "year": 2015,
+      "n_train": 7085,
+      "n_test": 1854,
+      "residual_alpha": {
+        "ecalls-ret": 10000.0,
+        "ecalls-abl": 10000.0,
+        "chrono-bert-v1": 10000.0,
+        "ecalls-ret-leaky": 10000.0,
+        "ecalls-abl-leaky": 10000.0,
+        "chrono-bert-v1-leaky": 10000.0,
+        "tone": 1000.0,
+        "tfidf": 10000.0
+      }
+    },
+    {
+      "year": 2016,
+      "n_train": 8949,
+      "n_test": 1875,
+      "residual_alpha": {
+        "ecalls-ret": 10000.0,
+        "ecalls-abl": 10000.0,
+        "chrono-bert-v1": 10000.0,
+        "ecalls-ret-leaky": 10000.0,
+        "ecalls-abl-leaky": 10000.0,
+        "chrono-bert-v1-leaky": 10000.0,
+        "tone": 10000.0,
+        "tfidf": 10000.0
+      }
+    },
+    {
+      "year": 2017,
+      "n_train": 10814,
+      "n_test": 1888,
+      "residual_alpha": {
+        "ecalls-ret": 10000.0,
+        "ecalls-abl": 10000.0,
+        "chrono-bert-v1": 10000.0,
+        "ecalls-ret-leaky": 10000.0,
+        "ecalls-abl-leaky": 10000.0,
+        "chrono-bert-v1-leaky": 10000.0,
+        "tone": 1000.0,
+        "tfidf": 10000.0
+      }
+    },
+    {
+      "year": 2018,
+      "n_train": 12700,
+      "n_test": 1887,
+      "residual_alpha": {
+        "ecalls-ret": 10000.0,
+        "ecalls-abl": 10000.0,
+        "chrono-bert-v1": 10000.0,
+        "ecalls-ret-leaky": 10000.0,
+        "ecalls-abl-leaky": 10000.0,
+        "chrono-bert-v1-leaky": 10000.0,
+        "tone": 1000.0,
+        "tfidf": 10000.0
+      }
+    },
+    {
+      "year": 2019,
+      "n_train": 14588,
+      "n_test": 1903,
+      "residual_alpha": {
+        "ecalls-ret": 10000.0,
+        "ecalls-abl": 10000.0,
+        "chrono-bert-v1": 10000.0,
+        "ecalls-ret-leaky": 10000.0,
+        "ecalls-abl-leaky": 10000.0,
+        "chrono-bert-v1-leaky": 10000.0,
+        "tone": 1000.0,
+        "tfidf": 10000.0
+      }
+    },
+    {
+      "year": 2020,
+      "n_train": 16489,
+      "n_test": 1917,
+      "residual_alpha": {
+        "ecalls-ret": 10000.0,
+        "ecalls-abl": 10000.0,
+        "chrono-bert-v1": 10000.0,
+        "ecalls-ret-leaky": 10000.0,
+        "ecalls-abl-leaky": 10000.0,
+        "chrono-bert-v1-leaky": 10000.0,
+        "tone": 1000.0,
+        "tfidf": 10000.0
+      }
+    },
+    {
+      "year": 2021,
+      "n_train": 18399,
+      "n_test": 1942,
+      "residual_alpha": {
+        "ecalls-ret": 10000.0,
+        "ecalls-abl": 10000.0,
+        "chrono-bert-v1": 10000.0,
+        "ecalls-ret-leaky": 10000.0,
+        "ecalls-abl-leaky": 10000.0,
+        "chrono-bert-v1-leaky": 10000.0,
+        "tone": 100.0,
+        "tfidf": 10000.0
+      }
+    },
+    {
+      "year": 2022,
+      "n_train": 20332,
+      "n_test": 1937,
+      "residual_alpha": {
+        "ecalls-ret": 10000.0,
+        "ecalls-abl": 10000.0,
+        "chrono-bert-v1": 10000.0,
+        "ecalls-ret-leaky": 10000.0,
+        "ecalls-abl-leaky": 10000.0,
+        "chrono-bert-v1-leaky": 10000.0,
+        "tone": 100.0,
+        "tfidf": 10000.0
+      }
+    },
+    {
+      "year": 2023,
+      "n_train": 22274,
+      "n_test": 1954,
+      "residual_alpha": {
+        "ecalls-ret": 10000.0,
+        "ecalls-abl": 10000.0,
+        "chrono-bert-v1": 10000.0,
+        "ecalls-ret-leaky": 10000.0,
+        "ecalls-abl-leaky": 10000.0,
+        "chrono-bert-v1-leaky": 10000.0,
+        "tone": 100.0,
+        "tfidf": 10000.0
+      }
+    },
+    {
+      "year": 2024,
+      "n_train": 24228,
+      "n_test": 1950,
+      "residual_alpha": {
+        "ecalls-ret": 10000.0,
+        "ecalls-abl": 10000.0,
+        "chrono-bert-v1": 10000.0,
+        "ecalls-ret-leaky": 10000.0,
+        "ecalls-abl-leaky": 10000.0,
+        "chrono-bert-v1-leaky": 10000.0,
+        "tone": 0.1,
+        "tfidf": 10000.0
+      }
+    },
+    {
+      "year": 2025,
+      "n_train": 26180,
+      "n_test": 1458,
+      "residual_alpha": {
+        "ecalls-ret": 10000.0,
+        "ecalls-abl": 10000.0,
+        "chrono-bert-v1": 10000.0,
+        "ecalls-ret-leaky": 10000.0,
+        "ecalls-abl-leaky": 10000.0,
+        "chrono-bert-v1-leaky": 10000.0,
+        "tone": 0.1,
+        "tfidf": 10000.0
+      }
+    }
+  ],
+  "git_sha": "4248ba1",
+  "ts": "2026-10-07T16:25:30.595344+00:00"
+}

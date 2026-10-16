@@ -1,0 +1,10 @@
+# Base configuration. Override with experiment-specific configs.
+seed: 42
+project_name: "point-in-time-encoders-for-earnings-calls"
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+output:
+  figures_dir: "output/figures"
+  tables_dir: "output/tables"
+  logs_dir: "output/logs"

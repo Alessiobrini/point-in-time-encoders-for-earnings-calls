@@ -1,0 +1,256 @@
+{
+  "shard": "2024Q2",
+  "n_calls_sampled": 400,
+  "model_id": "ecalls-ret-20231231",
+  "seed": 0,
+  "holdout": true,
+  "n_queries": 3000,
+  "n_candidates": 6657,
+  "pool_median": 21.0,
+  "scorers": {
+    "tfidf": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.5026666666666667,
+        "recall_at_5": 0.8333333333333334,
+        "mrr": 0.6451709389283977,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.2776666666666667,
+        "recall_at_5": 0.48333333333333334,
+        "mrr": 0.37550928134023037,
+        "median_rank": 6.0
+      }
+    },
+    "bm25": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.492,
+        "recall_at_5": 0.816,
+        "mrr": 0.6342910830493237,
+        "median_rank": 2.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.2976666666666667,
+        "recall_at_5": 0.457,
+        "mrr": 0.3739539769271795,
+        "median_rank": 8.0
+      }
+    },
+    "dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.7303333333333333,
+        "recall_at_5": 0.9486666666666667,
+        "mrr": 0.8264083276776605,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.496,
+        "recall_at_5": 0.717,
+        "mrr": 0.5974001166079712,
+        "median_rank": 2.0
+      }
+    },
+    "hybrid_bm25_dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.642,
+        "recall_at_5": 0.9203333333333333,
+        "mrr": 0.7624279932577083,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.4766666666666667,
+        "recall_at_5": 0.686,
+        "mrr": 0.5745610127570512,
+        "median_rank": 2.0
+      }
+    }
+  },
+  "fusion_scan": {
+    "0.0": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.7303333333333333,
+        "recall_at_5": 0.9486666666666667,
+        "mrr": 0.8264083276776605,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.496,
+        "recall_at_5": 0.717,
+        "mrr": 0.5974001166079712,
+        "median_rank": 2.0
+      }
+    },
+    "0.1": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.7293333333333333,
+        "recall_at_5": 0.949,
+        "mrr": 0.8261883916372065,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.5403333333333333,
+        "recall_at_5": 0.752,
+        "mrr": 0.6365203118890175,
+        "median_rank": 1.0
+      }
+    },
+    "0.2": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.7103333333333334,
+        "recall_at_5": 0.948,
+        "mrr": 0.8146937287528634,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.5403333333333333,
+        "recall_at_5": 0.7566666666666667,
+        "mrr": 0.6395735000031009,
+        "median_rank": 1.0
+      }
+    },
+    "0.3": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.6943333333333334,
+        "recall_at_5": 0.9453333333333334,
+        "mrr": 0.8016734200037191,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.5283333333333333,
+        "recall_at_5": 0.7473333333333333,
+        "mrr": 0.6293461786665812,
+        "median_rank": 1.0
+      }
+    },
+    "0.4": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.674,
+        "recall_at_5": 0.933,
+        "mrr": 0.7853429678344298,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.502,
+        "recall_at_5": 0.7226666666666667,
+        "mrr": 0.6034601465694178,
+        "median_rank": 1.0
+      }
+    },
+    "0.5": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.642,
+        "recall_at_5": 0.9203333333333333,
+        "mrr": 0.7624279932577083,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.4766666666666667,
+        "recall_at_5": 0.686,
+        "mrr": 0.5745610127570512,
+        "median_rank": 2.0
+      }
+    },
+    "0.6": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.6126666666666667,
+        "recall_at_5": 0.9043333333333333,
+        "mrr": 0.7375060831232839,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.441,
+        "recall_at_5": 0.6466666666666666,
+        "mrr": 0.5381620165739607,
+        "median_rank": 2.0
+      }
+    },
+    "0.7": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.5763333333333334,
+        "recall_at_5": 0.8836666666666667,
+        "mrr": 0.7103203017842414,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.4043333333333333,
+        "recall_at_5": 0.6053333333333333,
+        "mrr": 0.4975288146300882,
+        "median_rank": 2.0
+      }
+    },
+    "0.8": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.547,
+        "recall_at_5": 0.863,
+        "mrr": 0.684850640014836,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.367,
+        "recall_at_5": 0.561,
+        "mrr": 0.4556844963782355,
+        "median_rank": 3.0
+      }
+    },
+    "0.9": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.5183333333333333,
+        "recall_at_5": 0.838,
+        "mrr": 0.6585260011557473,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.32866666666666666,
+        "recall_at_5": 0.5073333333333333,
+        "mrr": 0.41250190574859913,
+        "median_rank": 5.0
+      }
+    },
+    "1.0": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.492,
+        "recall_at_5": 0.816,
+        "mrr": 0.6342910830493237,
+        "median_rank": 2.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.2976666666666667,
+        "recall_at_5": 0.457,
+        "mrr": 0.3739539769271795,
+        "median_rank": 8.0
+      }
+    }
+  },
+  "git_sha": "554961b",
+  "ts": "2026-10-06T15:29:10.040332+00:00"
+}

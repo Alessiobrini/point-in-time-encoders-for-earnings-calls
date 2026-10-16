@@ -1,0 +1,78 @@
+{
+  "shard": "2025Q2",
+  "n_calls_sampled": 400,
+  "model_id": "ecalls-ret-20101231",
+  "seed": 0,
+  "holdout": true,
+  "n_queries": 3000,
+  "n_candidates": 6956,
+  "pool_median": 22.0,
+  "scorers": {
+    "tfidf": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.49933333333333335,
+        "recall_at_5": 0.826,
+        "mrr": 0.6409533462717795,
+        "median_rank": 2.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.2623333333333333,
+        "recall_at_5": 0.4646666666666667,
+        "mrr": 0.3588023235020899,
+        "median_rank": 7.0
+      }
+    },
+    "bm25": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.5066666666666667,
+        "recall_at_5": 0.8143333333333334,
+        "mrr": 0.6436500689610348,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.29433333333333334,
+        "recall_at_5": 0.45266666666666666,
+        "mrr": 0.3683341867135426,
+        "median_rank": 10.0
+      }
+    },
+    "dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.711,
+        "recall_at_5": 0.947,
+        "mrr": 0.8146085628406949,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.39166666666666666,
+        "recall_at_5": 0.6203333333333333,
+        "mrr": 0.49819401418309,
+        "median_rank": 3.0
+      }
+    },
+    "hybrid_bm25_dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.6586666666666666,
+        "recall_at_5": 0.924,
+        "mrr": 0.7723088381614918,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.44333333333333336,
+        "recall_at_5": 0.6556666666666666,
+        "mrr": 0.5400637587395902,
+        "median_rank": 2.0
+      }
+    }
+  },
+  "git_sha": "5b55c62",
+  "ts": "2026-10-12T01:10:29.999470+00:00"
+}

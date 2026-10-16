@@ -1,0 +1,129 @@
+{
+  "by_cutoff": {
+    "2010": {
+      "calls": 39369,
+      "held_out_calls": 3979,
+      "chunks": 1525022,
+      "tokens": 302647296,
+      "pairs": 488932,
+      "pair_calls": 31569
+    },
+    "2011": {
+      "calls": 57368,
+      "held_out_calls": 5755,
+      "chunks": 2145097,
+      "tokens": 435762432,
+      "pairs": 706817,
+      "pair_calls": 46295
+    },
+    "2012": {
+      "calls": 75535,
+      "held_out_calls": 7543,
+      "chunks": 2760951,
+      "tokens": 572012544,
+      "pairs": 930651,
+      "pair_calls": 61548
+    },
+    "2013": {
+      "calls": 93437,
+      "held_out_calls": 9294,
+      "chunks": 3346919,
+      "tokens": 706190592,
+      "pairs": 1148629,
+      "pair_calls": 76631
+    },
+    "2014": {
+      "calls": 111445,
+      "held_out_calls": 11142,
+      "chunks": 3908409,
+      "tokens": 840658944,
+      "pairs": 1367053,
+      "pair_calls": 91702
+    },
+    "2015": {
+      "calls": 129427,
+      "held_out_calls": 12974,
+      "chunks": 4456111,
+      "tokens": 975494400,
+      "pairs": 1584878,
+      "pair_calls": 106796
+    },
+    "2016": {
+      "calls": 147308,
+      "held_out_calls": 14803,
+      "chunks": 4983842,
+      "tokens": 1108124928,
+      "pairs": 1792621,
+      "pair_calls": 121608
+    },
+    "2017": {
+      "calls": 167621,
+      "held_out_calls": 16834,
+      "chunks": 5559129,
+      "tokens": 1253506560,
+      "pairs": 2014253,
+      "pair_calls": 138130
+    },
+    "2018": {
+      "calls": 190606,
+      "held_out_calls": 19109,
+      "chunks": 6203043,
+      "tokens": 1416088320,
+      "pairs": 2254872,
+      "pair_calls": 156580
+    },
+    "2019": {
+      "calls": 214629,
+      "held_out_calls": 21505,
+      "chunks": 6863919,
+      "tokens": 1584546816,
+      "pairs": 2498582,
+      "pair_calls": 175653
+    },
+    "2020": {
+      "calls": 241342,
+      "held_out_calls": 24157,
+      "chunks": 7619981,
+      "tokens": 1784998656,
+      "pairs": 2756269,
+      "pair_calls": 196302
+    },
+    "2021": {
+      "calls": 269206,
+      "held_out_calls": 26952,
+      "chunks": 8378830,
+      "tokens": 1990326528,
+      "pairs": 3014773,
+      "pair_calls": 217620
+    },
+    "2022": {
+      "calls": 298780,
+      "held_out_calls": 29868,
+      "chunks": 9165423,
+      "tokens": 2200785408,
+      "pairs": 3282038,
+      "pair_calls": 239985
+    },
+    "2023": {
+      "calls": 328799,
+      "held_out_calls": 32841,
+      "chunks": 9946268,
+      "tokens": 2407577856,
+      "pairs": 3548467,
+      "pair_calls": 262315
+    },
+    "2024": {
+      "calls": 358793,
+      "held_out_calls": 35793,
+      "chunks": 10721953,
+      "tokens": 2612565504,
+      "pairs": 3813987,
+      "pair_calls": 284507
+    }
+  },
+  "total_calls": 412248,
+  "first_call": "2004-09-08",
+  "last_call": "2026-09-11",
+  "git_sha": "0aa6c19",
+  "ts": "2026-10-13T20:29:14.413489+00:00"
+}

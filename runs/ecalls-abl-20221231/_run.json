@@ -1,0 +1,97 @@
+{
+  "name": "ecalls-abl-20221231",
+  "stage": "contrastive",
+  "backbone": "chrono-bert-v1-20221231",
+  "pairs": "qa-pairs-20241231",
+  "backbone_kind": "registered",
+  "pooling_from_backbone": "mean",
+  "cutoff": "2022-12-31",
+  "pairs_cutoff": "2024-12-31",
+  "tokenizer": "registry:chrono-bert-v1-20221231",
+  "vocab_size": 50368,
+  "n_pairs": 3282038,
+  "n_calls": 239985,
+  "total_steps": 4000,
+  "calls_per_batch": 32,
+  "pairs_per_call": 16,
+  "anchors_per_batch": 512,
+  "microbatch": 126,
+  "temperature": 0.05,
+  "peak_lr": 2e-05,
+  "warmup_steps": 200,
+  "max_length_query": 256,
+  "max_length_answer": 512,
+  "max_length": 512,
+  "compute_dtype": "float16",
+  "grad_scaler": true,
+  "pooling": "mean",
+  "normalized": true,
+  "loss": "info_nce_question_to_answer",
+  "gradient_checkpointing": true,
+  "seed": 0,
+  "device": "cuda",
+  "holdout_salt": "ecalls-holdout-v1",
+  "holdout_fraction": 0.1,
+  "git_sha": "b5a089e",
+  "final_step": 4000,
+  "final_loss": 1.000148011445999,
+  "epochs_equivalent": 0.5333666687501302,
+  "holdout_evals": [
+    {
+      "step": 3500,
+      "within_call": {
+        "n_queries": 512,
+        "recall_at_1": 0.7421875,
+        "recall_at_5": 0.962890625,
+        "mrr": 0.8349871710694717,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 512,
+        "recall_at_1": 0.6640625,
+        "recall_at_5": 0.8515625,
+        "mrr": 0.7469340236483302,
+        "median_rank": 1.0
+      },
+      "n_queries": 512
+    },
+    {
+      "step": 4000,
+      "within_call": {
+        "n_queries": 512,
+        "recall_at_1": 0.7421875,
+        "recall_at_5": 0.962890625,
+        "mrr": 0.835011326564061,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 512,
+        "recall_at_1": 0.654296875,
+        "recall_at_5": 0.853515625,
+        "mrr": 0.7430080548366361,
+        "median_rank": 1.0
+      },
+      "n_queries": 512
+    },
+    {
+      "step": 4000,
+      "within_call": {
+        "n_queries": 512,
+        "recall_at_1": 0.7421875,
+        "recall_at_5": 0.962890625,
+        "mrr": 0.835011326564061,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 512,
+        "recall_at_1": 0.654296875,
+        "recall_at_5": 0.853515625,
+        "mrr": 0.7430080548366361,
+        "median_rank": 1.0
+      },
+      "n_queries": 512
+    }
+  ],
+  "final_holdout_recall_at_1": 0.7421875,
+  "finished_at": "2026-10-02T08:57:09.947547+00:00"
+}

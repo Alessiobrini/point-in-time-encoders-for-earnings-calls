@@ -1,0 +1,78 @@
+{
+  "shard": "2025Q2",
+  "n_calls_sampled": 400,
+  "model_id": "ecalls-2x-ret-20241231",
+  "seed": 0,
+  "holdout": true,
+  "n_queries": 3000,
+  "n_candidates": 6956,
+  "pool_median": 22.0,
+  "scorers": {
+    "tfidf": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.49933333333333335,
+        "recall_at_5": 0.826,
+        "mrr": 0.6409533462717795,
+        "median_rank": 2.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.2623333333333333,
+        "recall_at_5": 0.4646666666666667,
+        "mrr": 0.3588023235020899,
+        "median_rank": 7.0
+      }
+    },
+    "bm25": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.5066666666666667,
+        "recall_at_5": 0.8143333333333334,
+        "mrr": 0.6436500689610348,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.29433333333333334,
+        "recall_at_5": 0.45266666666666666,
+        "mrr": 0.3683341867135426,
+        "median_rank": 10.0
+      }
+    },
+    "dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.756,
+        "recall_at_5": 0.9623333333333334,
+        "mrr": 0.8453459352685931,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.5043333333333333,
+        "recall_at_5": 0.7126666666666667,
+        "mrr": 0.600966439492552,
+        "median_rank": 1.0
+      }
+    },
+    "hybrid_bm25_dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.675,
+        "recall_at_5": 0.9323333333333333,
+        "mrr": 0.7855771962211111,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.48,
+        "recall_at_5": 0.6953333333333334,
+        "mrr": 0.5787808138451,
+        "median_rank": 2.0
+      }
+    }
+  },
+  "git_sha": "84b023b",
+  "ts": "2026-10-11T13:31:59.383950+00:00"
+}

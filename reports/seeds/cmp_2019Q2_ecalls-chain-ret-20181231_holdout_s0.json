@@ -1,0 +1,78 @@
+{
+  "shard": "2019Q2",
+  "n_calls_sampled": 400,
+  "model_id": "ecalls-chain-ret-20181231",
+  "seed": 0,
+  "holdout": true,
+  "n_queries": 3000,
+  "n_candidates": 6922,
+  "pool_median": 22.0,
+  "scorers": {
+    "tfidf": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.494,
+        "recall_at_5": 0.83,
+        "mrr": 0.6417300112084753,
+        "median_rank": 2.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.2663333333333333,
+        "recall_at_5": 0.4686666666666667,
+        "mrr": 0.3614652254355348,
+        "median_rank": 7.0
+      }
+    },
+    "bm25": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.49533333333333335,
+        "recall_at_5": 0.81,
+        "mrr": 0.6365715374881445,
+        "median_rank": 2.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.29433333333333334,
+        "recall_at_5": 0.44366666666666665,
+        "mrr": 0.3652895690997818,
+        "median_rank": 11.0
+      }
+    },
+    "dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.7476666666666667,
+        "recall_at_5": 0.9606666666666667,
+        "mrr": 0.8402474228411921,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.5056666666666667,
+        "recall_at_5": 0.7323333333333333,
+        "mrr": 0.607917698068004,
+        "median_rank": 1.0
+      }
+    },
+    "hybrid_bm25_dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.6723333333333333,
+        "recall_at_5": 0.9323333333333333,
+        "mrr": 0.7857243714178715,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.48833333333333334,
+        "recall_at_5": 0.699,
+        "mrr": 0.5871887597816082,
+        "median_rank": 2.0
+      }
+    }
+  },
+  "git_sha": "dcd44d1",
+  "ts": "2026-10-10T09:45:21.558181+00:00"
+}

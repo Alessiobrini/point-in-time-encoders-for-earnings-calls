@@ -1,0 +1,78 @@
+{
+  "shard": "2011Q2",
+  "n_calls_sampled": 400,
+  "model_id": "ecalls-seed1-ret-20241231",
+  "seed": 0,
+  "holdout": true,
+  "n_queries": 3000,
+  "n_candidates": 8065,
+  "pool_median": 26.0,
+  "scorers": {
+    "tfidf": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.47,
+        "recall_at_5": 0.805,
+        "mrr": 0.6160501050210896,
+        "median_rank": 2.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.22833333333333333,
+        "recall_at_5": 0.4166666666666667,
+        "mrr": 0.3163412647215198,
+        "median_rank": 12.0
+      }
+    },
+    "bm25": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.483,
+        "recall_at_5": 0.7876666666666666,
+        "mrr": 0.6190317176216604,
+        "median_rank": 2.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.26666666666666666,
+        "recall_at_5": 0.4013333333333333,
+        "mrr": 0.33070310914316464,
+        "median_rank": 22.0
+      }
+    },
+    "dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.7203333333333334,
+        "recall_at_5": 0.948,
+        "mrr": 0.817923636939453,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.45366666666666666,
+        "recall_at_5": 0.678,
+        "mrr": 0.5568478723060222,
+        "median_rank": 2.0
+      }
+    },
+    "hybrid_bm25_dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.6423333333333333,
+        "recall_at_5": 0.9073333333333333,
+        "mrr": 0.7593187568922775,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.42866666666666664,
+        "recall_at_5": 0.6393333333333333,
+        "mrr": 0.5268731312000938,
+        "median_rank": 2.0
+      }
+    }
+  },
+  "git_sha": "23fc194",
+  "ts": "2026-10-13T19:18:52.422431+00:00"
+}

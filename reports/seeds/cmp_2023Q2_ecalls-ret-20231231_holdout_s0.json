@@ -1,0 +1,78 @@
+{
+  "shard": "2023Q2",
+  "n_calls_sampled": 400,
+  "model_id": "ecalls-ret-20231231",
+  "seed": 0,
+  "holdout": true,
+  "n_queries": 3000,
+  "n_candidates": 6778,
+  "pool_median": 21.0,
+  "scorers": {
+    "tfidf": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.5136666666666667,
+        "recall_at_5": 0.839,
+        "mrr": 0.6547383602480574,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.26566666666666666,
+        "recall_at_5": 0.474,
+        "mrr": 0.36347975828408685,
+        "median_rank": 7.0
+      }
+    },
+    "bm25": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.503,
+        "recall_at_5": 0.817,
+        "mrr": 0.6441988630278501,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.2823333333333333,
+        "recall_at_5": 0.43966666666666665,
+        "mrr": 0.3587452846430962,
+        "median_rank": 10.0
+      }
+    },
+    "dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.7156666666666667,
+        "recall_at_5": 0.9443333333333334,
+        "mrr": 0.8162052803856634,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.4693333333333333,
+        "recall_at_5": 0.6943333333333334,
+        "mrr": 0.5738063850099434,
+        "median_rank": 2.0
+      }
+    },
+    "hybrid_bm25_dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.659,
+        "recall_at_5": 0.922,
+        "mrr": 0.7727538076663784,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.469,
+        "recall_at_5": 0.6906666666666667,
+        "mrr": 0.5703070662576365,
+        "median_rank": 2.0
+      }
+    }
+  },
+  "git_sha": "6c314b8",
+  "ts": "2026-10-09T11:41:42.996037+00:00"
+}

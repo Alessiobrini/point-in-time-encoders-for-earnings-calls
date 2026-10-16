@@ -1,0 +1,78 @@
+{
+  "shard": "2016Q2",
+  "n_calls_sampled": 400,
+  "model_id": "ecalls-abl-20241231",
+  "seed": 0,
+  "holdout": true,
+  "n_queries": 3000,
+  "n_candidates": 7928,
+  "pool_median": 24.0,
+  "scorers": {
+    "tfidf": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.47533333333333333,
+        "recall_at_5": 0.8203333333333334,
+        "mrr": 0.6259425370640247,
+        "median_rank": 2.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.26466666666666666,
+        "recall_at_5": 0.4613333333333333,
+        "mrr": 0.3562678659068992,
+        "median_rank": 8.0
+      }
+    },
+    "bm25": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.4876666666666667,
+        "recall_at_5": 0.7946666666666666,
+        "mrr": 0.6259377855327983,
+        "median_rank": 2.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.285,
+        "recall_at_5": 0.43066666666666664,
+        "mrr": 0.353005463906937,
+        "median_rank": 15.0
+      }
+    },
+    "dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.764,
+        "recall_at_5": 0.9633333333333334,
+        "mrr": 0.850606662973754,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.5356666666666666,
+        "recall_at_5": 0.7323333333333333,
+        "mrr": 0.6257379639005356,
+        "median_rank": 1.0
+      }
+    },
+    "hybrid_bm25_dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.6766666666666666,
+        "recall_at_5": 0.9283333333333333,
+        "mrr": 0.7874677100866087,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.48633333333333334,
+        "recall_at_5": 0.6936666666666667,
+        "mrr": 0.581303115295586,
+        "median_rank": 2.0
+      }
+    }
+  },
+  "git_sha": "af3058c",
+  "ts": "2026-10-09T12:05:31.771845+00:00"
+}

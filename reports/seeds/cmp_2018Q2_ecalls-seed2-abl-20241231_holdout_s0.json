@@ -1,0 +1,78 @@
+{
+  "shard": "2018Q2",
+  "n_calls_sampled": 400,
+  "model_id": "ecalls-seed2-abl-20241231",
+  "seed": 0,
+  "holdout": true,
+  "n_queries": 3000,
+  "n_candidates": 8124,
+  "pool_median": 25.0,
+  "scorers": {
+    "tfidf": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.487,
+        "recall_at_5": 0.82,
+        "mrr": 0.6352938988198442,
+        "median_rank": 2.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.2653333333333333,
+        "recall_at_5": 0.48,
+        "mrr": 0.36494305271005595,
+        "median_rank": 7.0
+      }
+    },
+    "bm25": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.5023333333333333,
+        "recall_at_5": 0.8126666666666666,
+        "mrr": 0.6399284722719166,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.28833333333333333,
+        "recall_at_5": 0.44633333333333336,
+        "mrr": 0.36567383753765026,
+        "median_rank": 10.0
+      }
+    },
+    "dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.76,
+        "recall_at_5": 0.9543333333333334,
+        "mrr": 0.8466304659244561,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.539,
+        "recall_at_5": 0.7436666666666667,
+        "mrr": 0.6317051665498238,
+        "median_rank": 1.0
+      }
+    },
+    "hybrid_bm25_dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.6776666666666666,
+        "recall_at_5": 0.932,
+        "mrr": 0.7907303776690816,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.503,
+        "recall_at_5": 0.7193333333333334,
+        "mrr": 0.6028992745434386,
+        "median_rank": 1.0
+      }
+    }
+  },
+  "git_sha": "23fc194",
+  "ts": "2026-10-13T20:11:16.044971+00:00"
+}
