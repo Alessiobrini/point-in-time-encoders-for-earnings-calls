@@ -37,20 +37,22 @@ def rows(facts: dict, chain: dict[int, int]) -> list[list[str] | str]:
                 "none", "corpus to 2019"])
     p, d = size(facts, "chrono-bert-v1-20241231")
     out.append(["ChronoBERT", p, d, "general", f"{CHRONO_TOKENS_B[0]}B to {CHRONO_TOKENS_B[1]}B",
-                "BPE, ModernBERT", "none", "yearly"])
+                "BPE, ModernBERT", "none", "2010 to 2024"])
     out.append(r"\multicolumn{8}{l}{\emph{Contrastive fine-tuning on call question-answer pairs}}")
     out.append(["ChronoBERT + contrastive fine-tuning", p, d, "general",
-                f"{CHRONO_TOKENS_B[0]}B to {CHRONO_TOKENS_B[1]}B", "BPE, ModernBERT", "call pairs", "yearly"])
+                f"{CHRONO_TOKENS_B[0]}B to {CHRONO_TOKENS_B[1]}B", "BPE, ModernBERT", "call pairs", "2010 to 2024"])
     out.append(["ChronoBERT + DAPT", p, d, "general, then calls", r"+1.2B on calls", "BPE, ModernBERT",
                 "call pairs", "2010, 2017, 2024"])
     p, d = size(facts, "ecalls-ret-20241231")
-    out.append(["Ours, from scratch", p, d, "calls", "1.2B", "BPE, 2010 calls", "call pairs", "yearly"])
+    out.append(["Ours, from scratch", p, d, "calls", "1.2B", "BPE, 2010 calls", "call pairs", "2010 to 2024"])
     out.append(["Ours, chained", p, d, "calls", f"{lo:.1f}B to {hi:.1f}B", "BPE, 2010 calls", "call pairs",
-                "yearly"])
+                "2010 to 2024"])
     out.append(r"\multicolumn{8}{l}{\emph{Controls for training length}}")
     out.append(["Ours, twice the tokens", p, d, "calls", "2.4B", "BPE, 2010 calls", "call pairs", "2024"])
-    out.append(["Ours, replay control", p, d, "calls", "next segment's", "BPE, 2010 calls",
-                "call pairs", "yearly"])
+    # replay Y reads as many tokens as chained segment Y+1, for Y from 2010 to 2023
+    seg = [(chain[y + 1] - chain[y]) / 1e9 for y in range(2010, 2024)]
+    out.append(["Ours, replay control", p, d, "calls", f"{min(seg):.2f}B to {max(seg):.2f}B", "BPE, 2010 calls",
+                "call pairs", "2010 to 2023"])
     return out
 
 
@@ -59,11 +61,11 @@ def render(body: list[list[str] | str]) -> str:
     lines = [r"\begin{table*}[t]", r"\centering", r"\footnotesize", r"\setlength{\tabcolsep}{3pt}",
              r"\caption{Retrievers and encoders compared. Parameters count the encoder body as loaded for the "
              r"benchmark, and Dim.\ is the embedding dimension. Tokens are the tokens read in "
-             r"pretraining, and every from-scratch vintage reads the same 1.2B whatever the size of its window. For our yearly families the range runs from the 2010 vintage to the 2024 one, and for ChronoBERT from its 1999 base to its 2024 vintage. "
+             r"pretraining, and every from-scratch vintage reads the same 1.2B whatever the size of its window. For our yearly families the range runs from the 2010 vintage to the 2024 one, and for ChronoBERT from its 1999 base, where its chain starts, to its 2024 vintage. "
              r"FinBERT's entry is the size of its corpus, since the tokens it read are not stated. Contrastive "
              r"fine-tuning trains on question-answer pairs from trainable calls dated on or before each "
              r"vintage's cutoff. The replay control continues chained vintage $Y$ on its own last year for as "
-             r"many tokens as the next segment read.}",
+             r"many tokens as the next segment reads.}",
              r"\label{tab:families}",
              r"\begin{tabular}{l r r l l l l l}", r"\toprule", " & ".join(head) + r" \\", r"\midrule"]
     for r in body:

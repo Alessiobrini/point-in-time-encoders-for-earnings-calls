@@ -54,12 +54,12 @@ def render() -> str:
             "Volatility")
     lines = [r"\begin{table*}[t]", r"\centering", r"\footnotesize", r"\setlength{\tabcolsep}{4pt}",
              r"\caption{Look-ahead premium across uses of the vectors: a later vintage's score minus that of "
-             r"the vintage available at the time, averaged over test quarters. Retrieval is within-call "
-             r"recall@1 on held-out questions over the 14 quarters 2011Q2 to 2024Q2, and every other column "
-             r"averages the 48 quarters 2013Q1 to 2024Q4. Nearest neighbors is the forecast of Panel B of Table~\ref{tab:forecasts}. Forecasts are the change in "
-             r"quarterly rank IC of text plus each target's baselines, for three return targets of Table~\ref{tab:forecasts}, "
-             r"the next standardized earnings surprise and the abnormal volatility after the call, both on S\&P 500 calls. In Panel A the later vintage is the 2024 vintage, and in Panel B "
-             r"the vintage of the test year itself. The retrieval premium of raw ChronoBERT, which has no contrastive stage, is not computed. Bold values have a 95\% interval that excludes zero, from resampling calls for retrieval and from a moving-block bootstrap over quarters for the other columns.}",
+             r"the vintage available at the time. Retrieval is within-call "
+             r"recall@1 on held-out questions averaged over the 14 quarters 2011Q2 to 2024Q2, and every other column "
+             r"averages the 48 quarters 2013Q1 to 2024Q4. Nearest neighbors is the forecast of Table~\ref{tab:forecasts}, Panel B. Forecasts are the change in "
+             r"quarterly rank IC of text and baselines, for three return targets of Table~\ref{tab:forecasts} and, on S\&P 500 calls, "
+             r"the next standardized earnings surprise and the abnormal volatility after the call. \textbf{Panel A}: the later vintage is the 2024 one. \textbf{Panel B}: "
+             r"that of the test year. Raw ChronoBERT has no contrastive stage and no retrieval premium. Bold values have a 95\% interval that excludes zero, from resampling calls for retrieval and a moving-block bootstrap over quarters otherwise.}",
              r"\label{tab:premia}",
              r"\begin{tabular}{l r r r r r r r r}", r"\toprule",
              r" & & \multicolumn{2}{c}{Nearest neighbors} & \multicolumn{5}{c}{Forecast with baselines} \\",

@@ -61,7 +61,7 @@ def series(scope: str) -> dict[str, list[float | None]]:
 def main() -> int:
     plt = C.style()
     w, h = set_size(C.COLUMN_PT, subplots=(2, 1))
-    fig, axes = plt.subplots(2, 1, figsize=(w, h * 0.70), sharex=True)
+    fig, axes = plt.subplots(2, 1, figsize=(w, h * 0.64), sharex=True)
     x = [y + 1 for y in YEARS]                 # the test quarter's year
     for ax, scope, panel in zip(axes, ("within", "cross"), ("(a)", "(b)")):
         s = series(scope)

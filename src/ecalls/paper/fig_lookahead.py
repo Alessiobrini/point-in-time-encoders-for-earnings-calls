@@ -17,15 +17,15 @@ from ecalls.paper.figsize import set_size
 OUT = C.FIG_DIR / "lookahead.pdf"
 FLOAT = C.FIG_DIR / "lookahead.tex"
 BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"        # the families' colors in Fig. 2
-CAPTION = (r"Look-ahead through the encoder. Panel (a): the premium of a later vintage over the "
+CAPTION = (r"Look-ahead through the encoder. \textbf{Panel (a)}: the premium of a later vintage over the "
            r"vintage available at the time, in within-call recall@1 on the same held-out questions, averaged "
            r"over the 14 test quarters 2011Q2 to 2024Q2, with 95\% intervals from resampling calls. The same "
-           r"year is vintage $Y+1$ on the test quarter of vintage $Y$, the second quarter of $Y+1$, and 2024 is the 2024 vintage on every "
-           r"quarter. The replay control continues chained vintage $Y$ on year $Y$ for as many tokens "
-           r"as the next segment read, so the chain's same-year premium splits into extra training (replay minus "
-           r"vintage $Y$) and later text (vintage $Y+1$ minus replay). Hollow markers are these two parts. Panel (b): the recall@1 "
-           r"on 2025Q2, a quarter after every cutoff, of each vintage of our two families minus that of the family's 2024 vintage, with shaded 95\% "
-           r"intervals from resampling calls.")
+           r"year is vintage $Y+1$ on the test quarter of vintage $Y$, and 2024 is the 2024 vintage on every "
+           r"quarter. Hollow markers split the chain's same-year premium into extra training (replay minus "
+           r"vintage $Y$) and later text (vintage $Y+1$ minus replay), where the replay control continues chained vintage $Y$ on year $Y$ for as many tokens "
+           r"as the next segment reads. \textbf{Panel (b)}: the recall@1 "
+           r"on 2025Q2, a quarter after every cutoff, of each vintage of our two families, which share their 2010 vintage, with shaded 95\% "
+           r"intervals.")
 
 
 def premia() -> list[tuple[str, dict, str]]:
@@ -46,7 +46,7 @@ def premia() -> list[tuple[str, dict, str]]:
 def main() -> int:
     plt = C.style()
     w, h = set_size(C.TEXT_PT, fraction=1.0, subplots=(1, 2))
-    fig, (a, b) = plt.subplots(1, 2, figsize=(w, h * 0.72), gridspec_kw={"width_ratios": [1.15, 1]})
+    fig, (a, b) = plt.subplots(1, 2, figsize=(w, h * 0.66), gridspec_kw={"width_ratios": [1.15, 1]})
     rows = premia()
     for i, (label, e, color) in enumerate(rows):
         y = len(rows) - 1 - i
@@ -66,19 +66,21 @@ def main() -> int:
     st = json.loads((C.SEEDS / "staleness_summary.json").read_text())["families"]
     for fam, label, color, marker in (("ecalls-ret", "Ours, from scratch", BLUE, "o"),
                                       ("ecalls-chain-ret", "Ours, chained", ORANGE, "s")):
+        # Levels, so the two families share one axis: the chain's 2010 member is the from-scratch
+        # 2010 retriever, and the 2024 vintages are the only point where the families part.
         pv = st[fam]["per_vintage"]
         years = sorted(int(k) for k in pv)
-        mean = [pv[str(k)]["minus_2024"] for k in years]
-        lo = [pv[str(k)]["ci95"][0] for k in years]
-        hi = [pv[str(k)]["ci95"][1] for k in years]
-        b.fill_between(years, lo, hi, color=color, alpha=0.15, lw=0)
+        mean = [pv[str(k)]["recall_at_1"] for k in years] + [st[fam]["latest_recall_at_1"]]
+        lo = [pv[str(k)]["level_ci95"][0] for k in years] + [st[fam]["latest_level_ci95"][0]]
+        hi = [pv[str(k)]["level_ci95"][1] for k in years] + [st[fam]["latest_level_ci95"][1]]
+        years = years + [2024]
+        b.fill_between(years, lo, hi, color=color, alpha=0.12, lw=0)
         b.plot(years, mean, color=color, marker=marker, ms=3, lw=1.2, label=label)
-    b.axhline(0, color="#555555", lw=0.6)
-    b.set_xticks([2010, 2013, 2016, 2019, 2022])
+    b.set_xticks([2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024])
     b.set_xlabel("Vintage (training cutoff, end of year)")
-    b.set_ylabel("Recall@1 minus\nfamily's 2024 vintage")
+    b.set_ylabel("Recall@1 on 2025Q2")
     b.set_title("(b)", loc="left")
-    b.legend(frameon=False, loc="lower right")
+    b.legend(frameon=False, loc="upper left")
     b.grid(axis="y", lw=0.3, color="#dddddd")
     fig.tight_layout(pad=0.2, w_pad=1.5)
     C.FIG_DIR.mkdir(parents=True, exist_ok=True)

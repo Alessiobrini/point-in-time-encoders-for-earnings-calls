@@ -41,8 +41,8 @@ def render(d: dict, seeds: float, seeds_vintage: float) -> str:
              r"averaged over the $Q$ test quarters both were scored on. Within is within-call "
              r"and Across is cross-call recall@1. The 95\% interval of the within-call difference comes from "
              r"resampling calls within each quarter. Each retriever is the vintage available at the time, and ChronoBERT has no contrastive fine-tuning. "
-             r"FinBERT is compared from 2020Q2, which its corpus cannot contain, DAPT on the 2010, 2017 and 2024 vintages, and the chain from its 2011 vintage. "
-             r"The two token budgets compare 2024 vintages on every quarter. The last two rows have no $Q$. They give the range across three seeds of contrastive fine-tuning, "
+             r"FinBERT is compared from 2020Q2, which its corpus cannot contain, DAPT on the 2010, 2017 and 2024 vintages, and the chain from its 2011 vintage, on 2012Q2. "
+             r"The two token budgets compare 2024 vintages on every quarter. The last two rows give the range across three seeds of contrastive fine-tuning, "
              r"with pretraining fixed, of our from-scratch recall averaged over the 2010, 2017 and 2024 vintages, and the largest range of one vintage.}",
              r"\label{tab:decomposition}",
              r"\begin{tabular}{>{\raggedright\arraybackslash}p{31mm} r r c r}", r"\toprule",
@@ -53,8 +53,8 @@ def render(d: dict, seeds: float, seeds_vintage: float) -> str:
         cells = [label, str(w["n_quarters"]), C.num(w["mean"], 3, signed=True),
                  f"[{C.num(lo, 3, signed=True)}, {C.num(hi, 3, signed=True)}]", C.num(x["mean"], 3, signed=True)]
         lines.append(" & ".join(cells) + r" \\")
-    lines.append(f"Training seed, range & n/a & {C.num(seeds, 3)} & & " + r"\\")
-    lines.append(f"Training seed, range per vintage & n/a & {C.num(seeds_vintage, 3)} & & " + r"\\")
+    lines.append(f"Training seed, range & n/a & {C.num(seeds, 3)} & n/a & n/a " + r"\\")
+    lines.append(f"Training seed, range per vintage & n/a & {C.num(seeds_vintage, 3)} & n/a & n/a " + r"\\")
     lines += [r"\bottomrule", r"\end{tabular}", r"\end{table}", ""]
     return "\n".join(lines)
 

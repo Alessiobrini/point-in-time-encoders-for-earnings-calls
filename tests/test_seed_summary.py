@@ -224,6 +224,10 @@ def test_staleness_pairs_each_vintage_with_its_familys_2024_vintage_on_2025q2(tm
     # the chain's 2010 member is the from-scratch 2010 retriever, so it inherits its score
     assert chain["per_vintage"]["2010"]["minus_2024"] == -0.5
     assert chain["per_vintage"]["2015"]["minus_2024"] == 0.0
+    # Fig. 3b plots levels: each interval brackets its level, and a constant level has zero width
+    lo, hi = ours["per_vintage"]["2010"]["level_ci95"]
+    assert lo <= ours["per_vintage"]["2010"]["recall_at_1"] == 0.5 <= hi
+    assert ours["latest_level_ci95"] == [1.0, 1.0] or tuple(ours["latest_level_ci95"]) == (1.0, 1.0)
 
 
 def _write_both(dirpath, year, model, within, cross, calls):

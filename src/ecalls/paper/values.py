@@ -79,6 +79,7 @@ def macros() -> dict[str, str]:
     m["StaleScratchTwentyThree"] = val(st["ecalls-ret"]["per_vintage"]["2023"]["recall_at_1"], 3)
     tw = j(s / "cmp_2025Q2_ecalls-2x-ret-20241231_holdout_s0.json")["scorers"]["dense"]["within_call"]
     m["StaleTwiceTwentyFour"] = val(tw["recall_at_1"], 3)
+    m["StaleChainTwentyFour"] = val(st["ecalls-chain-ret"]["latest_recall_at_1"], 3)
     rg = j(s / "rag_summary.json")
     for key, tag in (("chain", "RagChain"), ("scratch", "RagScratch"), ("chain_nogold", "RagNoGold")):
         e = rg["comparisons"][key]
@@ -115,6 +116,8 @@ def macros() -> dict[str, str]:
     dls = r1["daily_long_short"]["baselines"]
     m["NextDaySharpeBase"] = val(dls["sharpe_all_days"], 2)
     m["NextDayShareTraded"] = val(100 * dls["share_days_traded"], 0)
+    # the session after the call trades at the open, on the days with at least 20 such calls
+    m["OtcShareTraded"] = val(100 * ro["daily_long_short"]["baselines"]["share_days_traded"], 0)
     e = r1["premium"]["ecalls-chain-ret+baselines"]["leaky_minus_pit_through_2024"]
     m["ChainNextDayLate"], m["ChainNextDayLateT"] = val(e["mean"], 4), val(e["t"], 1)
     for f, tag in (("knn_ret1d_all", "NextDay"), ("knn_sue_sp500", "Sue")):
@@ -123,7 +126,7 @@ def macros() -> dict[str, str]:
     # Every forecast premium, with the baselines and with the text alone, and how many pass a
     # Bonferroni bound over all of them. The family is every premium the forecast files hold, so the
     # text-alone ones the text cites are inside it rather than added beside it.
-    from scipy.stats import norm
+    from scipy.stats import norm, t as student
     cells, block, names = [], [], []
     for t in ("ret1d", "ret5d", "o2c", "ret60", "sue", "av"):
         for name, getter in ((f"{t}_results", lambda v: v.get("leaky_minus_pit_through_2024")),
@@ -146,6 +149,15 @@ def macros() -> dict[str, str]:
     m["NBonferroniBlock"] = count(sum(x > bound for x in block))
     m["BonferroniBound"] = val(bound, 2)
     m["BonferroniBlockMax"] = val(max(block), 2)
+    # the same bound from the t distribution over the 48 test quarters of a premium (47 df)
+    bound_t = float(student.ppf(1 - 0.025 / len(cells), 47))
+    m["BonferroniBoundStudent"] = val(bound_t, 2)
+    # the text says only the chained surprise premium passes it under the block bootstrap
+    passing_t = sorted(names[i] for i, x in enumerate(block) if x > bound_t)
+    assert passing_t == [("sue_results", "ecalls-chain-ret")], passing_t
+    m["NBonferroniStudent"] = count(sum(abs(x) > bound_t for x in cells))
+    # the text says both of them are on the earnings surprise
+    assert all(names[i][0] == "sue_results" for i, x in enumerate(cells) if abs(x) > bound_t)
     # The text names the premia that pass under the block bootstrap, so it must be these two.
     passing = sorted(names[i] for i, x in enumerate(block) if x > bound)
     assert passing == [("sue_results", "ecalls-chain-ret"), ("sue_results", "ecalls-ret")], passing
@@ -158,9 +170,17 @@ def macros() -> dict[str, str]:
     m["AvLateChain"], m["AvLateChainT"] = val(av["mean"], 4), val(av["t"], 1)
     m["SueLateOurs"] = val(sue["ecalls-ret+baselines"]["leaky_minus_pit_through_2024"]["mean"], 4)
     m["SueLateOursT"] = val(sue["ecalls-ret+baselines"]["leaky_minus_pit_through_2024"]["t"], 1)
-    m["SueLateOursAlone"] = val(sue["ecalls-ret"]["leaky_minus_pit_through_2024"]["mean"], 3)
+    m["SueLateOursAlone"] = val(sue["ecalls-ret"]["leaky_minus_pit_through_2024"]["mean"], 4)
+    m["SueLateChainAlone"] = val(sue["ecalls-chain-ret"]["leaky_minus_pit_through_2024"]["mean"], 4)
+    m["SueLateChainAloneT"] = val(sue["ecalls-chain-ret"]["leaky_minus_pit_through_2024"]["t"], 1)
+    # the levels that give the fundamental premia their scale
+    for t_, tag in (("sue", "Sue"), ("av", "Av")):
+        sp = j(pf / f"{t_}_results.json")["specs"]
+        m[f"{tag}BaseIC"] = val(sp["baselines"]["ic_mean"], 3)
+        m[f"{tag}AloneOursIC"] = val(sp["ecalls-ret"]["ic_mean"], 3)
+        m[f"{tag}WithOursIC"] = val(sp["ecalls-ret+baselines"]["ic_mean"], 3)
     m["SueLateOursAloneT"] = val(sue["ecalls-ret"]["leaky_minus_pit_through_2024"]["t"], 1)
-    # the text-alone surprise premia sit outside the Bonferroni family above; the t their block interval implies
+    # the t that the block interval of each text-alone surprise premium implies, as in the Bonferroni family above
     for fam, tag in (("ecalls-ret", "Ours"), ("ecalls-chain-ret", "Chain")):
         c = sue[fam]["leaky_minus_pit_through_2024"]
         m[f"SueLate{tag}AloneBlockT"] = val(abs(c["mean"]) / ((c["ci95"][1] - c["ci95"][0]) / 3.92), 1)
@@ -171,6 +191,8 @@ def macros() -> dict[str, str]:
             m[f"SueAlone{tag}{k}"] = val(hs[fam][part]["mean"], 4)
         m[f"SueAlone{tag}HeldLo"] = val(hs[fam]["held_out"]["ci95"][0], 4)
         m[f"SueAlone{tag}HeldHi"] = val(hs[fam]["held_out"]["ci95"][1], 4)
+    held = hs["ecalls-ret"]["held_out"]
+    m["SueHeldPerQuarter"] = val(held["calls"] / held["n"], 0)
     cf = j(pp / "corpus_facts.json")
     m["NCallsIndex"] = count(cf["total_calls"])
     m["NPairs"] = val(cf["by_cutoff"]["2024"]["pairs"] / 1e6, 1)
