@@ -1,0 +1,78 @@
+{
+  "shard": "2021Q2",
+  "n_calls_sampled": 400,
+  "model_id": "ecalls-seed2-abl-20241231",
+  "seed": 0,
+  "holdout": true,
+  "n_queries": 3000,
+  "n_candidates": 7061,
+  "pool_median": 21.0,
+  "scorers": {
+    "tfidf": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.49966666666666665,
+        "recall_at_5": 0.8366666666666667,
+        "mrr": 0.6457573081937347,
+        "median_rank": 2.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.277,
+        "recall_at_5": 0.49133333333333334,
+        "mrr": 0.3774637070785319,
+        "median_rank": 6.0
+      }
+    },
+    "bm25": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.47833333333333333,
+        "recall_at_5": 0.806,
+        "mrr": 0.6229819918445866,
+        "median_rank": 2.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.2896666666666667,
+        "recall_at_5": 0.455,
+        "mrr": 0.3657020617163841,
+        "median_rank": 10.0
+      }
+    },
+    "dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.7793333333333333,
+        "recall_at_5": 0.9666666666666667,
+        "mrr": 0.8609516430276974,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.551,
+        "recall_at_5": 0.7676666666666667,
+        "mrr": 0.6481156621876746,
+        "median_rank": 1.0
+      }
+    },
+    "hybrid_bm25_dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.6806666666666666,
+        "recall_at_5": 0.9323333333333333,
+        "mrr": 0.7906786980379887,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.5163333333333333,
+        "recall_at_5": 0.717,
+        "mrr": 0.6088343075971452,
+        "median_rank": 1.0
+      }
+    }
+  },
+  "git_sha": "23fc194",
+  "ts": "2026-10-13T20:25:03.925793+00:00"
+}

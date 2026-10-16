@@ -1,0 +1,96 @@
+{
+  "models": {
+    "bge-small-en-v1.5": {
+      "params": 33360000,
+      "dim": 384,
+      "layers": 12,
+      "vocab": 30522,
+      "max_seq_len": 512,
+      "kind": "atemporal",
+      "cutoff": null
+    },
+    "bge-base-en-v1.5": {
+      "params": 109482240,
+      "dim": 768,
+      "layers": 12,
+      "vocab": 30522,
+      "max_seq_len": 512,
+      "kind": "atemporal",
+      "cutoff": null
+    },
+    "bge-large-en-v1.5": {
+      "params": 335141888,
+      "dim": 1024,
+      "layers": 24,
+      "vocab": 30522,
+      "max_seq_len": 512,
+      "kind": "atemporal",
+      "cutoff": null
+    },
+    "e5-base-v2": {
+      "params": 109482240,
+      "dim": 768,
+      "layers": 12,
+      "vocab": 30522,
+      "max_seq_len": 512,
+      "kind": "atemporal",
+      "cutoff": null
+    },
+    "finbert-pretrain": {
+      "params": 109751808,
+      "dim": 768,
+      "layers": 12,
+      "vocab": 30873,
+      "max_seq_len": 512,
+      "kind": "atemporal",
+      "cutoff": null
+    },
+    "chrono-bert-v1-20241231": {
+      "params": 149014272,
+      "dim": 768,
+      "layers": 22,
+      "vocab": 50368,
+      "max_seq_len": 768,
+      "kind": "vintage",
+      "cutoff": "2024-12-31"
+    },
+    "ecalls-abl-20241231": {
+      "params": 149014272,
+      "dim": 768,
+      "layers": 22,
+      "vocab": 50368,
+      "max_seq_len": 512,
+      "kind": "vintage",
+      "cutoff": "2024-12-31"
+    },
+    "ecalls-dapt-ret-20241231": {
+      "params": 149014272,
+      "dim": 768,
+      "layers": 22,
+      "vocab": 50368,
+      "max_seq_len": 512,
+      "kind": "vintage",
+      "cutoff": "2024-12-31"
+    },
+    "ecalls-ret-20241231": {
+      "params": 33826176,
+      "dim": 384,
+      "layers": 12,
+      "vocab": 32768,
+      "max_seq_len": 512,
+      "kind": "vintage",
+      "cutoff": "2024-12-31"
+    },
+    "ecalls-chain-ret-20241231": {
+      "params": 33826176,
+      "dim": 384,
+      "layers": 12,
+      "vocab": 32768,
+      "max_seq_len": 512,
+      "kind": "vintage",
+      "cutoff": "2024-12-31"
+    }
+  },
+  "git_sha": "6e2c42b",
+  "ts": "2026-10-12T02:05:09.248262+00:00"
+}

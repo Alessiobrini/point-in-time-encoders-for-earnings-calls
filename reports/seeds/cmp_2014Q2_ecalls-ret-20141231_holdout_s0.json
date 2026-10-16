@@ -1,0 +1,78 @@
+{
+  "shard": "2014Q2",
+  "n_calls_sampled": 400,
+  "model_id": "ecalls-ret-20141231",
+  "seed": 0,
+  "holdout": true,
+  "n_queries": 3000,
+  "n_candidates": 8147,
+  "pool_median": 23.0,
+  "scorers": {
+    "tfidf": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.4876666666666667,
+        "recall_at_5": 0.825,
+        "mrr": 0.6341228899190808,
+        "median_rank": 2.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.23966666666666667,
+        "recall_at_5": 0.44033333333333335,
+        "mrr": 0.3355552947042038,
+        "median_rank": 9.5
+      }
+    },
+    "bm25": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.494,
+        "recall_at_5": 0.8043333333333333,
+        "mrr": 0.6307729279342638,
+        "median_rank": 2.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.27566666666666667,
+        "recall_at_5": 0.42333333333333334,
+        "mrr": 0.3472159549133805,
+        "median_rank": 14.0
+      }
+    },
+    "dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.7316666666666667,
+        "recall_at_5": 0.9493333333333334,
+        "mrr": 0.8277555075322204,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.4643333333333333,
+        "recall_at_5": 0.6903333333333334,
+        "mrr": 0.567859969644384,
+        "median_rank": 2.0
+      }
+    },
+    "hybrid_bm25_dense": {
+      "within_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.6493333333333333,
+        "recall_at_5": 0.9143333333333333,
+        "mrr": 0.7665440072261108,
+        "median_rank": 1.0
+      },
+      "cross_call": {
+        "n_queries": 3000,
+        "recall_at_1": 0.448,
+        "recall_at_5": 0.6686666666666666,
+        "mrr": 0.5494033662381016,
+        "median_rank": 2.0
+      }
+    }
+  },
+  "git_sha": "6c314b8",
+  "ts": "2026-10-09T11:40:02.316766+00:00"
+}

@@ -1,0 +1,78 @@
+{
+  "2011Q2": {
+    "chance_within": 0.04676931144386784,
+    "n_questions": 3000,
+    "n_answers": 8065
+  },
+  "2012Q2": {
+    "chance_within": 0.0444235127610179,
+    "n_questions": 3000,
+    "n_answers": 8586
+  },
+  "2013Q2": {
+    "chance_within": 0.04616569101440097,
+    "n_questions": 3000,
+    "n_answers": 8245
+  },
+  "2014Q2": {
+    "chance_within": 0.04808944803649199,
+    "n_questions": 3000,
+    "n_answers": 8147
+  },
+  "2015Q2": {
+    "chance_within": 0.04916401748456381,
+    "n_questions": 3000,
+    "n_answers": 7788
+  },
+  "2016Q2": {
+    "chance_within": 0.049096861009677875,
+    "n_questions": 3000,
+    "n_answers": 7928
+  },
+  "2017Q2": {
+    "chance_within": 0.05197600733901972,
+    "n_questions": 3000,
+    "n_answers": 7223
+  },
+  "2018Q2": {
+    "chance_within": 0.0472214815124291,
+    "n_questions": 3000,
+    "n_answers": 8124
+  },
+  "2019Q2": {
+    "chance_within": 0.05284633940946374,
+    "n_questions": 3000,
+    "n_answers": 6922
+  },
+  "2020Q2": {
+    "chance_within": 0.05216306800510424,
+    "n_questions": 3000,
+    "n_answers": 7421
+  },
+  "2021Q2": {
+    "chance_within": 0.05538658046575474,
+    "n_questions": 3000,
+    "n_answers": 7061
+  },
+  "2022Q2": {
+    "chance_within": 0.05538845631499169,
+    "n_questions": 3000,
+    "n_answers": 6724
+  },
+  "2023Q2": {
+    "chance_within": 0.055707896500230204,
+    "n_questions": 3000,
+    "n_answers": 6778
+  },
+  "2024Q2": {
+    "chance_within": 0.05757743947335883,
+    "n_questions": 3000,
+    "n_answers": 6657
+  },
+  "2025Q2": {
+    "chance_within": 0.05466288249394581,
+    "n_questions": 3000,
+    "n_answers": 6956
+  },
+  "mean_chance_within": 0.05110926621762123
+}

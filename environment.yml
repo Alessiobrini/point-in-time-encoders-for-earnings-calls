@@ -1,0 +1,15 @@
+# Conda environment for point-in-time-encoders-for-earnings-calls. Python and the compiled base come from conda, everything else
+# from requirements.txt, so there is one place where package versions are declared.
+#
+#   conda env create -f environment.yml
+#   python -m pip install -e . --no-deps
+#
+# environment.lock.yml is the exact export of the environment a corpus build ran in.
+name: pit-encoders
+channels:
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - -r requirements.txt
