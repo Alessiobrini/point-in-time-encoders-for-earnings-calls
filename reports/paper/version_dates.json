@@ -1,0 +1,109 @@
+{
+  "cutoffs": {
+    "2010": {
+      "trainable_calls": 35397,
+      "dated": 35397,
+      "undated": 0,
+      "late": 2366,
+      "share_late": 0.06684182275334068
+    },
+    "2011": {
+      "trainable_calls": 51620,
+      "dated": 51620,
+      "undated": 0,
+      "late": 707,
+      "share_late": 0.01369624176675707
+    },
+    "2012": {
+      "trainable_calls": 67999,
+      "dated": 67999,
+      "undated": 0,
+      "late": 948,
+      "share_late": 0.013941381490904278
+    },
+    "2013": {
+      "trainable_calls": 84150,
+      "dated": 84150,
+      "undated": 0,
+      "late": 841,
+      "share_late": 0.009994058229352346
+    },
+    "2014": {
+      "trainable_calls": 100310,
+      "dated": 100310,
+      "undated": 0,
+      "late": 599,
+      "share_late": 0.0059714883860033895
+    },
+    "2015": {
+      "trainable_calls": 116460,
+      "dated": 116460,
+      "undated": 0,
+      "late": 537,
+      "share_late": 0.004611025244719217
+    },
+    "2016": {
+      "trainable_calls": 132512,
+      "dated": 132512,
+      "undated": 0,
+      "late": 900,
+      "share_late": 0.0067918377203574016
+    },
+    "2017": {
+      "trainable_calls": 150794,
+      "dated": 150794,
+      "undated": 0,
+      "late": 1227,
+      "share_late": 0.008136928525007626
+    },
+    "2018": {
+      "trainable_calls": 171504,
+      "dated": 171504,
+      "undated": 0,
+      "late": 847,
+      "share_late": 0.004938660322791305
+    },
+    "2019": {
+      "trainable_calls": 193131,
+      "dated": 193131,
+      "undated": 0,
+      "late": 1045,
+      "share_late": 0.005410835132630184
+    },
+    "2020": {
+      "trainable_calls": 217192,
+      "dated": 217192,
+      "undated": 0,
+      "late": 1728,
+      "share_late": 0.007956094147114075
+    },
+    "2021": {
+      "trainable_calls": 242261,
+      "dated": 242261,
+      "undated": 0,
+      "late": 1095,
+      "share_late": 0.004519918600187401
+    },
+    "2022": {
+      "trainable_calls": 268919,
+      "dated": 268919,
+      "undated": 0,
+      "late": 855,
+      "share_late": 0.003179396026312756
+    },
+    "2023": {
+      "trainable_calls": 295965,
+      "dated": 295961,
+      "undated": 4,
+      "late": 1377,
+      "share_late": 0.004652640043789553
+    },
+    "2024": {
+      "trainable_calls": 323007,
+      "dated": 323000,
+      "undated": 7,
+      "late": 1104,
+      "share_late": 0.0034179566563467493
+    }
+  }
+}

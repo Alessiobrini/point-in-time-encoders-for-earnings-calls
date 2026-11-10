@@ -16,7 +16,7 @@ The paper trains yearly vintages of text encoders on earnings calls, with cutoff
 | The result files that every table and figure is built from (`reports/`), and the training records of every model (`runs/`) | Trained model weights |
 | The model registry (`registry/embeddings.json`) and unit tests | |
 
-The transcripts are licensed by S&P Global and cannot be redistributed. Anyone with the same WRDS subscriptions can rebuild the corpus exactly from the identifiers and the code. Trained model weights are not part of this release.
+The transcripts are licensed by S&P Global and cannot be redistributed. Anyone with the same WRDS subscriptions can rebuild the corpus from the identifiers and the code. Trained model weights are not part of this release.
 
 ## Data you need, and how to get it
 

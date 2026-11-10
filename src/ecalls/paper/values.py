@@ -17,14 +17,16 @@ OUT = C.PAPER_DIR / "values.tex"
 # repository does not hold the paper source, so the list is written out here, and values.tex holds
 # only these. Where main.tex is present, main() checks the list against it.
 PAPER_MACROS = (
-    "AblLate", "AvBaseIC", "BonferroniBound", "BonferroniBoundStudent", "ChainLate", "ChainSameYear",
+    "AblLate", "AvBaseIC", "BonferroniBound", "BonferroniBoundStudent", "BreakEvenBase", "BreakEvenOtcOurs",
+    "BreakEvenOurs", "ChainLate", "ChainMinusScratch", "ChainSameYear",
     "ChainSameYearHi", "ChainSameYearLo", "ChainSameYearPos", "ChanceWithin", "DaptMinusAbl",
     "KnnSueOurs", "KnnSueOursT", "NBonferroni", "NBonferroniBlock", "NBonferroniStudent", "NCallsIndex",
     "NForecastPremia", "NextDayBaseIC", "NextDayIncOurs", "NextDayIncOursT", "NextDayShareTraded",
     "NextDaySharpeBase", "OtcShareTraded", "OursMinusAbl", "OursMinusBestCross", "OursMinusEfive",
-    "OursMinusEfiveCross", "ParamsAbl", "ParamsOurs", "RagChain", "RagChainHi", "RagChainLo",
+    "OursMinusEfiveCross", "ParamsAbl", "ParamsOurs", "PoolMedianHi", "PoolMedianLo", "RagChain", "RagChainHi", "RagChainLo",
     "RagChainPos", "RagClosedLevel", "RagGoldChainLate", "RagGoldChainPit", "RagNoGold", "RagPitLevel",
-    "RecallBgeSmall", "RecallChrono", "RecallEfive", "RecallFinbert", "RecallOurs", "ReplayCompute",
+    "RecallBgeSmall", "RecallChrono", "RecallEfive", "RecallFinbert", "RecallFiveEfive", "RecallFiveOurs",
+    "RecallOurs", "ReplayCompute",
     "ReplayComputeWins", "ReplayLater", "ReplayLaterHi", "ReplayLaterLo", "ReplayLaterWins",
     "RestateLeakyGap", "RestateLeakyGapHi", "RestateLeakyGapLo", "RestateLeakyLow", "RestateLeakyLowHi",
     "RestateLeakyLowLo", "ScratchLate", "ScratchSameYear", "SeedRangeVintage", "StaleChainTwentyFour",
@@ -33,7 +35,7 @@ PAPER_MACROS = (
     "SueAloneOursTrained", "SueBaseIC", "SueHeldPerQuarter", "SueLateChainAlone",
     "SueLateChainAloneBlockT", "SueLateChainAloneT", "SueLateOurs", "SueLateOursAlone",
     "SueLateOursAloneBlockT", "SueLateOursAloneT", "SueLateOursT", "SueWithOursIC", "TaskStageGain",
-    "TokensTwentyTen",
+    "TokensTwentyTen", "TwiceGain", "VersionLateMax", "VersionLateMin", "VersionLateTen",
 )
 
 
@@ -70,6 +72,26 @@ def macros() -> dict[str, str]:
     m["SeedRangeVintage"] = val(seed_range_vintage(s / "training_seed_summary.json"), 3)
     m["CrossOurs"] = val(refx["mean_recall_at_1"]["ours"], 3)
     m["ChanceWithin"] = val(j(pp / "chance_facts.json")["mean_chance_within"], 2)
+    # Within-call recall@5 of the vintage available at the time and of e5-base, averaged over the 15
+    # quarters at evaluation seed 0 as RecallOurs and RecallEfive are, and the median size of a
+    # question's within-call answer pool, which is the same for every model of a quarter.
+    from ecalls.diagnostics.seed_summary import YEARS, shard_of
+    cmp = {(y, mdl): j(s / f"cmp_{shard_of(y)}_{mdl}_holdout_s0.json")
+           for y in YEARS for mdl in (f"ecalls-ret-{y}1231", "e5-base-v2")}
+    r5 = {fam: [cmp[y, mdl(y)]["scorers"]["dense"]["within_call"]["recall_at_5"] for y in YEARS]
+          for fam, mdl in (("ours", lambda y: f"ecalls-ret-{y}1231"), ("e5", lambda y: "e5-base-v2"))}
+    m["RecallFiveOurs"] = val(sum(r5["ours"]) / len(YEARS), 3)
+    m["RecallFiveEfive"] = val(sum(r5["e5"]) / len(YEARS), 3)
+    assert all(a > b for a, b in zip(r5["ours"], r5["e5"])), "the text says recall@5 is higher in every quarter"
+    pools = [cmp[y, f"ecalls-ret-{y}1231"]["pool_median"] for y in YEARS]
+    assert all(float(x).is_integer() for x in pools), pools
+    m["PoolMedianLo"], m["PoolMedianHi"] = count(min(pools)), count(max(pools))
+    # the share of a window's trainable calls whose kept version was created after the cutoff
+    vd = j(pp / "version_dates.json")["cutoffs"]
+    late = {int(y): 100 * e["share_late"] for y, e in vd.items()}
+    m["VersionLateMin"] = val(min(late[y] for y in range(2011, 2025)), 2)
+    m["VersionLateMax"] = val(max(late[y] for y in range(2011, 2025)), 2)
+    m["VersionLateTen"] = val(late[2010], 2)
     m["CrossEfive"] = val(refx["mean_recall_at_1"]["e5-base-v2"], 3)
 
     fu = j(s / "seed_summary.json")["fusion"]
@@ -140,6 +162,11 @@ def macros() -> dict[str, str]:
     dls = r1["daily_long_short"]["baselines"]
     m["NextDaySharpeBase"] = val(dls["sharpe_all_days"], 2)
     m["NextDayShareTraded"] = val(100 * dls["share_days_traded"], 0)
+    # The one-way cost, in basis points, at which the long-short breaks even. Each traded day buys and sells
+    # both legs, four one-way trades of the position, so the cost is the mean return per traded day over 4.
+    m["BreakEvenBase"] = val(dls["mean_traded_day"] / 4 * 1e4, 0)
+    m["BreakEvenOurs"] = val(r1["daily_long_short"]["ecalls-ret+baselines"]["mean_traded_day"] / 4 * 1e4, 0)
+    m["BreakEvenOtcOurs"] = val(ro["daily_long_short"]["ecalls-ret+baselines"]["mean_traded_day"] / 4 * 1e4, 0)
     # the session after the call trades at the open, on the days with at least 20 such calls
     m["OtcShareTraded"] = val(100 * ro["daily_long_short"]["baselines"]["share_days_traded"], 0)
     e = r1["premium"]["ecalls-chain-ret+baselines"]["leaky_minus_pit_through_2024"]
@@ -237,7 +264,7 @@ def macros() -> dict[str, str]:
         m["RecallChrono"] = val(ref["mean_recall_at_1"]["abl"] - d["task_stage_on_chronobert"]["within"]["mean"], 3)
         m["DaptMinusAbl"] = val(d["dapt_minus_abl"]["within"]["mean"], 3)
         m["OursMinusAbl"] = val(-d["ours_minus_abl"]["within"]["mean"], 3)
-        m["ChainMinusScratch"] = val(d["chain_minus_ours"]["within"]["mean"], 4)
+        m["ChainMinusScratch"] = val(d["chain_minus_ours"]["within"]["mean"], 3)   # set against SeedRangeVintage
     return m
 
 
