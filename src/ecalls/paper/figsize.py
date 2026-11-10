@@ -1,6 +1,6 @@
 """Figure dimensions that match the paper's column, so LaTeX includes every figure without rescaling.
 
-Copied from the FINTECH 540 course utilities (utils/figsize.py), the helper every paper figure uses.
+The helper every paper figure uses.
 """
 
 

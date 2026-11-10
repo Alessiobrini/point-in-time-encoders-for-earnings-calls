@@ -15,7 +15,7 @@
 #SBATCH --error=logs/vintage_%A_%a.out
 
 # The vintage set: one annual ChronoBERT checkpoint per array task, each embedding the corpus up to its
-# own training cutoff. That expanding window is the roadmap's Phase 5 design, and `--up-to-cutoff` makes
+# own training cutoff. That expanding window is the design of the vintage set, and `--up-to-cutoff` makes
 # it a property of the model rather than a shard list someone has to remember.
 #
 # **One task per vintage rather than the usual shards-across-tasks split.** Each task loads a different
@@ -31,7 +31,7 @@ set -euo pipefail
 ROOT=${ECALLS_ROOT:?set ECALLS_ROOT to your clone of this repository}
 PY=${ECALLS_PYTHON:-python}
 
-export ECALLS_DATA_ROOT=$ROOT/data
+export ECALLS_DATA_ROOT=${ECALLS_DATA_ROOT:-$ROOT/data}
 export PYTHONPATH=$ROOT/src
 export HF_HOME=$ROOT/.hf
 export HF_HUB_OFFLINE=1

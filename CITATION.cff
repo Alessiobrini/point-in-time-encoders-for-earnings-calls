@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper."
+title: "Point-in-Time Encoders for Earnings Calls"
+authors:
+  - family-names: Brini
+    given-names: Alessio
+    affiliation: "Duke University"
+    orcid: "https://orcid.org/0000-0003-1121-818X"
+license: MIT
+repository-code: "https://github.com/Alessiobrini/point-in-time-encoders-for-earnings-calls"
+preferred-citation:
+  type: conference-paper
+  title: "Point-in-Time Encoders for Earnings Calls"
+  authors:
+    - family-names: Brini
+      given-names: Alessio
+      affiliation: "Duke University"
+      orcid: "https://orcid.org/0000-0003-1121-818X"
+  collection-title: "3rd IEEE International Workshop on Large Language Models for Finance, IEEE BigData 2026"
+  year: 2026

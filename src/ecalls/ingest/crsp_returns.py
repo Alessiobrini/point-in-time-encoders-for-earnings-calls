@@ -1,6 +1,6 @@
 """Daily stock returns and factor returns for the portfolio test (D26).
 
-Pulled on the Mac, where the WRDS credential lives. Two artifacts:
+Pulled on a machine with WRDS access. Two artifacts:
 
 - `crsp/dsf_v2_<year>.parquet`: daily total return, market cap, SIC code and delisting flag for every
   permno that was ever an S&P 500 member. All members rather than only the ones with calls, because
@@ -13,8 +13,10 @@ Pulled on the Mac, where the WRDS credential lives. Two artifacts:
 One query per year, because `wrds_conn.connect` sets a 300 s statement timeout. A year is skipped
 when its file exists and records the same permno set, so a rerun after a universe change refetches.
 
-    python -m ecalls.ingest.crsp_returns
+    python -m ecalls.ingest.crsp_returns                  # S&P 500 members and the factors
+    python -m ecalls.ingest.crsp_returns --universe all   # every linked firm
 """
+import argparse
 import hashlib
 import json
 
@@ -147,5 +149,8 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    import sys
-    raise SystemExit(main_all() if "--universe" in sys.argv and "all" in sys.argv else main())
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument("--universe", choices=["sp500", "all"], default="sp500",
+                    help="sp500 pulls the S&P 500 members and the factors, all pulls every linked firm")
+    a = ap.parse_args()
+    raise SystemExit(main_all() if a.universe == "all" else main())

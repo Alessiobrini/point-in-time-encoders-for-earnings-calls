@@ -10,7 +10,7 @@ for the call's gvkey, since the call accompanies that release. Its target is the
 fiscal quarter, known on that quarter's `rdq`, and its control is the surprise of the matched quarter,
 which the call discusses and which is known by day 0.
 
-The pull runs on the Mac, where the WRDS credential lives:
+The pull runs on a machine with WRDS access:
 
     python -m ecalls.portfolio.sue pull
     python -m ecalls.portfolio.sue build

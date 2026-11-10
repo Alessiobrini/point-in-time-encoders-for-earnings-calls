@@ -211,9 +211,9 @@ REFERENCE_PREFIX = "ref-"
 def check_reference(kind: str, reference: bool, name: str | None) -> None:
     """The guard on a backbone with no known cutoff (D34).
 
-    The stage refuses an ATEMPORAL backbone, because its retriever could not carry a cutoff. A reviewer
-    asked how much of our lead over general retrievers comes from fine-tuning on the calls, which only a
-    general retriever fine-tuned on the same pairs answers, so `reference` lets one through. Its name
+    The stage refuses an ATEMPORAL backbone, because its retriever could not carry a cutoff. A general
+    retriever fine-tuned on the same pairs measures how much of our lead comes from fine-tuning on the
+    calls, so `reference` lets one through. Its name
     must start with `ref-`, which no family pattern in `scripts/register_vintages.py` matches, so it can
     never be registered as a vintage or picked by `for_date`.
     """
@@ -233,9 +233,10 @@ def load_registered_backbone(model_id: str, device, compute_dtype: str = "float3
     """A registered encoder as the backbone, which is how the ablation is run.
 
     Beating `bge-small-en-v1.5` does not by itself show that finance pretraining helps, because our
-    model also gets a contrastive stage on in-domain pairs and trains on exactly the benchmark's task
-    while bge-small gets neither. Running this same stage, on these same pairs, from a general-domain
-    backbone with a known cutoff separates the three: ours against that isolates the pretraining, and
+    model also gets a contrastive stage on in-domain pairs and trains on exactly the benchmark's task,
+    while bge-small gets no in-domain pairs and no training on that task. Running this same stage, on
+    these same pairs, from a general-domain backbone with a known cutoff separates the three: ours
+    against that isolates the pretraining, and
     that against bge-small isolates the in-domain pairs.
 
     The backbone must be a `VINTAGE` entry, because the result has to carry a cutoff like ours does.
@@ -678,7 +679,7 @@ def train(mlm: str | None, pairs: str, cutoff: str | None = None,
         "total_steps": total_steps, "calls_per_batch": calls_per_batch,
         # The most anchors a batch can hold. A call with fewer pairs gives all it has, so the batch
         # actually drawn is smaller, and `mean_anchors_per_batch` in the final record says by how much
-        # (audit of 2026-10-13: 405 at the 2010 cutoff, about 368 at 2024).
+        # (measured: 405 at the 2010 cutoff, about 368 at 2024).
         "pairs_per_call": pairs_per_call, "anchors_per_batch": calls_per_batch * pairs_per_call,
         "microbatch": microbatch,
         "temperature": temperature, "peak_lr": peak_lr, "warmup_steps": warmup,
@@ -814,8 +815,7 @@ def export_hf(d: Path, model, tok, meta: dict) -> Path:
 
     The registry resolves a model by name to a source, and this is what makes `local:` sources work,
     so the trained vintages flow through the same embedding pass, benchmark and index as the
-    downloaded ones with no special case. It is also the releasable artifact: the corpus cannot be
-    redistributed but weights can.
+    downloaded ones with no special case.
     """
     out = d / "hf"
     out.mkdir(parents=True, exist_ok=True)

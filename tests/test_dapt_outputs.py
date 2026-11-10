@@ -5,10 +5,11 @@ finance domain from the 4.4x capacity and roughly 380x pretraining-volume advant
 backbone had (L15), so a run that stopped early, trained on the wrong vocabulary, or inherited the
 wrong cutoff answers a different question than the one asked and must fail rather than be reported.
 
-`RUN_DIR` holds one `task_<i>_run.json` per finished task, copied there by the command. The model
-itself stays in `data/processed/models/`, because the registry resolves a `local:` source by the
-registered name and a timestamped directory would break that contract. The copy is what makes this
-test possible without reaching into the canonical location.
+`RUN_DIR` holds one `task_<i>_run.json` per DAPT vintage, a copy of
+`data/processed/models/ecalls-dapt-<year>1231/_run.json` (the copies in this repository are under
+`runs/ecalls-dapt-<year>1231/`). The model itself stays in `data/processed/models/`, because the
+registry resolves a `local:` source by the registered name and a timestamped directory would break
+that contract.
 """
 import json
 import os
@@ -23,10 +24,12 @@ MLM_LOSS_CEILING = 6.0      # random guessing over a 50,368 vocabulary is about 
 # Skipped when RUN_DIR is absent, which is the ordinary local `pytest` run, and NOT skipped when it is
 # set to an empty directory, which is the case that must fail. The distinction matters: a file that
 # fails in the normal suite teaches everyone to read failures as noise, and a file that passes on an
-# empty run dir verifies nothing. `cluster_run.py verify` always sets RUN_DIR.
+# empty run dir verifies nothing. To verify a finished DAPT run, copy its three `_run.json` records
+# into one directory as `task_0_run.json` to `task_2_run.json` and set RUN_DIR to it.
 pytestmark = pytest.mark.skipif(
     "RUN_DIR" not in os.environ,
-    reason="verification for a cluster run; RUN_DIR is set by cluster_run.py verify")
+    reason="verification of a DAPT cluster run. Set RUN_DIR to a directory holding its records as "
+           "task_<i>_run.json (see the module docstring)")
 
 
 def records():

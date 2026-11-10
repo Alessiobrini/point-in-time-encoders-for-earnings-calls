@@ -15,12 +15,12 @@ set -euo pipefail
 # chrono-bert-v1), vintage 2012 + i % 13, embedding every in-index call from 2011 through the end of
 # the following year. The 2024 task covers every call and also serves the leaky variant.
 #
-# Time limit from a measurement: job 57904135 embedded 50,165 chunks in 2.5 min with ours and 3.5 min
+# Time limit from a measurement: a test job embedded 50,165 chunks in 2.5 min with ours and 3.5 min
 # with the 149 M models on a 2080 Ti. The largest task is about 1.0 M chunks, so about 70 min.
 
 ROOT=${ECALLS_ROOT:?set ECALLS_ROOT to your clone of this repository}
 PY=${ECALLS_PYTHON:-python}
-export ECALLS_DATA_ROOT=$ROOT/data PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
+export ECALLS_DATA_ROOT=${ECALLS_DATA_ROOT:-$ROOT/data} PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
 export TOKENIZERS_PARALLELISM=false PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 mkdir -p "$ROOT/logs"; cd "$ROOT"
 

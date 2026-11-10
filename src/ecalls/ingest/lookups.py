@@ -33,17 +33,16 @@ SPEAKER_TYPE = {
 # most common query against this corpus and every consumer would otherwise re-derive it slightly
 # differently.
 #
-# Measured over ALL 22,790,065 components on 2026-09-26, which corrects an earlier note here that
-# generalized from a 1,500-call sample: every one of the eight types occurs. Answer 10,320,503,
-# Question 7,371,495, Q&A Operator Message 3,016,161, Presenter Speech 1,586,663, Presentation
-# Operator Message 373,452, Unknown Q&A Message 118,372, Presentation Section 2,002, Q&A Section
-# 1,417. The sample contained none of the last three, which is why they were called unused.
+# Measured over ALL 22,790,065 components on 2026-09-26: every one of the eight types occurs. Answer
+# 10,320,503, Question 7,371,495, Q&A Operator Message 3,016,161, Presenter Speech 1,586,663,
+# Presentation Operator Message 373,452, Unknown Q&A Message 118,372, Presentation Section 2,002, Q&A
+# Section 1,417.
 #
-# The same note claimed the presentation section carries only Executives. It does not: 1,529,465
-# Executive turns, but also 34,418 Analysts, 21,354 Attendees, 1,313 Unknown Speaker and 101
-# Shareholders, plus about 58,000 turns across all sections with no speaker type at all. The mapping
-# itself is sound (zero unmapped types, zero null sections), and `tests/test_lookups.py` now checks
-# it against the corpus rather than against itself.
+# The presentation section is not executives only: 1,529,465 Executive turns, but also 34,418
+# Analysts, 21,354 Attendees, 1,313 Unknown Speaker and 101 Shareholders, plus about 58,000 turns
+# across all sections with no speaker type at all. The mapping itself is sound (zero unmapped types,
+# zero null sections), and `tests/test_lookups.py` checks it against the corpus rather than against
+# itself.
 SECTION = {
     1: "operator",
     2: "presentation",

@@ -1,6 +1,6 @@
 """Edge cases for the contrastive pairs.
 
-The two filters are what the methodology notes flag as easy to get wrong, because the pair construction
+The two filters are easy to get wrong, because the pair construction
 code is separate from the corpus filter: a pair from after the vintage's cutoff, or from a held-out call,
 both train a model on text it must not see, and both are invisible afterwards.
 """

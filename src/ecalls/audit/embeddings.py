@@ -1,10 +1,10 @@
 """Reconcile an embedding set against the chunk layer it was built from.
 
-The phase 1 lesson, applied to phase 3. `completeness.py` exists because a corpus that reconciles
-exactly can still sit behind a derived layer that quietly lost rows, and every silent loss in this
-project so far happened in a derived layer rather than in the pull. An embedding set is a derived
-layer written by sixteen concurrent tasks on a preemptible partition, which is the most likely place
-for the next one.
+The lesson of the corpus completeness audit, applied to the embedding layer. `completeness.py` exists
+because a corpus that reconciles exactly can still sit behind a derived layer that quietly lost rows,
+and every silent loss in this project so far happened in a derived layer rather than in the pull. An
+embedding set is a derived layer written by sixteen concurrent tasks on a preemptible partition, which
+is the most likely place for the next one.
 
 Every chunk is EMBEDDED or MISSING, and **MISSING is the gate: the target is zero.** A shard with no
 part file at all is reported as a whole missing shard rather than being skipped, because the failure

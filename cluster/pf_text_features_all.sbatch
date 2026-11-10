@@ -16,7 +16,7 @@ set -euo pipefail
 
 ROOT=${ECALLS_ROOT:?set ECALLS_ROOT to your clone of this repository}
 PY=${ECALLS_PYTHON:-python}
-export ECALLS_DATA_ROOT=$ROOT/data PYTHONPATH=$ROOT/src
+export ECALLS_DATA_ROOT=${ECALLS_DATA_ROOT:-$ROOT/data} PYTHONPATH=$ROOT/src
 mkdir -p "$ROOT/logs"; cd "$ROOT"
 
 I=${SLURM_ARRAY_TASK_ID:-0}

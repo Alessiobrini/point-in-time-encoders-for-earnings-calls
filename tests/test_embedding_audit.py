@@ -2,8 +2,8 @@
 
 The audit's job is to fail. A test suite that only builds a healthy embedding set and checks the audit
 says OK would pass against an audit that always says OK, which is the shape of the `integrity_check`
-defect found in phase 1: every check derived from the same glob, so a deleted shard was undetectable.
-So each test here breaks one thing and asserts the audit names that one thing.
+defect found in the corpus completeness audit: every check derived from the same glob, so a deleted
+shard was undetectable. So each test here breaks one thing and asserts the audit names that one thing.
 """
 import json
 
@@ -243,7 +243,7 @@ def test_a_vintage_is_audited_against_its_window_not_every_shard(layout, monkeyp
     expected ones."""
     v = _vintage("2015-03-31")
     monkeypatch.setattr(A.R, "load", lambda *a, **k: Registry([v]))
-    write_part("2015Q1", layout["2015Q1"])          # 2015Q2 is outside the window, deliberately absent
+    write_part("2015Q1", layout["2015Q1"])          # 2015Q2 is outside the window, absent on purpose
     df = A.run("stub-v1", extra_years=0)
     assert list(df["shard"]) == ["2015Q1"]
     assert int(df["n_missing"].sum()) == 0

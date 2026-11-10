@@ -36,7 +36,7 @@ from ecalls.train import pretrain as PT
 from ecalls.train import pretrain_data as PD
 from ecalls.train import tokenizer as TK
 
-MASK_SEED = 1234           # fixed, and deliberately not the training seed
+MASK_SEED = 1234           # fixed, and on purpose not the training seed
 EVAL_SEQUENCES = 20_000    # measured: the loss is stable to 1e-3 well below this, see the report
 BATCH = 16
 

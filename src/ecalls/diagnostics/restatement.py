@@ -4,7 +4,7 @@
 
 A later vintage never reads the held-out test call, but it reads the same firm's later calls, which
 can restate or update the answer to a test question. That is a direct leak of the answer. The rest of
-the premium would come from later text in general. The reviewer of 2026-10-14 asked which it is.
+the premium would come from later text in general, and this module measures the split.
 
 Almost every test firm has later calls in a later vintage's window (98% at the 2024 vintage), so
 splitting by whether it has any leaves an empty group. This splits instead by how closely the firm

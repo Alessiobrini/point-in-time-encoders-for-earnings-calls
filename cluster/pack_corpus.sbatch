@@ -17,7 +17,7 @@ set -euo pipefail
 
 ROOT=${ECALLS_ROOT:?set ECALLS_ROOT to your clone of this repository}
 PY=${ECALLS_PYTHON:-python}
-export ECALLS_DATA_ROOT=$ROOT/data PYTHONPATH=$ROOT/src TOKENIZERS_PARALLELISM=false
+export ECALLS_DATA_ROOT=${ECALLS_DATA_ROOT:-$ROOT/data} PYTHONPATH=$ROOT/src TOKENIZERS_PARALLELISM=false
 mkdir -p "$ROOT/logs"; cd "$ROOT"
 
 echo "host $(hostname)  cutoff ${CUTOFF:-2024-12-31}"

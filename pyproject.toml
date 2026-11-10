@@ -5,9 +5,9 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ecalls"
 version = "0.1.0"
-description = "Survivorship-bias-free earnings call transcript corpus from WRDS Capital IQ"
+description = "Point-in-time encoders for earnings calls: corpus, training, evaluation and paper exhibits"
 requires-python = ">=3.11"
-# Deliberately empty: the environment is built from environment.yml + requirements.txt, and
+# Empty on purpose: the environment is built from environment.yml + requirements.txt, and
 # `pip install -e . --no-deps` wires the package without touching it.
 dependencies = []
 

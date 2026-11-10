@@ -14,7 +14,7 @@ set -euo pipefail
 
 ROOT=${ECALLS_ROOT:?set ECALLS_ROOT to your clone of this repository}
 PY=${ECALLS_PYTHON:-python}
-export ECALLS_DATA_ROOT=$ROOT/data PYTHONPATH=$ROOT/src OMP_NUM_THREADS=4 MKL_NUM_THREADS=4
+export ECALLS_DATA_ROOT=${ECALLS_DATA_ROOT:-$ROOT/data} PYTHONPATH=$ROOT/src OMP_NUM_THREADS=4 MKL_NUM_THREADS=4
 mkdir -p "$ROOT/logs"; cd "$ROOT"
 TARGETS=(ret1d sue av)
 "$PY" -m ecalls.portfolio.knn --target "${TARGETS[${SLURM_ARRAY_TASK_ID:-0}]}" --universe "${UNIVERSE:-sp500}"

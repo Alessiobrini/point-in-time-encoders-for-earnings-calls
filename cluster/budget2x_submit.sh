@@ -11,6 +11,7 @@
 set -euo pipefail
 
 ROOT=${ECALLS_ROOT:?set ECALLS_ROOT to your clone of this repository}
+mkdir -p "$ROOT/logs"
 
 # AFTER makes the run wait for that job to succeed, for example a smoke test.
 dep=""

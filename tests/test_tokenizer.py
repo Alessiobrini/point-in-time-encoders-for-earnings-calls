@@ -1,6 +1,6 @@
 """Edge cases for the vintage tokenizer.
 
-The load-bearing property is the date restriction. A tokenizer carries no record of what text it saw,
+The essential property is the date restriction. A tokenizer carries no record of what text it saw,
 so fitting one on the full corpus would leak later vocabulary into every vintage built on it and
 nothing afterwards could detect it. That is checked here, along with the byte-level guarantee that
 gives this corpus no out-of-vocabulary tokens at all.
@@ -111,8 +111,9 @@ def test_the_post_processor_wraps_a_sequence_in_cls_and_sep(corpus):
 
 
 def test_digit_splitting_makes_numerically_similar_text_tokenize_consistently(corpus):
-    """Without it the tokenizer memorizes frequent numbers whole, so 2010 is one token and 2011 is
-    three, and figures that mean similar things fragment differently."""
+    """Without it the tokenizer fitted on calls through 2010 keeps frequent years whole: 2006, 2008, 2009,
+    2010 and 2015 are one token each, while 2019 and 2024 are two, so a model could date a text by how
+    its years split."""
     tok_split, tr = T.build(500, split_digits=True)
     tok_split.train_from_iterator(T.text_iter("2020-12-31"), trainer=tr)
     n = [len(tok_split.encode(str(y), add_special_tokens=False).ids) for y in (2010, 2011, 1997)]

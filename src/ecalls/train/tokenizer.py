@@ -70,10 +70,10 @@ def build(vocab_size: int = DEFAULT_VOCAB, split_digits: bool = True):
     appear constantly, and WordPiece would map the unseen ones to `[UNK]` and destroy them. ModernBERT
     makes the same choice.
 
-    `split_digits` puts every digit in its own token. Without it the tokenizer memorizes frequent
-    numbers as single tokens, so "2010" is one token and "2011" is three, which makes numerically
-    similar text tokenize inconsistently. Earnings calls are dense with figures, so the option is
-    measured rather than assumed, see `measure`.
+    `split_digits` puts every digit in its own token. Without it the tokenizer fitted on calls through
+    2010 keeps frequent years as single tokens: 2006, 2008, 2009, 2010 and 2015 are one token each,
+    while 2019 and 2024 are two, so a model could date a text by how its years split. Earnings calls
+    are dense with figures, so the option is measured rather than assumed, see `measure`.
     """
     from tokenizers import Tokenizer, decoders, models, pre_tokenizers, trainers
 

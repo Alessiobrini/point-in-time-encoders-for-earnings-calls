@@ -13,8 +13,8 @@ def test_every_component_type_has_a_section():
 
 
 def test_the_section_mapping_is_what_we_intend():
-    """A change-detector on the constant, named honestly. The real validation against the corpus is
-    `test_section_mapping_against_the_corpus` below, and against the live WRDS lookup tables it is
+    """A change-detector on the constant, named for what it checks. The real validation against the
+    corpus is `test_section_mapping_against_the_corpus` below, and against the live WRDS lookup tables it is
     `verify_measurements.check_lookups`. An earlier version of this test claimed to be 'measured over
     1,500 calls' while reading no data at all."""
     assert SECTION[1] == "operator"        # Presentation Operator Message

@@ -19,7 +19,7 @@ backstop.
 
 | Artifact | WRDS source | Coverage | Access |
 | --- | --- | --- | --- |
-| `universe/sp500_membership.parquet` | `crsp.dsp500list_v2` | 2,084 spells, 1,956 permnos, horizon 2025-12-31 | SQLAlchemy over psycopg2, credentials from `~/.pgpass` |
+| `universe/sp500_membership.parquet` | `crsp.dsp500list_v2` | 2,084 spells, 1,956 permnos, horizon 2025-12-31 | psycopg2, credentials from `~/.pgpass` |
 | `universe/_unlinked_permnos.csv` | derived | the 9 index permnos with no usable CCM link | computed |
 | `ciq/transcript_index.parquet` | `ciq_transcripts.wrds_transcript_detail` | 1,311,639 earnings-call transcript versions, 412,255 calls | filtered on `keydeveventtypeid = 48` |
 | `ciq/lengths/lengths_<year>.parquet` | `ciq_transcripts.ciqtranscriptcomponent` | 1,305,765 rows | server-side `count(*)` and `sum(length(componenttext))`, so the text crosses the wire once |

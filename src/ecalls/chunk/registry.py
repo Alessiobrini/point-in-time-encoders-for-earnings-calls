@@ -135,12 +135,10 @@ class Registry:
         before it. Raises rather than falling back, and never returns an atemporal model.
 
         `family` is a `model_id` prefix and is required once two vintages share the winning cutoff.
-        That became the normal case on 2026-10-01: this project's own fifteen retrievers have cutoffs
-        2010 to 2024, exactly matching fifteen ChronoBERT checkpoints. Before then every cutoff had
-        one model and the resolver could return the last eligible entry, which with ties means
-        whichever sorted last.
+        Ties are the normal case: this project's fifteen retrievers have cutoffs 2010 to 2024,
+        exactly matching fifteen ChronoBERT checkpoints.
 
-        Phase 5's whole design is our vintage against ChronoBERT's checkpoint of the same year, so a
+        The main comparison sets our vintage against ChronoBERT's checkpoint of the same year, so a
         resolver that silently picks one of them would decide the comparison by sort order. Refusing
         is consistent with the other three refusals above: each exists because the point-in-time
         discipline otherwise fails quietly instead of loudly.

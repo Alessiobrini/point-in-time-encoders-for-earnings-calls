@@ -6,5 +6,15 @@ polars>=1.0
 duckdb>=1.0
 numpy>=1.26
 
+# --- models, retrieval and exhibits ---
+torch==2.14.0
+transformers==5.17.0
+tokenizers==0.23.2
+huggingface_hub==1.33.0
+scikit-learn==1.9.1
+scipy==1.17.1
+lancedb==0.39.0
+matplotlib==3.11.2
+
 # --- dev ---
 pytest>=8.0

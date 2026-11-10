@@ -3,8 +3,8 @@
 Three properties matter, and each one corresponds to a way this stage can quietly ruin the vintage set.
 
 **The window is enforced here.** Only shards ending on or before the cutoff are read, so a vintage
-cannot be pretrained on text from after its own cutoff. Section 5 of the methodology notes flags this as
-easy to get wrong because the packing code is separate from the corpus filter.
+cannot be pretrained on text from after its own cutoff. This is easy to get wrong, because the packing
+code is separate from the corpus filter.
 
 **Sequences never cross a call boundary.** Packing runs within one `keydevid` and starts a new sequence
 at the next call. Crossing the boundary would teach the model associations between unrelated companies
@@ -144,7 +144,7 @@ def pack_window(cutoff: str, tokenizer_name: str, context: int = CONTEXT,
                 # Held-out calls are excluded from masked language modeling as well as from the
                 # contrastive stage. A model that has seen a call's exact text can memorize it, and the
                 # retrieval benchmark draws its queries from those same calls, so training on them would
-                # inflate the one number Phase 4 steers by.
+                # inflate the retrieval benchmark score.
                 keep = [k for k in df["keydevid"].unique().to_list()
                         if HO.is_holdout(k, holdout_fraction, holdout_salt) == holdout_only]
                 n_held += df["keydevid"].n_unique() - len(keep)

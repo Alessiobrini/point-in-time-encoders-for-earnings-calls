@@ -17,8 +17,8 @@ INDEX_DIR = DATA_ROOT / "index"
 
 # Measurement output, which is **not** under DATA_ROOT. Reports are written for people, they are
 # small, and they are the one thing here worth committing, while everything under DATA_ROOT is
-# licensed or regenerable and git-ignored. A measurement that landed in `data/processed/` was neither
-# committed nor picked up by the cluster sync, so it existed only on whichever machine produced it.
+# licensed or regenerable and git-ignored. A measurement written to `data/processed/` was not
+# committed or copied to the cluster, so it existed only on whichever machine produced it.
 REPORTS_DIR = PROJECT_ROOT / "reports"
 # Copies of the models' `_run.json` training records, shipped with the code so the paper's tables
 # regenerate on a machine that holds no model.
@@ -60,7 +60,7 @@ REVISIONS_LOG = PROCESSED_DIR / "revisions.csv"
 # JSONL, not CSV: each stage records a different set of fields, and a single CSV header
 # cannot describe rows of 6, 7, 8 and 9 columns. One self-describing object per line.
 MANIFEST = RAW_DIR / "_manifest.jsonl"
-MANIFEST_LEGACY_CSV = RAW_DIR / "_manifest.csv"
+MANIFEST_LEGACY_CSV = RAW_DIR / "_manifest_legacy.csv"
 
 
 def lengths_shard(year: int) -> Path:

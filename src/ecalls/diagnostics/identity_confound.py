@@ -1,4 +1,4 @@
-"""Phase 2, diagnostic 1: do call representations encode the company more than the quarter?
+"""Identity diagnostic: do call representations encode the company more than the quarter?
 
 Yu (Ding), Liu and He (arXiv 2412.18029, ACL Findings 2025) report that "current transcript
 representations predominantly capture ticker identity rather than offering financially meaningful

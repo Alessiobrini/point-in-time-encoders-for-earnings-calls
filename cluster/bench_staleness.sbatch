@@ -9,15 +9,16 @@
 #SBATCH --error=logs/bstale_%A_%a.out
 set -euo pipefail
 
-# Staleness on a fixed window, PALM's question for retrievers: every from-scratch vintage 2010 to 2023
-# (tasks 0 to 13) and every chained vintage 2011 to 2023 (tasks 14 to 26) on the 2025Q2 held-out
-# questions at evaluation seed 0, so each pairs question by question with the 2024 vintages already
-# scored there. The chain's 2010 member is ecalls-ret-20101231. CPU, as for bench_chain.sbatch.
+# Staleness on a fixed window, the question Lee et al. (2026, PALM, arXiv:2609.30316) ask of decoders,
+# asked here of retrievers: every from-scratch vintage 2010 to 2023 (tasks 0 to 13) and every chained
+# vintage 2011 to 2023 (tasks 14 to 26) on the 2025Q2 held-out questions at evaluation seed 0, so each
+# pairs question by question with the 2024 vintages already scored there. The chain's 2010 member is
+# ecalls-ret-20101231. CPU, as for bench_chain.sbatch.
 # Summarize with `python -m ecalls.diagnostics.seed_summary --staleness`.
 
 ROOT=${ECALLS_ROOT:?set ECALLS_ROOT to your clone of this repository}
 PY=${ECALLS_PYTHON:-python}
-export ECALLS_DATA_ROOT=$ROOT/data PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
+export ECALLS_DATA_ROOT=${ECALLS_DATA_ROOT:-$ROOT/data} PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
 export TOKENIZERS_PARALLELISM=false OMP_NUM_THREADS=4 MKL_NUM_THREADS=4
 mkdir -p "$ROOT/logs" "$ROOT/reports/seeds"; cd "$ROOT"
 

@@ -15,8 +15,8 @@ set -euo pipefail
 #
 # Our vintages beat bge-small by +0.1893 within-call recall@1 across all fifteen quarters. That does
 # not show finance pretraining helps, because our model also got a contrastive stage on in-domain
-# pairs and trained on exactly the benchmark's task, while bge-small got neither. Three effects are
-# stacked and the measurement cannot separate them.
+# pairs and trained on exactly the benchmark's task, while bge-small got no in-domain pairs and no
+# training on that task. Three effects are stacked and the measurement cannot separate them.
 #
 # This runs the identical contrastive stage, on the identical pairs, with the identical batch, from
 # ChronoBERT's checkpoint of the same year: general-domain pretraining with a known cutoff. Then
@@ -30,7 +30,7 @@ set -euo pipefail
 
 ROOT=${ECALLS_ROOT:?set ECALLS_ROOT to your clone of this repository}
 PY=${ECALLS_PYTHON:-python}
-export ECALLS_DATA_ROOT=$ROOT/data PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
+export ECALLS_DATA_ROOT=${ECALLS_DATA_ROOT:-$ROOT/data} PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
 export TOKENIZERS_PARALLELISM=false PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 mkdir -p "$ROOT/logs"; cd "$ROOT"
 

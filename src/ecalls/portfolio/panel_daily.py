@@ -22,6 +22,7 @@ AMEX or Nasdaq at the reference close, a reference close below $5, or a window p
 
     python -m ecalls.portfolio.panel_daily
 """
+import argparse
 import datetime as dt
 
 import numpy as np
@@ -163,6 +164,7 @@ def build(calls: pl.DataFrame, crsp: pl.DataFrame, ff: pl.DataFrame) -> tuple[pl
 
 
 def main() -> int:
+    argparse.ArgumentParser(description=__doc__.splitlines()[0]).parse_args()
     import json
 
     from ecalls.ingest import manifest as M

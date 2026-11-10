@@ -11,10 +11,11 @@ When a call resolves to more than one permno, the primary link (`linkprim` P bef
 Capital IQ `primaryflag`) wins and the call is flagged, so the fan-out is visible rather than collapsed
 silently.
 
-Runs on the Mac, where the WRDS credential lives:
+Runs on a machine with WRDS access:
 
     python -m ecalls.ingest.link_all
 """
+import argparse
 import datetime as dt
 
 import polars as pl
@@ -73,6 +74,7 @@ def fetch(companyids: list[int]) -> tuple[pl.DataFrame, pl.DataFrame]:
 
 
 def main() -> int:
+    argparse.ArgumentParser(description=__doc__.splitlines()[0]).parse_args()
     calls = pl.read_parquet(P.CALLS, columns=["keydevid", "companyid", "call_date"]).with_columns(
         pl.col("call_date").cast(pl.Date), pl.col("companyid").cast(pl.Int64)).filter(
         pl.col("call_date") >= FIRST_CALL)

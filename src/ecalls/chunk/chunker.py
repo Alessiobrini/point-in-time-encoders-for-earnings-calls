@@ -1,4 +1,4 @@
-"""Phase 3: turn components into retrieval chunks.
+"""Turn components into retrieval chunks.
 
 Three properties this is built around.
 

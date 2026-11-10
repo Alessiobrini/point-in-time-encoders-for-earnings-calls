@@ -144,8 +144,8 @@ def _two_families():
 
 
 def test_a_tied_cutoff_is_refused_rather_than_resolved_by_sort_order():
-    """Phase 5 compares our vintage against ChronoBERT's checkpoint of the same year, so both have
-    the same cutoff. Returning the last eligible entry would let the registry pick the winner."""
+    """The main comparison sets our vintage against ChronoBERT's checkpoint of the same year, so both
+    have the same cutoff. Returning the last eligible entry would let the registry pick the winner."""
     reg = _two_families()
     with pytest.raises(LookupError, match="share the cutoff"):
         reg.for_date("2016-03-15")

@@ -41,7 +41,7 @@ RV_WEEK, RV_YEAR = (-6, -2), (-252, -22)
 MIN_RV_DAYS = 15
 RV_FLOOR = 1e-12
 PANEL_PATH = P.PROCESSED_DIR / "pf_panel.parquet"
-# D28 amendment of 2026-10-09: D26's target and baselines on the full linked universe's events.
+# D28: D26's target and baselines on the full linked universe's events.
 PANEL_QUARTER = P.PROCESSED_DIR / "pf_panel_quarter.parquet"
 CRSP_SP500 = P.RAW_DIR / "crsp" / "dsf_v2_*.parquet"
 CRSP_ALL = P.RAW_DIR / "crsp_all" / "dsf_v2_*.parquet"

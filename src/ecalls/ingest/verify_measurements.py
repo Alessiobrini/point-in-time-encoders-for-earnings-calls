@@ -4,7 +4,7 @@ Every number in `constants.MEASURED_2026_09_18` came from a live query on 2026-0
 decision rests on it. WRDS changes under us, so these are re-measured rather than trusted, with
 tolerances where drift is expected and exact equality where a change would invalidate a decision.
 
-The queries here reproduce the ORIGINAL measurements, which means they deliberately do NOT apply the
+The queries here reproduce the ORIGINAL measurements, so by design they do NOT apply the
 date-window intersection the real link stage applies. The pipeline gets 985 permnos and 990
 companyids because it intersects link validity with membership spells, and the pinned 987 and 1,025
 are the un-intersected counts. Both are correct and they answer different questions, so this harness

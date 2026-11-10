@@ -2,7 +2,7 @@
 
 Three tables and the registry. Paths resolve from `$ECALLS_DATA_ROOT`, default `<repo>/data`.
 
-## `processed/calls.parquet` — one row per call (412,255)
+## `processed/calls.parquet`: one row per call (412,255)
 
 | Variable | Definition | Units | Source |
 | --- | --- | --- | --- |
@@ -23,7 +23,7 @@ Three tables and the registry. Paths resolve from `$ECALLS_DATA_ROOT`, default `
 | `suspect_short`, `suspect_long` | Flags at 5,000 and 300,000 characters. Descriptive, never filters. | bool | derived |
 | `shard`, `pull_ts`, `git_sha`, `cleaning_version`, `rule_version` | Provenance. | text | derived |
 
-## `processed/components.parquet` — one row per speaker turn (22,790,065)
+## `processed/components.parquet`: one row per speaker turn (22,790,065)
 
 | Variable | Definition | Units | Source |
 | --- | --- | --- | --- |
@@ -37,7 +37,7 @@ Three tables and the registry. Paths resolve from `$ECALLS_DATA_ROOT`, default `
 | `n_chars` | `len(text)`. Zero on the 438 rows whose source text is NULL. | count | derived |
 | `text_sha1` | SHA1 of the normalized text. Cache key for the chunk layer. | hex | derived |
 
-## `processed/chunks/chunks_<YYYY>Q<Q>.parquet` — one row per retrieval chunk (12,102,243)
+## `processed/chunks/chunks_<YYYY>Q<Q>.parquet`: one row per retrieval chunk (12,102,243)
 
 | Variable | Definition | Units | Source |
 | --- | --- | --- | --- |
@@ -45,14 +45,14 @@ Three tables and the registry. Paths resolve from `$ECALLS_DATA_ROOT`, default `
 | `component_ids` | The components this chunk draws on, in order. Exact provenance. | list of id | derived |
 | `char_start`, `char_end` | Offsets into those components joined by a single newline. **`text` equals that join sliced by these offsets**, which is the reconstruction invariant. | count | derived |
 | `text`, `n_chars` | The chunk and its length. Mean 1,293 characters. | text, count | derived |
-| `n_tokens_est` | `n_chars / 4.703`. **An estimate**, from a measured rate (G1). | count | derived |
+| `n_tokens_est` | `n_chars / 4.703`. **An estimate**, from a measured rate of 4.703 characters per token. | count | derived |
 | `section`, `speaker_name`, `speaker_type` | Copied down for pre-filtered search. `speaker_type` reads "Mixed" when the chunk spans roles, which a question-and-answer chunk does by design. | text | derived |
 | `keydevid`, `companyid`, `permno`, `call_date`, `in_index_at_call` | Filter columns copied from `calls.parquet` so retrieval needs no join. | mixed | join |
 | `source_sha1` | SHA1 over the contributing `text_sha1` values. Invalidates an embedding when the source text changes. | hex | derived |
 | `chunker_version` | `qa-pair-v2`. A bump changes every `chunk_id`. | text | derived |
 
-## `registry/embeddings.json` — tracked in git, not under `data/`
+## `registry/embeddings.json`: tracked in git, not under `data/`
 
 One entry per embedding set: `model_id`, `kind` (`vintage` or `atemporal`), `training_cutoff`, `dim`,
 `pooling`, `normalized`, `source`, and notes. Resolved by date or by name through
-`ecalls.chunk.registry`, never by a supplied path. Currently the 26 ChronoBERT vintages, 1999 to 2024.
+`ecalls.chunk.registry`, never by a supplied path. It holds 106 entries: the 26 ChronoBERT vintages (1999 to 2024), 74 vintages of the models trained here (the ret, abl, chain and rpl families, their seed replicates, and the dapt and 2x comparisons), and six atemporal baselines (five general-purpose retrievers and FinBERT).

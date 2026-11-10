@@ -2,7 +2,7 @@
 
 Its whole value is stability. A split that moves between processes or between vintages would let a call
 be trained on in one run and evaluated in the next, and the contamination would look like success on the
-one number Phase 4 steers by.
+retrieval benchmark score.
 """
 import subprocess
 import sys

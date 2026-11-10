@@ -8,6 +8,7 @@ more fragile than pinning an integer.
 Run:
     python -m ecalls.ingest.check_wrds_access
 """
+import argparse
 import json
 import sys
 
@@ -19,6 +20,7 @@ PROBE_TABLES = [
     C.TBL_DETAIL, C.TBL_COMPONENT, C.TBL_COMPONENT_TYPE, C.TBL_SPEAKER_TYPE,
     C.TBL_PERSON, C.TBL_WRDS_PERSON, C.TBL_GVKEY_LINK,
     C.TBL_SP500_CRSP, C.TBL_SP500_COMP, C.TBL_CCM_LINK,
+    "crsp.dsf_v2", "crsp.stocknames", "comp.fundq", "ff.factors_daily", "ff.fivefactors_daily",
 ]
 
 
@@ -44,6 +46,7 @@ def earnings_event_type_ids(cur) -> list[int]:
 
 
 def main() -> int:
+    argparse.ArgumentParser(description=__doc__.splitlines()[0]).parse_args()
     P.ensure_dirs()
     conn = connect()
     cur = conn.cursor()

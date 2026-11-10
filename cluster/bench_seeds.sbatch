@@ -17,14 +17,14 @@ set -euo pipefail
 #
 # Seed 0 redraws the calls the canonical comparison used, so its tfidf, bm25, dense and hybrid numbers
 # must equal reports/cmp_*_holdout.json exactly. That is the check that this run measures the same
-# thing. Outputs go to reports/seeds/ and never to the canonical names, which the paper reads.
+# thing. Outputs go to reports/seeds/, which the paper's exhibits read, and never overwrite the canonical names.
 #
 # The ranks are identifiers and integers only, kept under DATA_ROOT because they are large. The call,
 # not the question, is the unit a bootstrap resamples, so each file carries the question's call.
 
 ROOT=${ECALLS_ROOT:?set ECALLS_ROOT to your clone of this repository}
 PY=${ECALLS_PYTHON:-python}
-export ECALLS_DATA_ROOT=$ROOT/data PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
+export ECALLS_DATA_ROOT=${ECALLS_DATA_ROOT:-$ROOT/data} PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
 export TOKENIZERS_PARALLELISM=false PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 mkdir -p "$ROOT/logs"; cd "$ROOT"
 mkdir -p "$ROOT/reports/seeds"

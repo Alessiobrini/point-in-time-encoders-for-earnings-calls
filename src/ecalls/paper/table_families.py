@@ -51,17 +51,17 @@ def rows(facts: dict, chain: dict[int, int]) -> list[list[str] | str]:
     out.append(["Ours, twice the tokens", p, d, "calls", "2.4B", "BPE, 2010 calls", "call pairs", "2024"])
     # replay Y reads as many tokens as chained segment Y+1, for Y from 2010 to 2023
     seg = [(chain[y + 1] - chain[y]) / 1e9 for y in range(2010, 2024)]
-    out.append(["Ours, replay control", p, d, "calls", f"{min(seg):.2f}B to {max(seg):.2f}B", "BPE, 2010 calls",
+    out.append(["Ours, replay control", p, d, "calls", f"+{min(seg):.2f}B to +{max(seg):.2f}B", "BPE, 2010 calls",
                 "call pairs", "2010 to 2023"])
     return out
 
 
 def render(body: list[list[str] | str]) -> str:
     head = ("Model", "Params (M)", "Dim.", "Pretraining text", "Tokens", "Tokenizer", "Fine-tuning", "Cutoff")
-    lines = [r"\begin{table*}[t]", r"\centering", r"\footnotesize", r"\setlength{\tabcolsep}{3pt}",
+    lines = [r"\begin{table*}[t]", r"\centering", r"\footnotesize", r"\setlength{\tabcolsep}{2.7pt}",
              r"\caption{Retrievers and encoders compared. Parameters count the encoder body as loaded for the "
              r"benchmark, and Dim.\ is the embedding dimension. Tokens are the tokens read in "
-             r"pretraining, and every from-scratch vintage reads the same 1.2B whatever the size of its window. For our yearly families the range runs from the 2010 vintage to the 2024 one, and for ChronoBERT from its 1999 base, where its chain starts, to its 2024 vintage. "
+             r"pretraining, and every from-scratch vintage reads the same 1.2B, independently of the size of its window. For our yearly families the range runs from the 2010 vintage to the 2024 one, and for ChronoBERT from its 1999 base, where its chain starts, to its 2024 vintage. "
              r"FinBERT's entry is the size of its corpus, since the tokens it read are not stated. Contrastive "
              r"fine-tuning trains on question-answer pairs from trainable calls dated on or before each "
              r"vintage's cutoff. The replay control continues chained vintage $Y$ on its own last year for as "

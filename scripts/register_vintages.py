@@ -6,8 +6,8 @@ before `d`, `index.check_point_in_time` refuses a query whose model is too new, 
 loads the exported weights through a `local:` source. None of that works from a path.
 
 Every field is read from the model's own `_run.json` rather than passed in, so a mismatch between
-what was trained and what is registered cannot be introduced here. The cutoff most of all: it was
-already wrong once, when the trainer recorded the packed corpus's cutoff instead of the vintage's.
+what was trained and what is registered cannot be introduced here. The cutoff most of all, since the
+packed corpus's cutoff differs from the vintage's.
 
 Run on the cluster, where the models are:
     PYTHONPATH=src python3 scripts/register_vintages.py [--apply] [--stage contrastive]

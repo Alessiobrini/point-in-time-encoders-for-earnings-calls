@@ -2,8 +2,8 @@
 
 Three properties matter beyond "it trains".
 
-**The budget is in tokens, identical for every vintage.** Section 5 item 2 forbids training a later
-vintage longer because it had more text, since that confounds data volume with training length. So every
+**The budget is in tokens, identical for every vintage.** A later vintage is never trained longer because
+it had more text, since that confounds data volume with training length. So every
 vintage sees the same token count and the later ones see a smaller fraction of their own corpus: at a 1.2 B
 budget the 2010 vintage makes four passes over its 0.303 B tokens while the 2024 vintage covers about a
 third of its corpus once.
@@ -46,7 +46,7 @@ REPLACE_RANDOM = 0.10    # replaced by a random token; the remaining 10% are lef
 MODELS_DIR = P.PROCESSED_DIR / "models"
 
 
-# The real hyperparameter is tokens per step, which section 5 requires identical across vintages because
+# The real hyperparameter is tokens per step, which must be identical across vintages because
 # it is what the gradient is computed over. The microbatch is not a hyperparameter, it is how many
 # sequences fit on whichever card scavenger allocated, and accumulation makes up the difference. Holding
 # tokens per step fixed while varying the microbatch gives the same result on a 10 GB card and a 49 GB one.
@@ -71,7 +71,7 @@ def auto_microbatch(device: str, context: int, target_tokens: int = TOKENS_PER_S
     gb = gpu_memory_gb(device)
     cap = target_tokens // context
     if not gb:
-        return min(8, cap)                       # CPU or MPS: small, since neither is used for a real run
+        return min(8, cap)                       # CPU or MPS: small, since no real run uses either
     want = max(1, min(int(gb * SEQ_PER_GB), MAX_MICROBATCH, cap))
     mb = 1
     while mb * 2 <= want:
@@ -402,7 +402,7 @@ def check_borrowed_tokenizer(tokenizer_name: str, vintage_cutoff: str, backbone:
 
     The packer checks a borrowed tokenizer's cutoff against the cutoff it packs at, but one packed
     corpus serves every vintage as a prefix, so a corpus packed at 2024 with ChronoBERT's 2024
-    vocabulary reached the 2010 and 2017 DAPT runs without any check (audit of 2026-10-13). A later
+    vocabulary reached the 2010 and 2017 DAPT runs without any check. A later
     vocabulary could carry later text. It is allowed only when its serialization is identical to the
     vocabulary of the backbone, whose cutoff `train` already requires to equal the vintage's, so every
     text gets the ids it would have had at the time. Returns the fields for the run record.

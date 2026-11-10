@@ -1,9 +1,8 @@
 """Measure embedding throughput under several batching configurations on one shard.
 
-Why this exists as its own module rather than a one-off script: the batching choice is remeasured at
-every phase, because Phase 5 embeds 17 expanding vintages over roughly 111 M chunk-embeddings and the
-hardware on `scavenger-gpu` is whatever the preemption gods hand out. A configuration that was right
-on an A5000 is not automatically right on a 2080 or a 6000 Ada.
+It is its own module rather than a one-off script because the batching choice is remeasured on each
+GPU type. The hardware on `scavenger-gpu` is whatever GPU the preemptible partition allocates, and a
+configuration that was right on an A5000 is not automatically right on a 2080 or a 6000 Ada.
 
 It reports the **marginal** rate on a stratified sample rather than a cumulative rate over a
 length-sorted shard. The cumulative figure on this corpus decays from 979 to 143 chunk/s across one

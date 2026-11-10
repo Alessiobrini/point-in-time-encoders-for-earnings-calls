@@ -1,8 +1,4 @@
-"""Provenance and atomic-write helpers, shared by every stage.
-
-tsfmvol copy-pastes these into three ingest modules and the copies have drifted, so they are
-single-sourced here.
-"""
+"""Provenance and atomic-write helpers, shared by every stage."""
 import datetime as dt
 import json
 import os
@@ -21,7 +17,7 @@ def utc_now() -> str:
     return dt.datetime.now(dt.timezone.utc).isoformat()
 
 
-SHA_FILE = ".git_sha"   # written by cluster/sync_to_dcc.sh, read where there is no git checkout
+SHA_FILE = ".git_sha"   # written by whatever copies the code to a machine without a git checkout
 
 
 def git_sha() -> str:
@@ -30,8 +26,8 @@ def git_sha() -> str:
     The cluster copy is an rsync of `src/`, not a clone, so `git rev-parse` fails there and every
     manifest row and parquet sidecar written on a compute node recorded `unknown`. That defeats the
     purpose of the field, since the embeddings are exactly the artifacts whose provenance matters
-    most. `cluster/sync_to_dcc.sh` now writes the sha it pushed into `<root>/.git_sha`, and this reads
-    it when git is unavailable.
+    most. A deployment that copies `src/` without `.git` should write the commit sha into
+    `<root>/.git_sha`, and this reads it when git is unavailable.
     """
     try:
         return subprocess.check_output(
@@ -61,7 +57,7 @@ def atomic_write_table(table, path: Path) -> None:
     array put three tasks on the same shard at once: they interleaved their writes into one temp file
     and the first rename could have moved a corrupt file into place, while the others failed with
     `FileNotFoundError` on a temp file that was no longer there. A per-writer name makes concurrent
-    writers merely redundant instead of destructive, since each one renames a file only it wrote.
+    writers only redundant instead of destructive, since each one renames a file only it wrote.
 
     This is the one atomic-write path in the package. `atomic_write_parquet` converts a frame and
     routes through here, so the rename semantics cannot drift between callers.
@@ -92,10 +88,10 @@ def temp_sibling(path: Path) -> Path:
 def claim_dir(d: Path, stale_after: int = 1800, label: str = "") -> Path:
     """Refuse to start if another live process is already writing this directory.
 
-    Written after two identical SLURM arrays, 57156367 and 57156375, ran concurrently over the same
-    fifteen model directories because a submission that looked like it had not happened had. The
-    per-writer temp name keeps a single *file* from being spliced, but nothing stopped two trainers
-    from taking turns on one model, and the result is weights that belong to neither run.
+    Written after two identical SLURM arrays ran concurrently over the same fifteen model directories
+    because a submission that looked like it had not happened had. The per-writer temp name keeps a
+    single *file* from being spliced, but nothing stopped two trainers from taking turns on one model,
+    and the result is weights that belong to no single run.
 
     The lock carries host, pid and SLURM job id so a stale one names what left it. It is treated as
     stale after `stale_after` seconds without a refresh, because a preempted scavenger task cannot
@@ -121,7 +117,7 @@ def claim_dir(d: Path, stale_after: int = 1800, label: str = "") -> Path:
                 f"{other.get('pid')} (SLURM {other.get('slurm_job')}"
                 f"{'_' + other['slurm_array_task'] if other.get('slurm_array_task') else ''}), "
                 f"last refreshed {age:.0f}s ago. Two trainers on one model directory produce weights "
-                f"that belong to neither run. Cancel one, or wait {stale_after - age:.0f}s if that "
+                f"that belong to no single run. Cancel one, or wait {stale_after - age:.0f}s if that "
                 "job is gone.")
     f.write_text(json.dumps(me, indent=2) + "\n")
     return f

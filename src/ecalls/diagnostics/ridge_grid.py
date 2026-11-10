@@ -1,4 +1,4 @@
-"""Does the ridge penalty grid's ceiling change the forecasts? A check from the code audit of 2026-10-13.
+"""Does the ridge penalty grid's ceiling change the forecasts?
 
     python -m ecalls.diagnostics.ridge_grid [--targets ret1d o2c sue]
 

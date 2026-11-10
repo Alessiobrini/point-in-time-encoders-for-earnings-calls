@@ -20,14 +20,14 @@ set -euo pipefail
 # masked language modeling array. `--cutoff` is what restricts a task to its own window, and the trainer
 # refuses a backbone whose recorded cutoff disagrees with it.
 #
-# The held-out pair set supplies the progress check, so a task reports the number Phase 4 steers by as
+# The held-out pair set supplies the progress check, so a task reports the retrieval benchmark score as
 # it runs rather than only at the end. The trainer refuses a training set in that slot.
 #
 # Requeue-safe: the checkpoint carries the optimizer, the gradient scaler and the call sampler.
 
 ROOT=${ECALLS_ROOT:?set ECALLS_ROOT to your clone of this repository}
 PY=${ECALLS_PYTHON:-python}
-export ECALLS_DATA_ROOT=$ROOT/data PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
+export ECALLS_DATA_ROOT=${ECALLS_DATA_ROOT:-$ROOT/data} PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
 export TOKENIZERS_PARALLELISM=false PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 mkdir -p "$ROOT/logs"; cd "$ROOT"
 

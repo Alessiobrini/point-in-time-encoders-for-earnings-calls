@@ -233,10 +233,11 @@ def lookahead_summary(n_boot: int = 2000) -> dict:
     """The look-ahead premium in retrieval: a later vintage against the point-in-time one, per quarter.
 
     For quarter (Y+1)Q2 the point-in-time retriever is vintage Y. The leaky one is the 2024 vintage and
-    the adjacent one is vintage Y+1, the JFE paper's cleanest test. All are scored on the same held-out
-    questions at evaluation seed 0, so the difference is paired question by question and the bootstrap
-    resamples calls. Held-out calls were never trained on by any vintage, so a later vintage can only
-    know the rest of the quarter's calls, the language after it, and what followed.
+    the adjacent one is vintage Y+1, the cleanest test of He, Lv, Manela and Wu (JFE 2026). All are
+    scored on the same held-out questions at evaluation seed 0, so the difference is paired question by
+    question and the bootstrap resamples calls. Held-out calls were never trained on by any vintage, so
+    a later vintage can only know the rest of the quarter's calls, the language after it, and what
+    followed.
     """
     out = {"years": list(LOOKAHEAD_YEARS), "families": {}}
     for fam in LOOKAHEAD_FAMILIES:
@@ -536,10 +537,10 @@ STALENESS_QUARTER_YEAR = 2024          # quarter 2025Q2, after every cutoff
 def staleness_summary(n_boot: int = 2000) -> dict:
     """Every vintage on one quarter after all cutoffs, against its family's 2024 vintage.
 
-    PALM's question for retrievers: on a fixed window, does an older vintage score worse? Each
-    vintage Y is paired question by question with the same family's 2024 vintage on 2025Q2, so the
-    difference is what Y's staleness (2024 minus Y years) costs. The slope of that difference on
-    staleness is fitted by least squares over the vintages.
+    The question Lee et al. (2026, PALM, arXiv:2609.30316) ask of decoders, asked here of retrievers:
+    on a fixed window, does an older vintage score worse? Each vintage Y is paired question by question
+    with the same family's 2024 vintage on 2025Q2, so the difference is what Y's staleness (2024 minus Y
+    years) costs. The slope of that difference on staleness is fitted by least squares over the vintages.
     """
     y0 = STALENESS_QUARTER_YEAR
     out = {"quarter": shard_of(y0), "families": {}}

@@ -109,8 +109,6 @@ def load_candidates(allow_missing: bool = False) -> pd.DataFrame:
     # This inner join is where a gap in the length shards vanishes. Affected calls never reach
     # version_choice.parquet, so pull_components never pulls them, and completeness reports
     # UNEXPLAINED = 0 because it compares against version_choice itself. Silent end to end.
-    # An earlier version of this function printed a note here; the note was deleted by accident when
-    # the parent/subsidiary dedup below was added, so for a while there was no signal at all.
     missing = len(idx) - len(merged)
     if missing:
         if not allow_missing:

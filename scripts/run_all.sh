@@ -13,6 +13,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PY=${ECALLS_PYTHON:-python}
 cd "$ROOT"
+D="${ECALLS_DATA_ROOT:-$ROOT/data}"
 
 ONLY=""; FULL=0
 while [[ $# -gt 0 ]]; do
@@ -38,15 +39,15 @@ stage() {
   return 0
 }
 
-if stage probe        data/raw/wrds_access_probe.json;             then $PY -m ecalls.ingest.check_wrds_access; fi
+if stage probe        "$D/raw/wrds_access_probe.json";             then $PY -m ecalls.ingest.check_wrds_access; fi
 if stage verify       "";                                         then $PY -m ecalls.ingest.verify_measurements; fi
-if stage universe     data/raw/universe/sp500_membership.parquet;  then $PY -m ecalls.ingest.universe_sp500; fi
-if stage links        data/processed/sp500_universe.parquet;       then $PY -m ecalls.ingest.link_chain; fi
+if stage universe     "$D/raw/universe/sp500_membership.parquet";  then $PY -m ecalls.ingest.universe_sp500; fi
+if stage links        "$D/processed/sp500_universe.parquet";       then $PY -m ecalls.ingest.link_chain; fi
 if stage index        "";                                          then $PY -m ecalls.ingest.transcript_index; fi
 if stage lengths      "";                                          then $PY -m ecalls.ingest.transcript_lengths; fi
-if stage versions     data/processed/version_choice.parquet;       then $PY -m ecalls.ingest.select_versions; fi
+if stage versions     "$D/processed/version_choice.parquet";       then $PY -m ecalls.ingest.select_versions; fi
 if stage components   "";                                          then $PY -m ecalls.ingest.pull_components; fi
-if stage consolidate  data/processed/components.parquet;           then $PY -m ecalls.ingest.consolidate; fi
+if stage consolidate  "$D/processed/components.parquet";           then $PY -m ecalls.ingest.consolidate; fi
 if stage audit        "";                                          then $PY -m ecalls.audit.completeness; fi
 if stage coverage     "";                                          then $PY -m ecalls.audit.coverage_report; fi
 

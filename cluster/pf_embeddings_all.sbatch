@@ -15,12 +15,12 @@ set -euo pipefail
 # family i / 13 of (ecalls-ret, ecalls-abl, chrono-bert-v1), vintage 2012 + i % 13, every event from
 # 2011 through the end of the following year, with all, Q&A and presentation call vectors from one pass.
 #
-# Time limit from measured rates, 330 chunks/s for ours and 240 for the 149M models on a 2080 Ti
-# (job 57904135): the largest task is about 4.3M chunks, about 5 hours on the slower models.
+# Time limit from measured rates, 330 chunks/s for ours and 240 for the 149M models on a 2080 Ti.
+# The largest task is about 4.3M chunks, about 5 hours on the slower models.
 
 ROOT=${ECALLS_ROOT:?set ECALLS_ROOT to your clone of this repository}
 PY=${ECALLS_PYTHON:-python}
-export ECALLS_DATA_ROOT=$ROOT/data PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
+export ECALLS_DATA_ROOT=${ECALLS_DATA_ROOT:-$ROOT/data} PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
 export TOKENIZERS_PARALLELISM=false PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 mkdir -p "$ROOT/logs"; cd "$ROOT"
 

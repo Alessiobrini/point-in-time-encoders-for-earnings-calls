@@ -359,7 +359,7 @@ def test_an_oom_splits_the_batch_and_still_embeds_everything():
 
 
 def test_a_single_sequence_that_oomes_raises_rather_than_looping_forever():
-    """There is nothing left to split, so the honest outcome is a failure the log can show."""
+    """There is nothing left to split, so the right outcome is a failure the log can show."""
     model = OOMOnceModel(limit=0)
     with pytest.raises(torch.OutOfMemoryError):
         E.encode_texts(["one text"], StubTok(), model, "cpu", batch_size=1, quiet_oom=True)
@@ -424,8 +424,8 @@ def test_require_gpu_is_satisfied_by_cuda_or_mps(monkeypatch):
 
 
 def test_an_explicit_device_still_wins_over_require_gpu(monkeypatch):
-    """`--device cpu --require-gpu` is contradictory, and an explicit choice is the caller being
-    deliberate, so it is honored rather than second-guessed."""
+    """`--device cpu --require-gpu` is contradictory, and an explicit choice is an intentional
+    one, so it is honored rather than second-guessed."""
     monkeypatch.setattr(torch.cuda, "is_available", lambda: False)
     monkeypatch.setattr(torch.backends.mps, "is_available", lambda: False)
     assert E.resolve_device("cpu", require_gpu=True) == "cpu"

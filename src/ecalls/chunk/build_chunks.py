@@ -1,4 +1,4 @@
-"""Phase 3: build the chunk layer from the component shards.
+"""Build the chunk layer from the component shards.
 
 Sharded by the same calendar quarters as the components, so a chunk shard can be rebuilt from one
 component shard and the resume marker is per shard. The chunker is pure and lives in `chunker.py`;

@@ -19,8 +19,8 @@ row. The single model must have a cutoff no later than the regression's training
 `predictive_premise.run_models` checks.
 
 `--encode` embeds the chunks here instead of reading the corpus-wide parts, which exist only for the
-ChronoBERT vintages. The panel is about 1,500 calls, so this is minutes on a GPU, against the full Phase
-5 pass it would otherwise wait for.
+ChronoBERT vintages. The panel is about 1,500 calls, so this is minutes on a GPU, against the
+corpus-wide embedding pass it would otherwise wait for.
 
 Run on the cluster, where the embeddings are:
     PYTHONPATH=src python3 scripts/call_embeddings.py --family chrono-bert-v1

@@ -11,21 +11,21 @@
 #SBATCH --error=logs/cmp_%A_%a.out
 set -euo pipefail
 
-# The comparison that decides whether Phase 4 produced anything.
+# The vintage-against-baseline retrieval comparison.
 #
 # Each vintage is scored on the quarter after its own cutoff, not on one fixed quarter shared by all
 # fifteen. That is the point-in-time deployment condition, and it is also what the L14 measurement
 # forces: the vintages' loss rankings on two different periods are anti-correlated at -0.913, so a
 # single-period comparison across vintages measures which vintage matches that period rather than
-# which is better. See reports/2026-10-01_holdout-mlm-loss-across-vintages.md.
+# which is better.
 #
 # Both models in a task run on the same shard, seed and holdout population, so `bow_vs_dense` builds
 # one candidate pool and every scorer sees it. Held-out calls only: our models trained on the rest,
-# and the unfiltered 0.5378 from the Phase 3 report is therefore not a legitimate target.
+# and the unfiltered 0.5378 measured on every call is therefore not a legitimate target.
 
 ROOT=${ECALLS_ROOT:?set ECALLS_ROOT to your clone of this repository}
 PY=${ECALLS_PYTHON:-python}
-export ECALLS_DATA_ROOT=$ROOT/data PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
+export ECALLS_DATA_ROOT=${ECALLS_DATA_ROOT:-$ROOT/data} PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
 export TOKENIZERS_PARALLELISM=false PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 mkdir -p "$ROOT/logs" "$ROOT/reports"; cd "$ROOT"
 

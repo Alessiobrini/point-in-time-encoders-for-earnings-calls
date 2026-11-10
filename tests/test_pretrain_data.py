@@ -309,7 +309,7 @@ def _split_fixture(tmp_path, monkeypatch):
 
 
 def test_the_inverted_pack_is_the_exact_complement_of_the_training_pack(tmp_path, monkeypatch):
-    """Not merely "some calls": the two packs must partition the corpus with nothing lost or shared.
+    """Not only "some calls": the two packs must partition the corpus with nothing lost or shared.
 
     An evaluation set that overlaps training reports memorization, and one that silently drops calls
     makes a loss comparison rest on a different sample per vintage.

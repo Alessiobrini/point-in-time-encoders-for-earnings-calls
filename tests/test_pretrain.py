@@ -1,6 +1,6 @@
 """Edge cases for the pretraining loop.
 
-Two things here are load-bearing beyond "the loss goes down". The sampler and its checkpoint decide whether
+Two things here are essential beyond "the loss goes down". The sampler and its checkpoint decide whether
 the token budget means what it says, and the masking decides whether the model is asked to predict anything
 worth predicting. Both fail quietly.
 """
@@ -178,7 +178,7 @@ def test_a_short_run_reduces_the_loss_and_writes_its_provenance(tiny):
     assert run["mask_ratio"] == PT.MASK_RATIO
     assert run["architecture"]["total"] > 0
     window_file = json.loads((d / "_window.json").read_text())
-    assert window_file["cutoff"] == "2010-12-31"      # section 5 item 4
+    assert window_file["cutoff"] == "2010-12-31"
     assert window_file["seed"] == 0
 
 
@@ -200,7 +200,7 @@ def test_the_microbatch_scales_with_device_memory_but_tokens_per_step_does_not()
     """Twelve of fifteen pretraining tasks died within thirty seconds on 10.58 GiB cards at a fixed
     microbatch of 32 that the throughput probe had run comfortably on 49 GiB. The microbatch is an
     implementation detail of whichever card scavenger allocated; tokens per step is the hyperparameter
-    section 5 requires held constant, so it must come out identical."""
+    held constant across vintages, so it must come out identical."""
     import unittest.mock as mock
 
     seen = {}

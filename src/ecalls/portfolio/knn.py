@@ -24,7 +24,7 @@ from ecalls.portfolio import backtest as BT
 
 K_PRIMARY = 50
 K_ALSO = (10, 200)
-FAMILIES = ("ecalls-ret", "ecalls-abl", "chrono-bert-v1", "ecalls-chain-ret")   # the chain added 2026-10-10 (D29)
+FAMILIES = ("ecalls-ret", "ecalls-abl", "chrono-bert-v1", "ecalls-chain-ret")   # D29 adds the chain
 OUT_DIR = P.REPORTS_DIR / "portfolio"
 
 

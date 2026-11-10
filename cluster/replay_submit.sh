@@ -7,6 +7,7 @@
 set -euo pipefail
 
 ROOT=${ECALLS_ROOT:?set ECALLS_ROOT to your clone of this repository}
+mkdir -p "$ROOT/logs"
 smoke=$(sbatch --parsable "$ROOT/cluster/replay_smoke.sbatch")
 mlm=$(sbatch --parsable --dependency="afterok:$smoke" "$ROOT/cluster/replay_segment.sbatch")
 ret=$(sbatch --parsable --dependency="aftercorr:$mlm" --partition=common --array=0-13 \

@@ -43,9 +43,9 @@ ALPHAS = (0.1, 1.0, 10.0, 100.0, 1000.0, 10000.0)
 WINSOR = (0.01, 0.99)
 TAIL = 0.10
 NW_LAGS = 60
-FAMILIES = ("ecalls-ret", "ecalls-abl", "chrono-bert-v1", "ecalls-chain-ret")   # the chain added 2026-10-10 (D29)
-# The S&P 500 vectors of D26 were built for the first three families, and the chain's are added on
-# 2026-10-10. A family enters a target only when its 2024 vintage has vectors for that panel.
+FAMILIES = ("ecalls-ret", "ecalls-abl", "chrono-bert-v1", "ecalls-chain-ret")   # D29 adds the chain
+# The S&P 500 vectors of D26 cover the first three families. A family enters a target only when its
+# 2024 vintage has vectors for that panel.
 SP500_FAMILIES = FAMILIES[:3]
 
 
@@ -91,15 +91,15 @@ TARGETS = {
                  False, "D27", "av_results.json", "pf_predictions_av.parquet"),
     "sue": Target("sue", "sue_next", "sue_known_date", ("sue_cur", "ear", "mom", "logcap"),
                   False, "D27", "sue_results.json", "pf_predictions_sue.parquet"),
-    # D28, the next-day test after the JFE design. The open-to-close target takes the overnight gap in
-    # place of the reaction, which contains the session (D28 amendment).
+    # D28, the next-day test after the design of He, Lv, Manela and Wu (JFE 2026). The open-to-close
+    # target takes the overnight gap in place of the reaction, which contains the session (D28 amendment).
     "ret1d": Target("ret1d", "target_1d", "known_1d", DAILY_BASE, False, "D28",
                     "ret1d_results.json", "pf_predictions_ret1d.parquet", "daily"),
     "ret5d": Target("ret5d", "target_5d", "known_5d", DAILY_BASE, False, "D28",
                     "ret5d_results.json", "pf_predictions_ret5d.parquet", "daily"),
     "o2c": Target("o2c", "target_o2c", "known_1d", ("gap", "rev5", "mom", "logcap"), False, "D28",
                   "o2c_results.json", "pf_predictions_o2c.parquet", "daily"),
-    # D28 amendment of 2026-10-09: D26's quarter-horizon target and baselines on the full universe.
+    # D28: D26's quarter-horizon target and baselines on the full universe.
     "ret60": Target("ret60", "target", "exit_date", BASE_COLS, False, "D28 amendment",
                     "ret60_results.json", "pf_predictions_ret60.parquet", "quarter"),
 }
@@ -110,7 +110,7 @@ class Block:
     kind: str                       # base, ident, tone, tfidf, emb
     family: str | None = None
     lookahead: bool = False
-    adjacent: bool = False          # vintage t for test year t, the JFE paper's same-year comparison
+    adjacent: bool = False          # vintage t for test year t, as in He, Lv, Manela and Wu (JFE 2026)
     view: str = "all"               # D28: the call vector from all chunks, Q&A only, or presentation only
 
     @property
@@ -497,8 +497,9 @@ def increments(ic: dict, specs: list[Spec]) -> dict:
 
 
 def daily_long_short(preds: pl.DataFrame, col: str, min_calls: int = 20) -> pl.DataFrame:
-    """D28's portfolio, as in the JFE paper: each entry close, the calls entering then are ranked
-    against each other, top decile long and bottom decile short, equally weighted, held one day.
+    """D28's portfolio, as in He, Lv, Manela and Wu (JFE 2026): each entry close, the calls entering
+    then are ranked against each other, top decile long and bottom decile short, equally weighted, held
+    one day.
 
     The target is the next-day return minus the market's, and the market cancels between the legs, so
     the long-short return is the difference of the two legs' mean targets. A day with fewer than
@@ -639,7 +640,7 @@ def run(years=TEST_YEARS, specs: list[Spec] | None = None, target: Target = TARG
 
 
 def run_adjacent(target: Target) -> dict:
-    """The adjacent-vintage premium, D27 amendment of 2026-10-08: vintage t against vintage t-1.
+    """The adjacent-vintage premium (D27): vintage t against vintage t-1.
 
     He, Lv, Manela and Wu call this their cleanest test for look-ahead bias (JFE 2026, p. 11). Test years
     stop at 2024, the last year with a same-year vintage.

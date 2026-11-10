@@ -1,7 +1,7 @@
 """Is each trained model's checkpoint the same weights as its exported copy?
 
-Written because two identical ablation arrays, 57156367 and 57156375, ran concurrently over the same
-fifteen model directories. `save_checkpoint` used a fixed temp name, `checkpoint.pt.tmp`, so two
+Written because two identical SLURM arrays ran concurrently over the same fifteen model directories.
+`save_checkpoint` used a fixed temp name, `checkpoint.pt.tmp`, so two
 writers could and did splice one file: one task died with that temp file already renamed out from
 under it. The project had fixed exactly this once before, in the embedding stage, by putting the
 host, the pid and a random token in the temp name.

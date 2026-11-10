@@ -1,7 +1,7 @@
 """The searchable index: LanceDB, hybrid lexical plus dense, with point-in-time refusals built in.
 
 The index is disposable and rebuildable, which is why it can afford opinions the corpus cannot. Two of
-them are load-bearing.
+them are essential.
 
 **Retrieval is hybrid, not pure dense (D17).** Measured on this corpus, BM25 with a real retriever
 reaches 0.5544 within-call recall@1 against 0.5102 for that retriever alone and 0.4804 for BM25 alone,
@@ -45,8 +45,8 @@ TEXT_COLUMN = "text"
 META_FILE = "_index_meta.json"
 MIN_ANN_ROWS = 50_000   # below this, PQ training is unreliable or impossible and an exact scan is fast
 
-# Query-time ANN defaults, measured rather than inherited from the library. See DECISIONS D18: at the
-# library default of nprobes=20 with no refine, recall against exact search is 0.62 mean and 0.00 at
+# Query-time ANN defaults, measured rather than inherited from the library (D18 in docs/decisions.md).
+# At the library default of nprobes=20 with no refine, recall against exact search is 0.62 mean and 0.00 at
 # worst, which would silently return half the wrong neighbours. Raising nprobes alone barely helps,
 # because the loss is PQ quantization error rather than too few partitions probed.
 NPROBES = 400
@@ -127,8 +127,8 @@ def shard_frame(shard: str, model_id: str, min_chars: int = MIN_INDEX_CHARS) -> 
         raise ValueError(
             f"{shard}: {chunks.height} chunks but only {out.height} joined to an embedding. The "
             "embedding set does not cover this shard; the index would be silently short.")
-    # The coverage check above runs before this filter, on purpose. Dropping trivial chunks is a
-    # deliberate choice about the index, and folding it into the same comparison would hide a genuine
+    # The coverage check above runs before this filter, on purpose. Dropping trivial chunks is an
+    # intentional choice about the index, and folding it into the same comparison would hide a genuine
     # gap in the embedding set behind an intended one.
     if min_chars:
         out = out.filter(pl.col("text").str.len_chars() >= min_chars)
@@ -171,7 +171,7 @@ def build_ann(tbl, quiet: bool = False) -> bool:
 
     IVF_PQ rather than IVF_FLAT, because flat keeps every full vector in the index and the point of the
     index is to not read them all. **ANN is approximate, so this trades recall for latency, and the
-    trade is measured rather than assumed**: see `ann_recall` and the figure recorded in DECISIONS D18.
+    trade is measured rather than assumed**: see `ann_recall` and D18 in docs/decisions.md.
     """
     from lancedb.index import IvfPq
 
@@ -225,7 +225,7 @@ def build(model_id: str, shards: list[str] | None = None, fts: bool = True, ann:
           min_chars: int = MIN_INDEX_CHARS) -> dict:
     """Build or extend the index for one embedding set.
 
-    Idempotent per shard, tracked by an explicit shard list in the sidecar. That is deliberate rather
+    Idempotent per shard, tracked by an explicit shard list in the sidecar. That is by design rather
     than lazy: appending a shard twice duplicates rows, and no count-based check on a 12 M row table
     would notice, so the marker has to name what is in rather than how much.
     """

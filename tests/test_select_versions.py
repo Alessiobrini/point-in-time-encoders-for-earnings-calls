@@ -176,8 +176,7 @@ def test_load_candidates_refuses_to_silently_drop_transcripts_without_lengths(mo
     """Regression, and worse than it looks. The inner join on transcriptid is where a gap in the
     length shards disappears: the calls never reach version_choice.parquet, pull_components never
     pulls them, and completeness reports UNEXPLAINED = 0 because it compares against
-    version_choice itself. An earlier note here was deleted by accident when the parent/subsidiary
-    dedup was added, leaving no signal at all."""
+    version_choice itself."""
     import pandas as pd
     import ecalls.ingest.select_versions as sv
 

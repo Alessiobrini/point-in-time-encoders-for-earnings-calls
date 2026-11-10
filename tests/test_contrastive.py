@@ -422,8 +422,8 @@ def test_the_microbatch_scales_with_the_card_but_the_batch_does_not():
 # --- the ablation path ---------------------------------------------------------------------------
 
 def test_exactly_one_backbone_source_is_required(stage):
-    """Both would leave it ambiguous which weights the recorded cutoff belongs to, and neither
-    leaves nothing to train."""
+    """Both would leave it ambiguous which weights the recorded cutoff belongs to, and no source at
+    all leaves nothing to train."""
     mlm, train_pairs, _ = stage
     with pytest.raises(ValueError, match="exactly one"):
         CT.train(mlm, train_pairs, cutoff="2010-12-31", backbone="chrono-bert-v1-20101231",
@@ -487,8 +487,8 @@ def test_an_oom_halves_the_microbatch_and_leaves_the_batch_alone(stage, monkeypa
 # --- one trainer per model directory -------------------------------------------------------------
 
 def test_a_second_trainer_on_the_same_model_directory_is_refused(stage):
-    """Two identical ablation arrays ran concurrently over the same fifteen directories on
-    2026-10-01, and nothing in the artifacts said so: every run record reported 4,000 steps because
+    """Two identical ablation arrays ran concurrently over the same fifteen directories, and
+    nothing in the artifacts said so: every run record reported 4,000 steps because
     whichever process finished last wrote one. The per-writer temp name keeps a single file from
     being spliced; it does not stop two trainers taking turns on one model."""
     from ecalls.ingest import manifest as M

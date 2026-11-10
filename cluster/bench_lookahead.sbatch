@@ -12,9 +12,9 @@ set -euo pipefail
 # The look-ahead premium through the encoder, in retrieval. For each test quarter (Y+1)Q2, the
 # point-in-time vintage is Y, already scored at evaluation seed 0 by bench_seeds.sbatch. This array
 # scores the same calls and questions with two later vintages: the 2024 vintage (leaky) and the
-# same-year vintage Y+1 (adjacent, the JFE paper's cleanest test). Quarters 2011Q2 to 2024Q2, since
-# 2025Q2 has no later vintage. Held-out questions were never trained on by any vintage, so what a
-# later vintage can know is the rest of that quarter's calls and everything after.
+# same-year vintage Y+1 (adjacent, the cleanest test of He, Lv, Manela and Wu, JFE 2026). Quarters
+# 2011Q2 to 2024Q2, since 2025Q2 has no later vintage. Held-out questions were never trained on by any
+# vintage, so what a later vintage can know is the rest of that quarter's calls and everything after.
 #
 # CPU, because the scavenger GPU queue is days long and the benchmark is small: about 9,500 texts per
 # quarter, measured at 8.4 chunks/s for ours and 1.9 for the 149M ablation on 4 cores.
@@ -24,7 +24,7 @@ set -euo pipefail
 
 ROOT=${ECALLS_ROOT:?set ECALLS_ROOT to your clone of this repository}
 PY=${ECALLS_PYTHON:-python}
-export ECALLS_DATA_ROOT=$ROOT/data PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
+export ECALLS_DATA_ROOT=${ECALLS_DATA_ROOT:-$ROOT/data} PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
 export TOKENIZERS_PARALLELISM=false OMP_NUM_THREADS=4 MKL_NUM_THREADS=4
 mkdir -p "$ROOT/logs" "$ROOT/reports/seeds"; cd "$ROOT"
 

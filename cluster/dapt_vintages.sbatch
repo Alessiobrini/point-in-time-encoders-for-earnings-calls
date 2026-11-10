@@ -17,7 +17,7 @@ set -euo pipefail
 # This is the experiment that separates domain from scale. The ablation showed a general backbone
 # given our contrastive stage beats our own finance backbone by 0.0314, but at 4.4 times the
 # parameters and roughly 380 times the pretraining tokens, so it cannot say whether the finance
-# corpus is worthless or merely outweighed. Here the weights, the capacity and the contrastive stage
+# corpus is worthless or only outweighed. Here the weights, the capacity and the contrastive stage
 # are identical to the ablation's and the only difference is whether the finance corpus was seen.
 #
 # YEARS, not an array index, because this runs on three vintages first. Spanning the range answers
@@ -26,11 +26,11 @@ set -euo pipefail
 #
 # float16, not bfloat16. bfloat16 is emulated on the 2080 Ti cards most scavenger nodes carry and ran at
 # 5.1 to 5.4 k tokens/s, so all three tasks hit the 24 h wall. float16 with the gradient scaler measured
-# 16.2 k tokens/s on the same card (job 57841613), about 20.6 h for the budget, so the limit is 48 h (L17).
+# 16.2 k tokens/s on the same card, about 20.6 h for the budget, so the limit is 48 h (L17).
 
 ROOT=${ECALLS_ROOT:?set ECALLS_ROOT to your clone of this repository}
 PY=${ECALLS_PYTHON:-python}
-export ECALLS_DATA_ROOT=$ROOT/data PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
+export ECALLS_DATA_ROOT=${ECALLS_DATA_ROOT:-$ROOT/data} PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
 export TOKENIZERS_PARALLELISM=false PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 mkdir -p "$ROOT/logs"; cd "$ROOT"
 

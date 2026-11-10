@@ -32,7 +32,7 @@ from ecalls.ingest import manifest as M
 
 MAX_LENGTH = 768        # measured: nothing in the chunk layer exceeds 710 ChronoBERT tokens
 DEFAULT_BATCH = 64
-STORE_DTYPE = "float16"   # halves 37 GB to 19 GB at the full corpus; see DECISIONS D13
+STORE_DTYPE = "float16"   # halves 37 GB to 19 GB at the full corpus (D13 in docs/decisions.md)
 COMPUTE_DTYPE = "float16"  # measured 1.66x faster than float32 on MPS at a cosine cost under 1e-4
 CHARS_PER_GB = 30_000      # padded chars per GB of device memory; 24 GB cards ran ~770k, 11 GB OOMed
 MAX_CHAR_BUDGET = 1_200_000  # past here the batcher is not the bottleneck and the batches get unwieldy
@@ -67,7 +67,7 @@ def shard_end(shard: str) -> "dt.date":
 def shards_up_to(cutoff, shards: list[str] | None = None, extra_years: int = 0) -> list[str]:
     """The shards a vintage should embed, which is **not** simply those up to its training cutoff.
 
-    The roadmap said "the whole history up to that cutoff" and that reading is too narrow. A vintage is
+    "The whole history up to the cutoff" is too narrow a reading. A vintage is
     the model you hold *until the next one exists*, so it has to serve decisions made after its cutoff,
     and a decision at date t needs embeddings for every call up to t. With `extra_years=0` the 2015
     vintage cannot see the first half of 2016, so a mid-2016 decision is blind to **the most recent six

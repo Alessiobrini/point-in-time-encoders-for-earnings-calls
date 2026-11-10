@@ -5,8 +5,8 @@ vintage, and the pair construction code is separate from the corpus filter. So b
 here and both are recorded in the sidecar.
 
 **The extraction rule is imported from `diagnostics.bow_vs_dense` rather than restated.** That module
-defines what counts as a question and an answer for the retrieval benchmark, and Phase 4 steers by the
-number that benchmark produces. Two copies of the rule would let training pairs and evaluation pairs drift
+defines what counts as a question and an answer for the retrieval benchmark, and the vintages are judged
+by that benchmark's score. Two copies of the rule would let training pairs and evaluation pairs drift
 apart, and the drift would show up as an unexplained gap between training loss and benchmark score. The
 import direction is unusual, a training module depending on a diagnostic, and it is the price of one
 definition.
@@ -51,7 +51,7 @@ def build_pairs(cutoff: str, extra_years: int = 0, min_chars: int = MIN_CHARS,
 
     `holdout_only` inverts the split and keeps only the held-out calls, which is the evaluation set.
     It is the same structure the benchmark scores, so the contrastive stage can be monitored on the
-    number Phase 4 steers by without waiting for a separate evaluation pass.
+    retrieval benchmark score without waiting for a separate evaluation pass.
     """
     if holdout_only and not holdout_fraction:
         raise ValueError(

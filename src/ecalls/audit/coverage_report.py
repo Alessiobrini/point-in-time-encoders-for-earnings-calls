@@ -48,7 +48,7 @@ def main() -> int:
 
 
 def member_quarter_coverage(y0: int = 2008, y1: int = 2025) -> str:
-    """The axis the roadmap actually specified: of the quarters a company was an index member, in
+    """The coverage measure that matters: of the quarters a company was an index member, in
     how many did we get a call?
 
     Calls per company per year cannot answer this. A company averaging 3.9 calls a year looks like

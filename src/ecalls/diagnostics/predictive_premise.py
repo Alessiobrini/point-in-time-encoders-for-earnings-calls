@@ -1,7 +1,6 @@
 """Do call embeddings beat training-free volatility baselines? The premise test.
 
-This is the deferred half of Phase 2 and the roadmap calls it "the risk that could invalidate the
-premise". Yu (Ding), Liu and He (2025), *Same Company, Same Signal*, arXiv 2412.18029, ACL Findings,
+Yu (Ding), Liu and He (2025), *Same Company, Same Signal*, arXiv 2412.18029, ACL Findings,
 doi 10.18653/v1/2025.findings-acl.946, report that two training-free baselines, post-earnings
 volatility and same-ticker post-earnings volatility, **beat every transcript-based model** they
 tested, and that transcript representations mostly encode ticker identity. If that reproduces here,
@@ -129,7 +128,7 @@ def time_split(panel: pl.DataFrame, test_fraction: float = 0.3):
     # Sorted by date, with the call id breaking ties. The penalty is chosen by `TimeSeriesSplit`, which
     # takes row order as time order. The panel is built ticker by ticker, so without the sort the
     # "time-ordered" folds were ticker blocks, and the chosen penalty, hence every R2, moved with
-    # whatever order a join happened to return. Found 2026-10-06 when the baselines, which use no
+    # whatever order a join happened to return. Without the sort the baselines, which use no
     # embeddings, scored 0.6515 next to one embedding file and 0.6625 next to another.
     order = ["call_date", "keydevid"]
     train = panel.filter(pl.col("call_date") < cut).sort(order)

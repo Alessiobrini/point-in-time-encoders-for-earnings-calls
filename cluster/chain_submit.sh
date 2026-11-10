@@ -15,7 +15,8 @@
 set -euo pipefail
 
 ROOT=${ECALLS_ROOT:?set ECALLS_ROOT to your clone of this repository}
-MODELS=$ROOT/data/processed/models
+mkdir -p "$ROOT/logs"
+MODELS=${ECALLS_DATA_ROOT:-$ROOT/data}/processed/models
 FIRST=${FIRST:-2011}
 LAST=${LAST:-2024}
 

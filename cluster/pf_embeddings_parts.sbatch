@@ -17,13 +17,13 @@ set -euo pipefail
 # (ecalls-ret, ecalls-abl, chrono-bert-v1), vintage 2012 + m % 13, every event through the end of the
 # following year.
 #
-# Sizing from the S&P run (job 58023930): at most 1h22m and 22G peak for about 28,000 calls. The full
+# Sizing from the S&P run: at most 1h22m and 22G peak for about 28,000 calls. The full
 # universe holds about 5.7 times as many, so the largest model needs about 8 hours, 2 per part.
 # cluster/pf_embeddings_merge.sbatch joins the parts.
 
 ROOT=${ECALLS_ROOT:?set ECALLS_ROOT to your clone of this repository}
 PY=${ECALLS_PYTHON:-python}
-export ECALLS_DATA_ROOT=$ROOT/data PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
+export ECALLS_DATA_ROOT=${ECALLS_DATA_ROOT:-$ROOT/data} PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
 export TOKENIZERS_PARALLELISM=false PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 mkdir -p "$ROOT/logs"; cd "$ROOT"
 

@@ -1,13 +1,13 @@
 """Gate for the evaluation-seed array: seed 0 must reproduce the canonical comparison exactly.
 
 `cluster/bench_seeds.sbatch` reruns the benchmark at evaluation seeds 0, 1 and 2 with the fusion scan
-and per-question ranks added. Seed 0 draws the same calls and questions as the canonical files the
-paper reads, `reports/cmp_<shard>_<model>_holdout.json`. TF-IDF and BM25 run on the CPU and must agree
-to the last digit. The dense and hybrid scorers embed in float16 on whatever card the task drew, and a
-different card can move a near-tied pair by one place, so they must agree within `DENSE_TOLERANCE`
-of recall@1 and MRR. The scan's weight 0.5 must equal the unweighted hybrid of the same run exactly.
-Anything else means the rerun is not measuring the same thing, and seeds 1 and 2 could not be read as
-variation around the canonical number.
+and per-question ranks added. Seed 0 draws the same calls and questions as the single-seed files that
+`cluster/compare_vintages.sbatch` writes, `reports/cmp_<shard>_<model>_holdout.json`. TF-IDF and BM25
+run on the CPU and must agree to the last digit. The dense and hybrid scorers embed in float16 on
+whatever card the task drew, and a different card can move a near-tied pair by one place, so they
+must agree within `DENSE_TOLERANCE` of recall@1 and MRR. The scan's weight 0.5 must equal the
+unweighted hybrid of the same run exactly. Anything else means the rerun is not measuring the same
+thing, and seeds 1 and 2 could not be read as variation around the canonical number.
 
 The expectation comes from the canonical files and the plan's 45 pairs, never from what the seed
 directory happens to hold, so a missing output fails rather than shrinking the check.

@@ -1,0 +1,45 @@
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  font=\footnotesize,
+  box/.style={draw=black!60, rounded corners=2pt, align=center, inner sep=2.5pt, minimum height=8mm},
+  data/.style={box, fill=black!4},
+  model/.style={box, fill=blue!6, text width=25mm},
+  use/.style={box, fill=orange!8, text width=29mm},
+  arr/.style={-{Stealth[length=1.8mm]}, black!70},
+  node distance=3mm and 5.5mm]
+
+\node[data, text width=19mm] (corpus) {Earnings calls\\ 2004 to 2026\\ (\NCallsIndex{} calls)};
+\node[data, text width=21mm, right=of corpus] (windows) {Trainable calls\\ dated on or before\\ 31 Dec of $Y$};
+\node[model, right=7mm of windows, yshift=13.5mm] (scratch) {From scratch,\\ 1.2B tokens each};
+\node[model, below=1.5mm of scratch] (chain) {Chained: vintage $Y{-}1$\\ continued on year $Y$};
+\node[model, below=1.5mm of chain] (abl) {ChronoBERT vintage $Y$\\ (general text)};
+\node[model, below=1.5mm of abl] (dapt) {ChronoBERT $Y$ + DAPT\\ (2010, 2017, 2024)};
+\node[box, fit=(scratch)(dapt), inner sep=2mm, draw=black!40, dashed,
+      label={[font=\footnotesize]above:Pretraining recipes}] (recipes) {};
+\node[box, text width=19mm, right=7mm of recipes.east |- windows] (task) {Contrastive\\ fine-tuning on\\ pairs dated\\ on or before $Y$};
+\node[box, text width=19mm, right=of task] (reg) {Registry:\\ cutoff $Y$,\\ query date check};
+\node[use, right=7mm of reg, yshift=10mm] (retr) {Retrieval on\\ held-out questions};
+\node[use, below=1.5mm of retr] (fc) {Forecasts: ridge on\\ vectors, nearest neighbors};
+\node[use, below=1.5mm of fc] (la) {Look-ahead: a later\\ vintage replaces $Y$};
+
+\node[data, text width=21mm, below=15mm of windows] (pairs) {Analyst-question,\\ executive-answer pairs};
+\node[data, text width=19mm, below=15mm of corpus] (held) {10\% of calls held\\ out by a hash\\ of the call id};
+
+\draw[arr] (corpus) -- (windows);
+\draw[arr] (corpus) -- (held);
+\draw[arr] (windows.east) -- ++(2.5mm,0) |- (scratch.west);
+\draw[arr] (windows.east) -- ++(2.5mm,0) |- (chain.west);
+\draw[arr] (windows.east) -- ++(2.5mm,0) |- (dapt.west);
+\draw[arr] (windows) -- (pairs);
+\draw[arr] (recipes.east |- task) -- (task);
+\draw[arr] (pairs.south) -- ++(0,-1.5mm) -| (task.south);
+\draw[arr] (task) -- (reg);
+\draw[arr] (reg.east) -- ++(3.5mm,0) |- (fc.west);
+\draw[arr] (reg.east) -- ++(3.5mm,0) |- (la.west);
+\draw[arr] (reg.east) -- ++(3.5mm,0) |- (retr.west);
+\draw[arr] (held.south) -- ++(0,-3mm) -| ($(retr.east)+(3mm,0)$) -- (retr.east);
+\end{tikzpicture}
+\caption{From the corpus to the uses of the vintages. For each cutoff year $Y$ from 2010 to 2024, every pretraining recipe reads only text dated on or before 31 December of $Y$. Our two families read trainable calls, ChronoBERT reads general text, and ChronoBERT + DAPT reads both, at 2010, 2017 and 2024 only. Contrastive fine-tuning trains on question-answer pairs from the trainable calls, and the registry records the cutoff so that a query dated before it cannot use the vintage. Held-out calls supply every retrieval question and enter no stage of training other than the fit of the 2010 tokenizer.}
+\label{fig:pipeline}
+\end{figure*}

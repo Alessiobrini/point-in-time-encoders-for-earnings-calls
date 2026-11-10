@@ -13,7 +13,7 @@ set -euo pipefail
 
 # Masked language modeling for the 15 annual vintages, one per array task. Every task reads a prefix of
 # one packed corpus, since the array is in calendar order and a window is a prefix, and every task trains
-# for the same token budget so only the data varies (section 5 item 2).
+# for the same token budget so only the data varies.
 #
 # Requeue-safe: the checkpoint carries the optimizer and the sampler state as well as the weights, so a
 # preempted task resumes where it stopped rather than restarting and never finishing. Rerunning a finished
@@ -24,7 +24,7 @@ set -euo pipefail
 
 ROOT=${ECALLS_ROOT:?set ECALLS_ROOT to your clone of this repository}
 PY=${ECALLS_PYTHON:-python}
-export ECALLS_DATA_ROOT=$ROOT/data PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
+export ECALLS_DATA_ROOT=${ECALLS_DATA_ROOT:-$ROOT/data} PYTHONPATH=$ROOT/src HF_HOME=$ROOT/.hf HF_HUB_OFFLINE=1
 export TOKENIZERS_PARALLELISM=false PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 mkdir -p "$ROOT/logs"; cd "$ROOT"
 

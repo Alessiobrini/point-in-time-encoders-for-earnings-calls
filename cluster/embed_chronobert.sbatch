@@ -13,11 +13,6 @@
 #SBATCH --array=0-15
 #SBATCH --output=logs/embed_%A_%a.out
 #SBATCH --error=logs/embed_%A_%a.out
-# Nodes whose GPU reports "Failed to get device handle for GPU 0" while still accepting jobs. They are
-# not transiently busy, they are broken and they keep taking work: h36-24 swallowed 9 of 16 tasks in one
-# array and had already killed a task in the previous one. --require-gpu makes each landing cost 20
-# seconds instead of hours, and excluding them makes it cost nothing. Re-check this list rather than
-# trusting it, since it is a snapshot of a shared cluster: the recipe is in docs/decisions.md, L9.
 
 # Embed the chunk layer with one registered vintage. Every path is absolute, because a compute
 # node's working directory is not the project root.
@@ -36,9 +31,9 @@ PY=${ECALLS_PYTHON:-python}
 MODEL=${MODEL:-chrono-bert-v1-20241231}
 BATCH=${BATCH:-256}   # only used with --fixed-batch; the default budget comes from the GPU
 
-export ECALLS_DATA_ROOT=$ROOT/data
+export ECALLS_DATA_ROOT=${ECALLS_DATA_ROOT:-$ROOT/data}
 export PYTHONPATH=$ROOT/src
-export HF_HOME=$ROOT/.hf                 # the model cache stays on the group share, not in $HOME
+export HF_HOME=$ROOT/.hf                 # the model cache stays under the repository clone, not in $HOME
 export HF_HUB_OFFLINE=1                  # weights are pre-cached on the login node, because a
                                          # compute node's outbound network is not guaranteed and a
                                          # blocked download would hang the task rather than fail it

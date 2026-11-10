@@ -10,9 +10,20 @@ paper/values.tex
 paper/tables/*.tex
 paper/figures/*.pdf
 paper/figures/*.tex
+!paper/figures/pipeline.tex
 
 __pycache__/
 *.pyc
 *.egg-info/
 .pytest_cache/
 .DS_Store
+
+# Dev tools (requirements-dev.txt)
+.coverage
+htmlcov/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Provenance stamp read by ecalls.ingest.manifest.git_sha()
+.git_sha
+.git_sha_push

@@ -2,16 +2,16 @@
 
 Two constraints decide the shape, and they pull in opposite directions.
 
-**Section 5 item 2 requires the architecture, dimension, hyperparameters, seed and training budget to be
-identical across vintages, so that only the data varies.** A later vintage trained longer because it had
+**The architecture, dimension, hyperparameters, seed and training budget are identical across vintages,
+so that only the data varies.** A later vintage trained longer because it had
 more text would confound data volume with training length.
 
-**The comparison that justifies Phase 4 is against `bge-small-en-v1.5`, measured at 0.5378 on the
+**The capacity reference is `bge-small-en-v1.5`, measured at 0.5378 on the
 retrieval benchmark.** That model is 12 layers, 384 hidden, 33.4 M parameters. Matching its capacity means
 a difference in the result is attributable to the training data and the domain rather than to size, which
 is the comparison worth running. Beating it with a larger model would show only that larger models help.
 
-The backbone is ModernBERT's, which supplies the recipe the methodology notes specify: no next-sentence
+The backbone is ModernBERT's, which supplies the standard modern encoder recipe: no next-sentence
 prediction, rotary positions, gated linear units in the feedforward block, alternating local and global
 attention, and unpadding. Using the published implementation rather than writing one keeps the
 architecture side of the comparison uncontroversial.
@@ -91,7 +91,7 @@ def describe(vocab_size: int, **kw) -> dict:
 def save_config(path, vocab_size: int, window: dict, seed: int = 0, **kw) -> None:
     """Write the architecture and the training window together.
 
-    Section 5 item 4: a vintage whose training window cannot be stated cannot support a claim. The window
+    A vintage whose training window cannot be stated cannot support a claim. The window
     travels with the architecture so a model directory is self-describing.
     """
     from pathlib import Path

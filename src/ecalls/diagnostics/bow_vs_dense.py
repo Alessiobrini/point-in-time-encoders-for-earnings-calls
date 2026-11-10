@@ -1,5 +1,5 @@
-"""Does a dense encoder beat bag-of-words at retrieval on this text? Phase 3 step 2, and it gates
-whether a stronger retriever is worth buying (see DECISIONS D12).
+"""Does a dense encoder beat bag-of-words at retrieval on this text? It gates whether a stronger
+retriever is worth buying (see docs/decisions.md, D12).
 
 **The benchmark is built from the corpus's own structure, so it needs no labels.** Inside the Q&A
 section an `Analysts` turn is a question and the `Executives` turn that follows it in
@@ -10,9 +10,9 @@ Two pools, because they measure different things and only the first is hard:
 
 - **within-call.** The candidates are every executive answer in the same call. Company, quarter,
   speakers and topic are held constant by construction, so a scorer cannot win on company
-  fingerprint. This is the interesting number, and it is the direct answer to the identity confound
-  measured in `reports/2026-09-26_identity-confound-diagnostic.md`, where within-company similarity
-  was 0.4268 against 0.1741 across companies.
+  fingerprint. This is the interesting number, and it is the direct answer to the identity confound,
+  where within-company similarity was 0.4268 against 0.1741 across companies
+  (`ecalls.diagnostics.identity_confound`).
 - **cross-call.** The candidates are answers drawn from other calls too, at a fixed pool size. Easier,
   and largely a company-identification task, which is why it is reported beside the first rather than
   instead of it.
@@ -53,7 +53,7 @@ def qa_pairs(shard: str, n_calls: int, seed: int = 0, min_chars: int = MIN_CHARS
     follows it, and `answers` is the candidate pool with one row per executive turn.
 
     `holdout` selects the population before sampling. `None` keeps every call, which is how the
-    reference numbers in `reports/2026-09-27_bow-vs-dense-retrieval.md` were measured. `True` keeps
+    early all-call reference numbers were measured. `True` keeps
     only the held-out calls, which is the only population a model trained on this corpus may be
     scored on. `False` keeps only the trainable ones.
 

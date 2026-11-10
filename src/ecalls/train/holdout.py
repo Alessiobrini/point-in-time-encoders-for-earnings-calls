@@ -3,10 +3,10 @@
 The retrieval benchmark in `diagnostics/bow_vs_dense.py` builds its queries from the same structure the
 contrastive stage trains on, an analyst question and the executive answer that follows it. Training on a
 call and then evaluating on that same call measures memorization, and it would look like success: the
-model would score well on the one number Phase 4 is steering by.
+model would score well on the retrieval benchmark.
 
 So the split lives in its own module, because the pair builder and the evaluator both depend on it and
-neither may define it. Three properties make it safe to rely on.
+must not define it. Three properties make it safe to rely on.
 
 **It is a function of the call id, not of a shuffle.** `is_holdout(keydevid)` needs no stored list, no
 ordering and no random state, so the same call is held out in every process, on every machine, at every

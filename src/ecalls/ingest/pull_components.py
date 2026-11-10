@@ -99,7 +99,7 @@ def _write(df: pd.DataFrame, path) -> None:
 
 def shard_is_complete(path, expected_calls: int) -> bool:
     """A shard counts as done only when it holds every call expected for it under the CURRENT
-    universe, not merely when the file exists.
+    universe, not only when the file exists.
 
     Existence alone is the wrong marker here because the shard name is the calendar quarter and
     carries no universe in it. Running the S&P 500 checkpoint first writes `components_2024Q1.parquet`

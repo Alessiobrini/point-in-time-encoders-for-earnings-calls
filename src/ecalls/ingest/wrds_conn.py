@@ -1,11 +1,7 @@
-"""Shared read-only WRDS connection helper.
+"""Read-only WRDS connection helper.
 
-Copied VERBATIM from tsfmvol/src/tsfmvol/ingest/wrds_conn.py on 2026-09-18 so the two stay
-diffable. The per-day timings quoted below are tsfmvol's TAQ pull, not ours. Do not edit the
-body here. Fix it upstream and re-copy.
-
-Credentials are read from ~/.pgpass (the wrds-pgdata line). The `wrds` Python
-package requires interactive input, so we use psycopg2 directly (see global setup).
+Credentials are read from the wrds-pgdata line of ~/.pgpass. The `wrds` Python package asks for
+interactive input, so the code connects with psycopg2 directly.
 """
 import os
 
@@ -30,14 +26,11 @@ def connect(readonly: bool = True, retries: int = 4, statement_timeout_ms: int =
     """Open a (by default read-only, autocommit) psycopg2 connection to WRDS.
 
     Self-healing for long unattended pulls:
-      - TCP keepalives so a connection killed while the Mac sleeps (the #1 cause of
-        the corpus build "stalling" — recv() blocking on a dead socket forever) is
-        detected within ~2 min and raises, so the caller's per-day reconnect recovers
-        instead of hanging.
-      - statement_timeout so a hung/runaway server-side query is cancelled (raises)
-        rather than blocking; 300s >> a normal ~40-60s per-day pull.
-      - connect retry with exponential backoff for transient connect timeouts / WRDS
-        throttling (observed when many connections are opened in a session).
+      - TCP keepalives, so a connection that dies while the client sleeps raises within about 2
+        minutes instead of blocking forever in recv(), and the caller can reconnect.
+      - statement_timeout, so a hung server-side query is cancelled.
+      - connect retries with a linear backoff (5, 10, 15 s) for transient timeouts and WRDS
+        throttling.
     """
     import time
     import psycopg2

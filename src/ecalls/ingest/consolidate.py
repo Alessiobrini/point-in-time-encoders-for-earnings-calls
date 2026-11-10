@@ -175,7 +175,7 @@ def main(argv=None) -> int:
     glob = str(P.COMPONENTS_DIR / "components_*.parquet")
     con = duckdb.connect()
     # Bound the sort of 22.8M rows carrying 16 GB of text. Left unbounded, DuckDB will take most of
-    # the machine's RAM, and this runs on the laptop.
+    # the machine's RAM, so the limit keeps it usable on a workstation.
     con.execute("set memory_limit='8GB'")
     con.execute("set threads=4")
     con.execute(f"set temp_directory='{P.DATA_ROOT / '_duckdb_tmp'}'")

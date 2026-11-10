@@ -1,7 +1,7 @@
 """Map a handful of tickers to CRSP permnos, point in time.
 
-Needed because `calls.parquet` carries `permno` and the realized-volatility panel the Phase 2
-diagnostic uses is keyed by ticker. Matching on company name would work for most mega-caps and fail
+Needed because `calls.parquet` carries `permno` and the realized-volatility panel of the premise
+diagnostic is keyed by ticker. Matching on company name would work for most mega-caps and fail
 silently for the rest, and a wrong row there would move the diagnostic's answer without announcing
 itself. `crsp.stocknames` is authoritative and the query is small.
 
@@ -10,7 +10,7 @@ belong to another later, and a company can change ticker without changing permno
 pulled with its `namedt` and `nameenddt` validity window and joined **as of the call date**, never as
 a plain dictionary. This module returns the windows and leaves the join to the caller.
 
-Run on the Mac, where the credential lives:
+Run on a machine with WRDS access:
     python -m ecalls.ingest.ticker_map --tickers AAPL,MSFT,...
 """
 import argparse
