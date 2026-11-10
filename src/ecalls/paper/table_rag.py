@@ -24,7 +24,7 @@ def render(d: dict) -> str:
     lines = [r"\begin{table}[!tb]", r"\centering", r"\footnotesize", r"\setlength{\tabcolsep}{1.5pt}",
              r"\caption{Look-ahead through the retriever, for a language model that answers from what the retriever returns. For 1,000 held-out "
              r"analyst questions in each of the 14 quarters 2011Q2 to 2024Q2, a retriever returns the 3 "
-             r"closest answers from the quarter's sampled held-out calls, and ChronoGPT-Instruct of the "
+             r"closest answers from the quarter's sampled held-out calls. ChronoGPT-Instruct with the "
              r"cutoff year of the vintage available at the time reads them with the question. The score is "
              r"its mean log-probability per token, in nats, of the first 300 tokens of the executive's real answer. Own answer is the share of "
              r"questions whose real answer is among the 3 excerpts, under the vintage available at the "
